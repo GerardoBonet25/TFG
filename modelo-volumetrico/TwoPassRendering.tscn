@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0ieskfvvpg0n"]
+
+[ext_resource type="Shader" uid="uid://cqfkqalu2go7d" path="res://Shaders/PasadaTrasera.gdshader" id="1_6mseh"]
+[ext_resource type="Shader" uid="uid://c8a82ekb16abs" path="res://Shaders/Two-Pass.gdshader" id="1_7kw37"]
+[ext_resource type="Script" uid="uid://b1hwuyrjsmqkn" path="res://camara_principal.gd" id="1_ldv11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5ga6"]
+render_priority = 0
+shader = ExtResource("1_6mseh")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7kw37"]
+viewport_path = NodePath("PasadaTrasera")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mseh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_7kw37")
+shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_7kw37")
+shader_parameter/MAX_STEPS = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_7kw37"]
+material = SubResource("ShaderMaterial_6mseh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kw37"]
+albedo_color = Color(0.21568628, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7kw37"]
+material = SubResource("StandardMaterial3D_7kw37")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PasadaTrasera" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CamaraTrasera" type="Camera3D" parent="PasadaTrasera"]
+transform = Transform3D(1, 0, 0, 0, 0.99568266, 0.092822425, 0, -0.092822425, 0.99568266, 0, 0.6261414, 0)
+
+[node name="Trasera" type="MeshInstance3D" parent="PasadaTrasera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+layers = 2
+material_override = SubResource("ShaderMaterial_w5ga6")
+mesh = SubResource("BoxMesh_7kw37")
+
+[node name="CamaraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera")]
+transform = Transform3D(1, 0, 0, 0, 0.99568266, 0.092822425, 0, -0.092822425, 0.99568266, 0, 0.6261414, 0)
+cull_mask = 1048573
+script = ExtResource("1_ldv11")
+camaraTrasera = NodePath("../PasadaTrasera/CamaraTrasera")
+
+[node name="Frontal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+mesh = SubResource("BoxMesh_7kw37")
+skeleton = NodePath("../PasadaTrasera")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.104275, 0, -4.060161)
+mesh = SubResource("CylinderMesh_7kw37")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.179668, 0)
