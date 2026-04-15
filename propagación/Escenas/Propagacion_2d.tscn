@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxqn8bdp0lhll"]
+
+[ext_resource type="Script" uid="uid://te0rpukm81wy" path="res://Cerebro.gd" id="1_nic3v"]
+[ext_resource type="Shader" uid="uid://bt7mxrvr1p4qh" path="res://Shaders/Fuego_2d.gdshader" id="2_afo1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhym1"]
+shader = ExtResource("2_afo1e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t28bp"]
+shader = ExtResource("2_afo1e")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ov207"]
+viewport_path = NodePath("BufferA")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("buffer_a", "buffer_b", "rect_a", "rect_b")]
+script = ExtResource("1_nic3v")
+buffer_a = NodePath("../BufferA")
+buffer_b = NodePath("../BufferB")
+rect_a = NodePath("../BufferA/ColorRectA")
+rect_b = NodePath("../BufferB/ColorRectB")
+
+[node name="BufferA" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(64, 64)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="ColorRectA" type="ColorRect" parent="BufferA"]
+material = SubResource("ShaderMaterial_jhym1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BufferB" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(64, 64)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="ColorRectB" type="ColorRect" parent="BufferB"]
+material = SubResource("ShaderMaterial_t28bp")
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_top = 48.0
+offset_right = 1159.0
+offset_bottom = 566.0
+texture = SubResource("ViewportTexture_ov207")
+stretch_mode = 5
