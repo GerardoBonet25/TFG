@@ -1,25 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxqn8bdp0lhll"]
+[gd_scene load_steps=7 format=3 uid="uid://dxqn8bdp0lhll"]
 
-[ext_resource type="Script" uid="uid://te0rpukm81wy" path="res://Cerebro.gd" id="1_nic3v"]
+[ext_resource type="Script" uid="uid://te0rpukm81wy" path="res://Scripts/Cerebro.gd" id="1_nic3v"]
 [ext_resource type="Shader" uid="uid://bt7mxrvr1p4qh" path="res://Shaders/Fuego_2d.gdshader" id="2_afo1e"]
+[ext_resource type="Script" uid="uid://2c6rucyrsl1s" path="res://Scripts/funcionalidad_ui.gd" id="2_jhym1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhym1"]
 shader = ExtResource("2_afo1e")
+shader_parameter/velocidad_viento = 15.0
+shader_parameter/direccion_viento = 0.0
+shader_parameter/c1 = 2.0
+shader_parameter/c2 = 0.1
+shader_parameter/humedad = 0.2
+shader_parameter/c_humedad = 2.5
+shader_parameter/incertidumbre_viento = 15.0
+shader_parameter/probabilidad_base = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t28bp"]
 shader = ExtResource("2_afo1e")
+shader_parameter/velocidad_viento = 15.0
+shader_parameter/direccion_viento = 0.0
+shader_parameter/c1 = 2.0
+shader_parameter/c2 = 0.1
+shader_parameter/humedad = 0.2
+shader_parameter/c_humedad = 2.5
+shader_parameter/incertidumbre_viento = 15.0
+shader_parameter/probabilidad_base = 0.02
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ov207"]
 viewport_path = NodePath("BufferA")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("buffer_a", "buffer_b", "rect_a", "rect_b")]
+[node name="Cerebro" type="Node" parent="." node_paths=PackedStringArray("buffer_a", "buffer_b", "buffer_acumulador", "rect_a", "rect_b")]
 script = ExtResource("1_nic3v")
 buffer_a = NodePath("../BufferA")
 buffer_b = NodePath("../BufferB")
+buffer_acumulador = NodePath("../Montecarlo")
 rect_a = NodePath("../BufferA/ColorRectA")
 rect_b = NodePath("../BufferB/ColorRectB")
+
+[node name="FuncionalidadUI" type="Node" parent="." node_paths=PackedStringArray("cerebro", "colorRectA", "colorRectB", "menu_principal", "menu_interactivo", "menu_montecarlo", "btn_modo_tiempo_real", "btn_modo_montecarlo", "slider_vel", "slider_dir", "btn_volver_interactivo", "spinbox_n", "btn_confirmar_montecarlo", "btn_volver_montecarlo", "visor_pantalla")]
+script = ExtResource("2_jhym1")
+cerebro = NodePath("../Cerebro")
+colorRectA = NodePath("../BufferA/ColorRectA")
+colorRectB = NodePath("../BufferB/ColorRectB")
+menu_principal = NodePath("../CanvasLayer/MenuPrincipal")
+menu_interactivo = NodePath("../CanvasLayer/SimulacionReal")
+menu_montecarlo = NodePath("../CanvasLayer/SimulacionMontecarlo")
+btn_modo_tiempo_real = NodePath("../CanvasLayer/MenuPrincipal/ButtonModoReal")
+btn_modo_montecarlo = NodePath("../CanvasLayer/MenuPrincipal/ButtonModoMontecarlo")
+slider_vel = NodePath("../CanvasLayer/SimulacionReal/VelVSlider")
+slider_dir = NodePath("../CanvasLayer/SimulacionReal/DirVSlider")
+btn_volver_interactivo = NodePath("../CanvasLayer/SimulacionReal/VolverReal")
+spinbox_n = NodePath("../CanvasLayer/SimulacionMontecarlo/NumIter")
+btn_confirmar_montecarlo = NodePath("../CanvasLayer/SimulacionMontecarlo/Confirmar")
+btn_volver_montecarlo = NodePath("../CanvasLayer/SimulacionMontecarlo/volver")
+visor_pantalla = NodePath("../TextureRect")
 
 [node name="BufferA" type="SubViewport" parent="."]
 disable_3d = true
@@ -46,6 +82,10 @@ material = SubResource("ShaderMaterial_t28bp")
 offset_right = 64.0
 offset_bottom = 64.0
 
+[node name="Montecarlo" type="SubViewport" parent="."]
+size = Vector2i(64, 64)
+render_target_clear_mode = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 offset_top = 48.0
@@ -53,3 +93,61 @@ offset_right = 1159.0
 offset_bottom = 566.0
 texture = SubResource("ViewportTexture_ov207")
 stretch_mode = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuPrincipal" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="ButtonModoReal" type="Button" parent="CanvasLayer/MenuPrincipal"]
+layout_mode = 2
+text = "Simulación en Tiempo Real"
+
+[node name="ButtonModoMontecarlo" type="Button" parent="CanvasLayer/MenuPrincipal"]
+layout_mode = 2
+text = "Simulación Montecarlo"
+
+[node name="SimulacionReal" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 252.0
+offset_bottom = 116.0
+
+[node name="VelocidadViento" type="Label" parent="CanvasLayer/SimulacionReal"]
+layout_mode = 2
+text = "Velocidad viento"
+
+[node name="VelVSlider" type="HSlider" parent="CanvasLayer/SimulacionReal"]
+layout_mode = 2
+min_value = 5.0
+max_value = 50.0
+value = 15.0
+
+[node name="DireccionViento" type="Label" parent="CanvasLayer/SimulacionReal"]
+layout_mode = 2
+text = "Direcion Viento"
+
+[node name="DirVSlider" type="HSlider" parent="CanvasLayer/SimulacionReal"]
+layout_mode = 2
+max_value = 360.0
+
+[node name="VolverReal" type="Button" parent="CanvasLayer/SimulacionReal"]
+layout_mode = 2
+text = "Volver"
+
+[node name="SimulacionMontecarlo" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 327.0
+offset_bottom = 160.0
+
+[node name="NumIter" type="SpinBox" parent="CanvasLayer/SimulacionMontecarlo"]
+layout_mode = 2
+
+[node name="Confirmar" type="Button" parent="CanvasLayer/SimulacionMontecarlo"]
+layout_mode = 2
+text = "Confirmar"
+
+[node name="volver" type="Button" parent="CanvasLayer/SimulacionMontecarlo"]
+layout_mode = 2
+text = "Volver"
