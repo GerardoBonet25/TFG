@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://w02y0v6qnpir"]
+
+[ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="1_hdr1k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6i3w"]
+render_priority = 0
+shader = ExtResource("1_hdr1k")
+
+[sub_resource type="BoxMesh" id="BoxMesh_87ps8"]
+material = SubResource("ShaderMaterial_r6i3w")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9702957, 0.2419219, 0, -0.2419219, 0.9702957, 0.3, 0.6, 2.1)
+cull_mask = 1048574
+
+[node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
+layers = 2
+mesh = SubResource("BoxMesh_87ps8")
+
+[node name="CuboFrontal" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_87ps8")
+
+[node name="CameraPrincipal" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9702957, 0.2419219, 0, -0.2419219, 0.9702957, 0.3, 0.6, 2.1)
+cull_mask = 1048573
