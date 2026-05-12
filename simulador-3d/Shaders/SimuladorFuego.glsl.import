@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bxbt3iunjvi1m"
+path="res://.godot/imported/SimuladorFuego.glsl-78265637f31ff0a048d37c7a4fd7e4e8.res"
+
+[deps]
+
+source_file="res://Shaders/SimuladorFuego.glsl"
+dest_files=["res://.godot/imported/SimuladorFuego.glsl-78265637f31ff0a048d37c7a4fd7e4e8.res"]
+
+[params]
+
