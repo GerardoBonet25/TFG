@@ -22,11 +22,10 @@ func _ready() -> void:
 	
 	_on_viewport_size_changed()
 
-# Esta función SOLO se ejecutará cuando la ventana cambie de tamaño, ahorrando rendimiento
+# Esta función SOLO se ejecutará cuando la ventana cambie de tamaño
 func _on_viewport_size_changed() -> void:
 	if subViewPort:
 		subViewPort.size = get_viewport().size
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Permitir liberar o recuperar el ratón pulsando la tecla Escape (ui_cancel)
@@ -65,5 +64,5 @@ func _process(delta: float) -> void:
 	if direccion != Vector3.ZERO:
 		direccion = direccion.normalized()
 		global_position += direccion * velocidad_movimiento * delta
-
+	
 	

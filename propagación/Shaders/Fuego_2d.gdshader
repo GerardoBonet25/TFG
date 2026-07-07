@@ -35,7 +35,7 @@ void fragment() {
         float dir_viento_rad = radians(direccion_viento);
         vec2 vector_viento = vec2(sin(dir_viento_rad), -cos(dir_viento_rad));
 
-        // HUMEDAD: Calculamos el factor de penalización (decay exponencial)
+        // HUMEDAD: Calculamos el factor de penalización
         float factor_humedad = exp(-c_humedad * humedad);
 
         // Revisamos los 8 vecinos

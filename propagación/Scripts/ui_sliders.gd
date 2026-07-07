@@ -12,7 +12,7 @@ func _ready():
 func _on_steps_changed(valor: float):
 	var mat = objeto_frontal.get_active_material(0)
 	if mat is ShaderMaterial:
-		mat.set_shader_parameter("MAX_STEPS", int(valor))
+		mat.set_shader_parameter("RadioEsfera", valor)
 
 func _on_densidad_changed(valor: float):
 	var mat = objeto_frontal.get_active_material(0)
