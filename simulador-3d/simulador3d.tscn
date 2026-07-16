@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://w02y0v6qnpir"]
+[gd_scene load_steps=17 format=3 uid="uid://w02y0v6qnpir"]
 
 [ext_resource type="Script" uid="uid://clglvc3i35fc5" path="res://Controlador.gd" id="1_7sokg"]
 [ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="1_hdr1k"]
 [ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="2_r6i3w"]
 [ext_resource type="Script" uid="uid://boowel001yj7e" path="res://SyncCameras.gd" id="4_7sokg"]
+[ext_resource type="Shader" uid="uid://cfngyxcqwu3pd" path="res://creacionMapa.gdshader" id="5_n1arj"]
+[ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_ylp4m"]
+[ext_resource type="Texture2D" uid="uid://bh30aw8jd6ayi" path="res://Modelos/ElevacionPuertoDeLaMora.exr" id="6_g4nye"]
+[ext_resource type="Texture2D" uid="uid://dm56anu1ifo8i" path="res://Modelos/vegetacionEscaladaconFondo.png" id="8_uv25n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sokg"]
 resource_local_to_scene = true
@@ -23,17 +27,31 @@ shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_87ps8")
 shader_parameter/MAX_STEPS = 64
 shader_parameter/RadioEsfera = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sokg"]
-albedo_color = Color(1, 0.5058824, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hge4g"]
+albedo_texture = ExtResource("5_ylp4m")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_hge4g"]
-material = SubResource("StandardMaterial3D_7sokg")
+[sub_resource type="BoxMesh" id="BoxMesh_n1arj"]
+material = SubResource("StandardMaterial3D_hge4g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylp4m"]
+render_priority = 0
+shader = ExtResource("5_n1arj")
+shader_parameter/mapa_vegetacion = ExtResource("8_uv25n")
+shader_parameter/mapa_elevacion = ExtResource("6_g4nye")
+shader_parameter/escala_altura = 0.01
+shader_parameter/altura_base = 1350.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uv25n"]
+size = Vector2(1598, 1393)
+subdivide_width = 1024
+subdivide_depth = 1024
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal")]
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal", "slider_viento")]
 script = ExtResource("1_7sokg")
 cubo_frontal = NodePath("../CuboFrontal")
+slider_viento = NodePath("../CanvasLayer/HSlider")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -42,20 +60,25 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.9702957, 0.2419219, 0, -0.2419219, 0.9702957, 0.3, 0.6, 2.1)
+transform = Transform3D(1, 0, 0, 0, 0.073777825, 0.9972747, 0, -0.9972747, 0.073777825, -0.47305793, 5.0523386, 0.14585726)
 cull_mask = 1048574
 
 [node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(4.0536723, 0, 0, 0, 2.5265074, 0, 0, 0, 5.9312835, 0, 0, 0)
 layers = 2
 material_override = SubResource("ShaderMaterial_7sokg")
 mesh = SubResource("BoxMesh_87ps8")
 
 [node name="CuboFrontal" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.0536723, 0, 0, 0, 2.5265074, 0, 0, 0, 5.9312835, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_87ps8")
 mesh = SubResource("BoxMesh_87ps8")
 
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CuboFrontal"]
+remote_path = NodePath("../../SubViewport/CuboTrasero")
+
 [node name="CameraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera", "subViewPort")]
-transform = Transform3D(1, 0, 0, 0, 0.9702957, 0.2419219, 0, -0.2419219, 0.9702957, 0.3, 0.6, 2.1)
+transform = Transform3D(1, 0, 0, 0, 0.073777825, 0.9972747, 0, -0.9972747, 0.073777825, -0.47305793, 5.0523386, 0.14585726)
 cull_mask = 1048573
 script = ExtResource("4_7sokg")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
@@ -65,5 +88,28 @@ subViewPort = NodePath("../SubViewport")
 remote_path = NodePath("../../SubViewport/CamaraTrasera")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6944528, 0, 0)
-mesh = SubResource("CylinderMesh_hge4g")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6944528, 8.155428, 0)
+mesh = SubResource("BoxMesh_n1arj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 197.0
+offset_bottom = 46.0
+max_value = 360.0
+value = 90.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 199.0
+offset_bottom = 25.0
+text = "Direccion del viento"
+
+[node name="MapaElevaciones" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.53403, -35.48513, 448.97302)
+visible = false
+material_override = SubResource("ShaderMaterial_ylp4m")
+mesh = SubResource("PlaneMesh_uv25n")

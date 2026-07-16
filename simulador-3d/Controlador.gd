@@ -1,6 +1,7 @@
 extends Node
 
 @export var cubo_frontal: MeshInstance3D 
+@export var slider_viento: HSlider
 
 const TAMANO_GRID = Vector3i(64, 64, 64)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
@@ -58,12 +59,20 @@ func _process(_delta):
 
 # EL BUCLE PRINCIPAL
 func ejecutar_compute_shader():
-	# Empaquetamos el tiempo actual para el calculo del numero aleatorio
+	# Empaquetamos el tiempo actual
 	var tiempo_float = Time.get_ticks_msec() / 1000.0
-	# Para pasarlo si o si hay que usar vec4 
-	var push_constant = PackedFloat32Array([tiempo_float, 0.0, 0.0, 0.0])
+
+	# NUEVO: Leemos los grados del Slider de la UI (si existe, si no, usamos 90)
+	var direccion_grados = 90.0
+	if slider_viento != null:
+		direccion_grados = slider_viento.value
+
+	var dir_rad = deg_to_rad(direccion_grados)
+
+	# Empaquetamos los 8 flotantes (32 bytes exactos). 
+	# Los 4 primeros son el tiempo, los 4 segundos el entorno.
+	var push_constant = PackedFloat32Array([tiempo_float, 0.0, 0.0, 0.0,15.0, dir_rad, 0.2, 0.0 ])
 	var bytes = push_constant.to_byte_array()
-	
 	
 	# Preparamos las órdenes de la GPU 
 	var compute_list = rd.compute_list_begin()

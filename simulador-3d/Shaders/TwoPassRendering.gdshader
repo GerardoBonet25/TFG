@@ -36,10 +36,10 @@ void fragment() {
         // Leemos el dato binario del Compute Shader (0.0 o 1.0)
         float densidad_en_este_punto = texture(textura_volumen, coordenadas_uvw).r;
 
-		float distancia_al_centro = length(posicion_actual);
-		float dentro_de_esfera = 1.0 - step(RadioEsfera, distancia_al_centro);
+		//float distancia_al_centro = length(posicion_actual);
+		//float dentro_de_esfera = 1.0 - step(RadioEsfera, distancia_al_centro);
 
-        densidad_acumulada += densidad_en_este_punto * tamano_paso * dentro_de_esfera;
+        densidad_acumulada += densidad_en_este_punto * tamano_paso;
 
 
 

@@ -10,6 +10,7 @@ layout(r8, binding = 1) restrict uniform writeonly image3D estado_nuevo;
 // Aquí recibimos los 16 bytes exactos que nos manda el script Controlador
 layout(push_constant, std430) uniform Params {
 	vec4 datos_tiempo;
+	vec4 datos_ambiente; // x: velocidad_viento, y: direccion_rad, z: %humedad
 } params;
 
 // Generador pseudoaleatorio 
@@ -20,6 +21,7 @@ float rand(vec3 co){
 void main() {
 	ivec3 coord = ivec3(gl_GlobalInvocationID.xyz);
 	ivec3 tamano_mapa = imageSize(estado_anterior);
+	
 	
 	//Si tiene una coortdenada que se sale del mapa aborta la ejecución de ese voxel
 	if (coord.x >= tamano_mapa.x || coord.y >= tamano_mapa.y || coord.z >= tamano_mapa.z) {
@@ -33,6 +35,15 @@ void main() {
 		imageStore(estado_nuevo, coord, vec4(1.0, 0.0, 0.0, 0.0));
 		return;
 	}
+
+	// VARIABLES AMBIENTALES
+	float vel_viento = params.datos_ambiente.x;
+	float dir_viento = params.datos_ambiente.y;
+	float humedad = params.datos_ambiente.z;
+
+	// Vector viento (proyectado en el plano horizontal XZ)
+	vec2 vector_viento = vec2(sin(dir_viento), -cos(dir_viento));
+	float factor_humedad = exp(-2.5 * humedad); // c_humedad = 2.5
 
 	float riesgo_ignicion = 0.0;
 	// Si esta apagado
@@ -50,9 +61,21 @@ void main() {
 				if (coord_vecino.x >= 0 && coord_vecino.x < tamano_mapa.x &&
 					coord_vecino.y >= 0 && coord_vecino.y < tamano_mapa.y &&
 					coord_vecino.z >= 0 && coord_vecino.z < tamano_mapa.z) {
+					
 					//Por cada vecino ardiendo se le suma la probabilidad de encenderse
 					float estado_vecino = imageLoad(estado_anterior, coord_vecino).r;
 					if (estado_vecino > 0.5) {
+
+						// CÁLCULO DE VIENTO 3D
+						// Usamos X y Z para la dirección del viento (plano horizontal)
+						vec2 dir_vecino = normalize(vec2(float(-x), float(-z))); 
+						float cos_theta = dot(dir_vecino, vector_viento);
+						
+						// Factor de viento (c1=6.0, c2=0.1)
+						float factor_viento = 6.0 * exp(0.35 * vel_viento * (cos_theta - 1.0));
+						
+						// Sumamos al riesgo total
+						riesgo_ignicion += (0.02 * factor_viento * factor_humedad);
 						riesgo_ignicion += 0.02;
 					}
 				}
