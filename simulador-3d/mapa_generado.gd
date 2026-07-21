@@ -1,8 +1,11 @@
 extends MeshInstance3D
 
+@export var controlador: Node
+@export var cubo_frontal: MeshInstance3D
+
 # ---  VARIABLES PARA EL AUTÓMATA ---
 var voxel_grid: PackedInt32Array
-var resolucion_y = 20 # Altura de la matriz volumétrica
+
 
 # Diccionario de estados del autómata celular
 const ESTADO_AIRE = 0
@@ -17,7 +20,8 @@ var imagen_vegetacion: Image
 
 # Esta es la resolución de la matriz tridimensional que usará tu simulador.
 # Como el mapa mide 64x64 metros, usaremos 64 celdas.
-var resolucion_matriz = 64
+var resolucion_matriz = 192
+var resolucion_y = 60 # Altura de la matriz volumétrica
 
 var escala_altura =  10
 
@@ -52,12 +56,6 @@ func _ready():
 
 
 
-
-
-
-# ==========================================
-# CONSTRUCCIÓN DEL VOLUMEN
-# ==========================================
 func _generar_matriz_3d():
 	print("Traduciendo texturas a Voxel Grid 3D...")
 	
@@ -141,36 +139,47 @@ func _input(event):
 		if impacto:
 			var punto_global = impacto.position
 			
-			var x_matriz = int(punto_global.x + (resolucion_matriz / 2.0))
-			var z_matriz = int(punto_global.z + (resolucion_matriz / 2.0))
-			
-			if x_matriz >= 0 and x_matriz < resolucion_matriz and z_matriz >= 0 and z_matriz < resolucion_matriz:
-				_encender_fuego_en(x_matriz, z_matriz)
+			# --- TRADUCCIÓN DINÁMICA DE ESPACIOS ---
+			if cubo_frontal != null and controlador != null:
+				# 1. Convertimos el punto global del impacto al espacio local del cubo (de -0.5 a 0.5)
+				var pos_local_cubo = cubo_frontal.to_local(punto_global)
+				
+				# 2. Normalizamos al rango de 0.0 a 1.0
+				var pos_normalizada = pos_local_cubo + Vector3(0.5, 0.5, 0.5)
+				
+				# 3. Leemos la resolución real directamente de la constante de la GPU (ej: 192, 60, 192)
+				var resolucion = controlador.TAMANO_GRID
+				
+				var x_matriz = int(pos_normalizada.x * resolucion.x)
+				var z_matriz = int(pos_normalizada.z * resolucion.z)
+				
+				# 4. Comprobamos los límites usando la resolución real
+				if x_matriz >= 0 and x_matriz < resolucion.x and z_matriz >= 0 and z_matriz < resolucion.z:
+					_encender_fuego_en(x_matriz, z_matriz)
+			else:
+				push_error("Falta asignar 'cubo_frontal' o 'controlador_gpu' en el inspector del Terreno.")
 
 
 func _encender_fuego_en(x: int, z: int):
-	# Buscamos de arriba a abajo cuál es la primera celda sólida (corteza)
 	for y in range(resolucion_y - 1, -1, -1):
 		var indice = _obtener_indice_1d(x, y, z)
 		var estado_actual = voxel_grid[indice]
 		
-		# Si encontramos algo que no es AIRE, prendemos fuego
 		if estado_actual != ESTADO_AIRE:
 			
-			# Comprobamos el tipo exacto de celda que hemos tocado
-			if estado_actual == ESTADO_MATORRAL:
+			if estado_actual == ESTADO_MATORRAL or estado_actual == ESTADO_ARBOL:
 				voxel_grid[indice] = ESTADO_FUEGO
-				print("🔥 ¡Fuego iniciado en [MATORRALES/ARBUSTOS]! (X: ", x, " Y: ", y, " Z: ", z, ")")
 				
-			elif estado_actual == ESTADO_ARBOL:
-				voxel_grid[indice] = ESTADO_FUEGO
-				print("🔥 ¡Fuego iniciado en [ÁRBOLES]! (X: ", x, " Y: ", y, " Z: ", z, ")")
-				
+				# ¡LA MAGIA! Le decimos a la tarjeta gráfica que queme ese punto
+				if controlador:
+					controlador.agregar_fuego_en(x, y, z)
+					print("🔥 ¡Chispa inyectada en la GPU! -> X: ", x, " Y: ", y, " Z: ", z)
+				else:
+					push_error("Falta asignar el Controlador GPU en el inspector.")
+					
 			elif estado_actual == ESTADO_SUBSUELO:
 				print("Has hecho clic en [TIERRA/ROCA]. Este material no arde.")
 			
-			# Rompemos el bucle porque ya hemos encontrado la superficie, 
-			# independientemente de si ha ardido o no.
 			break
 
 # ==========================================

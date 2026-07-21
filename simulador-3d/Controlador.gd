@@ -3,7 +3,7 @@ extends Node
 @export var cubo_frontal: MeshInstance3D 
 @export var slider_viento: HSlider
 
-const TAMANO_GRID = Vector3i(64, 64, 64)
+const TAMANO_GRID = Vector3i(192, 60, 192)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
 
 
@@ -45,7 +45,6 @@ func _ready():
 	set_b_lee_a_escribe = crear_conexiones(textura_b, textura_a, shader_id)
 
 	# Encender el fuego inicial y conectar el visor
-	encender_chispa_inicial()
 	crear_puente_visual()
 
 
@@ -113,17 +112,17 @@ func crear_memoria_3d_vacia() -> RID:
 	formato.width = TAMANO_GRID.x
 	formato.height = TAMANO_GRID.y
 	formato.depth = TAMANO_GRID.z
-	
-	# R8: Solo un canal Rojo de 8 bits
-	# UNORM: Convierte los valores que van de 0-255 a decimales 0.0-1.0
 	formato.format = RenderingDevice.DATA_FORMAT_R8_UNORM 
+	formato.usage_bits = RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT
 	
-	# STORAGE_BIT: Permite que el Compute Shader lea y escriba
-	# CAN_UPDATE_BIT: Permite que la CPU le inyecte datos(la chispa)
-	# SAMPLING_BIT: Permite que el otro shader la lea para dibujarla en pantalla
-	formato.usage_bits = RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT
+	# NUEVO: Llenamos el buffer de ceros (apagado) antes de mandarlo a VRAM
+	var total_bytes = TAMANO_GRID.x * TAMANO_GRID.y * TAMANO_GRID.z
+	var array_vacio = PackedByteArray()
+	array_vacio.resize(total_bytes)
+	array_vacio.fill(0) 
 	
-	return rd.texture_create(formato, RDTextureView.new(), [])
+	# Le pasamos el array_vacio en lugar de unos corchetes vacíos []
+	return rd.texture_create(formato, RDTextureView.new(), [array_vacio])
 
 func crear_conexiones(tex_lectura: RID, tex_escritura: RID, shader_id: RID) -> RID:
 	var cable_0 = RDUniform.new()
@@ -145,7 +144,7 @@ func encender_chispa_inicial():
 	array_datos.resize(total_bytes)
 	array_datos.fill(0) # Todo apagado (0)
 	
-	var cx = 32; var cy = 32; var cz = 32;
+	var cx = 32; var cy = 10; var cz = 32;
 	
 	# Fórmula matemática para aplanar coordenadas 3D en un Array 1D:
 	# Indice = (Z * Ancho * Alto) + (Y * Ancho) + X
@@ -176,3 +175,18 @@ func actualizar_puente_visual():
 		textura_visual.texture_rd_rid = textura_b
 	else:
 		textura_visual.texture_rd_rid = textura_a
+
+func agregar_fuego_en(cx: int, cy: int, cz: int):
+	var indice = (cz * TAMANO_GRID.x * TAMANO_GRID.y) + (cy * TAMANO_GRID.x) + cx
+	
+	# Averiguamos qué textura está leyendo la gráfica en este frame
+	var textura_activa = textura_a if buffer_a_es_lectura else textura_b
+	
+	# Descargamos la memoria actual de la gráfica al procesador
+	var array_datos = rd.texture_get_data(textura_activa, 0)
+	
+	# Encendemos el vóxel exacto (255 = fuego puro)
+	array_datos[indice] = 255
+	
+	# Volvemos a subir los datos actualizados a la gráfica
+	rd.texture_update(textura_activa, 0, array_datos)

@@ -4,8 +4,8 @@ render_mode cull_back, unshaded, blend_mix;
 
 uniform sampler2D textura_caras_traseras;
 uniform sampler3D textura_volumen;
-uniform int MAX_STEPS = 64;
-uniform float RadioEsfera = 0.2;
+uniform int MAX_STEPS = 180;
+uniform float multiplicador_opacidad : hint_range(1.0, 50.0) = 15.0;
 
 varying vec3 posicion_local;
 
@@ -17,7 +17,7 @@ void fragment() {
     vec3 pos_frontal = posicion_local;
 
     // Leemos el fondo desde el SubViewport
-    vec3 pos_trasera =texture(textura_caras_traseras, SCREEN_UV).rgb - vec3(0.5);
+    vec3 pos_trasera =(texture(textura_caras_traseras, SCREEN_UV).rgb - vec3(0.5) );
 
     vec3 rayo = pos_trasera - pos_frontal;
     float distancia_total = length(rayo);
@@ -38,8 +38,8 @@ void fragment() {
 
 		//float distancia_al_centro = length(posicion_actual);
 		//float dentro_de_esfera = 1.0 - step(RadioEsfera, distancia_al_centro);
-
-        densidad_acumulada += densidad_en_este_punto * tamano_paso;
+		densidad_acumulada += (densidad_en_este_punto * multiplicador_opacidad) * tamano_paso;
+        //densidad_acumulada += densidad_en_este_punto * tamano_paso;
 
 
 

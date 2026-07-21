@@ -164,11 +164,10 @@ visible = false
 material_override = SubResource("ShaderMaterial_ylp4m")
 mesh = SubResource("PlaneMesh_uv25n")
 
-[node name="MapaGenerado" type="MeshInstance3D" parent="." node_paths=PackedStringArray("controlador", "cubo_frontal")]
+[node name="MapaGenerado" type="MeshInstance3D" parent="." node_paths=PackedStringArray("controlador")]
 mesh = SubResource("PlaneMesh_ywcy4")
 script = ExtResource("10_8o6jm")
 controlador = NodePath("../Node")
-cubo_frontal = NodePath("../CuboFrontal")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.942284, 0)

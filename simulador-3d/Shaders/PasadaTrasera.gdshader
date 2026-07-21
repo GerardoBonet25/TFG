@@ -12,5 +12,5 @@ void vertex() {
 
 void fragment() {
     // Encriptamos la posición 3D convirtiéndola en un color RGB válido (de 0.0 a 1.0)
-    ALBEDO = posicion_local + vec3(0.5);
+    ALBEDO = (posicion_local ) + vec3(0.5);
 }
