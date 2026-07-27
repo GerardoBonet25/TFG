@@ -23,7 +23,7 @@ var imagen_vegetacion: Image
 var resolucion_matriz = 192
 var resolucion_y = 60 # Altura de la matriz volumétrica
 
-var escala_altura =  10
+var escala_altura =  20
 
 func _ready():
 	print("Iniciando extracción de datos GIS procedurales...")
@@ -53,6 +53,7 @@ func _ready():
 	# Construimos la matriz 3D
 	_generar_matriz_3d()
 	_generar_colision_terreno()
+	enviar_mapa_combustibles_a_gpu()
 
 
 
@@ -97,12 +98,12 @@ func _generar_matriz_3d():
 				var indice_1d = _obtener_indice_1d(x, y, z)
 				
 				if y < y_superficie:
-					# Todo lo que quede por debajo de la montaña es roca sólida
 					voxel_grid[indice_1d] = ESTADO_SUBSUELO
-				elif y == y_superficie:
-					# Justo en la corteza terrestre plantamos el combustible
+				elif y >= y_superficie and y <= y_superficie + 4:
+					# AÑADIMOS GROSOR: Llenamos la corteza terrestre y 2 capas más arriba.
+					# Esto dota al combustible de volumen para el raymarching.
 					voxel_grid[indice_1d] = estado_superficie
-				# Si Y > y_superficie, la celda se queda como AIRE
+				# Si y > y_superficie + 2, la celda se queda como AIRE
 
 	print("¡Matriz 3D lista! Total de celdas inicializadas: ", voxel_grid.size())
 
@@ -110,7 +111,30 @@ func _generar_matriz_3d():
 func _obtener_indice_1d(x: int, y: int, z: int) -> int:
 	return x + (y * resolucion_matriz) + (z * resolucion_matriz * resolucion_y)
 
-
+func enviar_mapa_combustibles_a_gpu():
+	var total_celdas = resolucion_matriz * resolucion_y * resolucion_matriz
+	var array_combustibles = PackedByteArray()
+	array_combustibles.resize(total_celdas) # Se llena de 0 (aire/roca) automáticamente
+	
+	# Mapeo a prueba de balas: Forzamos el orden Z -> Y -> X
+	for z in range(resolucion_matriz):
+		for y in range(resolucion_y):
+			for x in range(resolucion_matriz):
+				
+				# 1. Leemos el estado usando TU función de indexado original
+				var indice_cpu = _obtener_indice_1d(x, y, z)
+				var estado = voxel_grid[indice_cpu]
+				
+				# Solo modificamos si arde (si es aire/roca, se queda el 0 por defecto)
+				if estado == ESTADO_MATORRAL or estado == ESTADO_ARBOL:
+					# 2. Escribimos usando la fórmula ESTRICTA de la GPU para texturas 3D
+					var indice_gpu = (z * resolucion_matriz * resolucion_y) + (y * resolucion_matriz) + x
+					array_combustibles[indice_gpu] = 255
+	
+	if controlador:
+		controlador.cargar_mapa_combustibles(array_combustibles)
+	else:
+		push_error("No se pudo enviar el mapa. controlador_gpu vacío.")
 # # ==========================================
 # INTERACCIÓN: LA CHISPA DEL FUEGO
 # ==========================================
@@ -188,34 +212,39 @@ func _encender_fuego_en(x: int, z: int):
 func _generar_colision_terreno():
 	print("Generando colisión física del terreno...")
 	
-	# 1. Creamos la forma del mapa de alturas
+	# ... (tu código para crear el shape y rellenar el array de alturas se queda IGUAL) ...
 	var shape = HeightMapShape3D.new()
 	shape.map_width = resolucion_matriz
 	shape.map_depth = resolucion_matriz
 	
-	# 2. Preparamos un array para guardar las alturas
 	var alturas = PackedFloat32Array()
 	alturas.resize(resolucion_matriz * resolucion_matriz)
 	
-	# 3. Rellenamos las alturas leyendo nuestra imagen ya procesada
 	for z in range(resolucion_matriz):
 		for x in range(resolucion_matriz):
 			var valor_ruido = imagen_elevacion.get_pixel(x, z).r
 			var altura_real = valor_ruido * escala_altura
-			
-			# Calculamos el índice unidimensional para el HeightMap
 			var indice = (z * resolucion_matriz) + x
 			alturas[indice] = altura_real
 			
 	shape.map_data = alturas
 	
-	# 4. Creamos los nodos físicos por código y los añadimos a la escena
+	# 4. Creamos los nodos
 	var nodo_colision = CollisionShape3D.new()
 	nodo_colision.shape = shape
 	
 	var cuerpo_estatico = StaticBody3D.new()
 	cuerpo_estatico.add_child(nodo_colision)
 	
-	# Lo añadimos como hijo de nuestro MeshInstance3D
+	# --- LA MODIFICACIÓN CLAVE ---
+	# Calculamos la proporción entre el mundo físico (64) y la matriz (192)
+	# Esto da 0.3333... que es el tamaño real de cada "celda" en metros
+	var tamano_plano_fisico = 64.0
+	var factor_escala = tamano_plano_fisico / float(resolucion_matriz)
+	
+	# Aplastamos la colisión en X y Z, pero mantenemos la altura (Y) intacta en 1.0
+	cuerpo_estatico.scale = Vector3(factor_escala, 1.0, factor_escala)
+	# -----------------------------
+	
 	add_child(cuerpo_estatico)
 	print("¡Colisión del terreno generada con éxito!")

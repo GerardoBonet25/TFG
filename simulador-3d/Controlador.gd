@@ -12,11 +12,14 @@ var rd: RenderingDevice
 var shader_pipeline: RID #RID --> Resource ID
 
 
+
 # Memoria VRAM (Ping-Pong)
 var textura_a: RID
 var textura_b: RID
 var set_a_lee_b_escribe: RID
 var set_b_lee_a_escribe: RID
+
+var textura_combustibles: RID
 
 var buffer_a_es_lectura = true
 var frame_actual = 0
@@ -40,6 +43,7 @@ func _ready():
 	# Reservar la memoria y crear conexiones
 	textura_a = crear_memoria_3d_vacia()
 	textura_b = crear_memoria_3d_vacia()
+	textura_combustibles = crear_memoria_3d_vacia()
 	
 	set_a_lee_b_escribe = crear_conexiones(textura_a, textura_b, shader_id)
 	set_b_lee_a_escribe = crear_conexiones(textura_b, textura_a, shader_id)
@@ -135,7 +139,13 @@ func crear_conexiones(tex_lectura: RID, tex_escritura: RID, shader_id: RID) -> R
 	cable_1.binding = 1
 	cable_1.add_id(tex_escritura)
 	
-	return rd.uniform_set_create([cable_0, cable_1], shader_id, 0)
+	# Conectamos el mapa de combustibles al binding = 2
+	var cable_2 = RDUniform.new()
+	cable_2.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
+	cable_2.binding = 2
+	cable_2.add_id(textura_combustibles)
+	
+	return rd.uniform_set_create([cable_0, cable_1,cable_2], shader_id, 0)
 
 func encender_chispa_inicial():
 	
@@ -190,3 +200,7 @@ func agregar_fuego_en(cx: int, cy: int, cz: int):
 	
 	# Volvemos a subir los datos actualizados a la gráfica
 	rd.texture_update(textura_activa, 0, array_datos)
+
+func cargar_mapa_combustibles(array_datos: PackedByteArray):
+	rd.texture_update(textura_combustibles, 0, array_datos)
+	print("🌳 Mapa de combustibles inyectado en la GPU correctamente.")

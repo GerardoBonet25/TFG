@@ -3,15 +3,16 @@ shader_type spatial;
 render_mode cull_back, unshaded, blend_mix;
 
 uniform sampler2D textura_caras_traseras;
-uniform sampler3D textura_volumen;
+uniform sampler3D textura_volumen : repeat_disable;
 uniform int MAX_STEPS = 180;
-uniform float multiplicador_opacidad : hint_range(1.0, 50.0) = 15.0;
+uniform float multiplicador_opacidad : hint_range(1.0, 1000.0) = 150.0;
 
 varying vec3 posicion_local;
 
 void vertex() {
     posicion_local = VERTEX;
 }
+
 
 void fragment() {
     vec3 pos_frontal = posicion_local;
@@ -52,6 +53,6 @@ void fragment() {
     // Bordes (baja densidad) = Naranja/Rojo. Núcleo (alta densidad) = Amarillo puro.
     vec3 color_fuego = mix(vec3(1.0, 0.2, 0.0), vec3(1.0, 0.9, 0.0), densidad_acumulada);
 
-    ALBEDO = color_fuego;
+    ALBEDO = vec3(1.0, 0.2, 0.0);
     ALPHA = clamp(densidad_acumulada, 0.0, 1.0);
 }

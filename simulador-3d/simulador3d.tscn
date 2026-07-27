@@ -26,8 +26,8 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_r6i3w")
 shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_87ps8")
-shader_parameter/MAX_STEPS = 180
-shader_parameter/multiplicador_opacidad = 15.0
+shader_parameter/MAX_STEPS = 220
+shader_parameter/multiplicador_opacidad = 39.9410018496975
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hge4g"]
 albedo_texture = ExtResource("5_ylp4m")
@@ -70,7 +70,7 @@ color_ramp = SubResource("Gradient_tkjlm")
 render_priority = 0
 shader = ExtResource("9_uv25n")
 shader_parameter/mapa_elevacion = SubResource("NoiseTexture2D_sjpyu")
-shader_parameter/escala_altura = 10.0
+shader_parameter/escala_altura = 20.0
 shader_parameter/mapa_vegetacion = SubResource("NoiseTexture2D_lwqux")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ywcy4"]
@@ -97,13 +97,13 @@ transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.968
 cull_mask = 1048574
 
 [node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
-transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 0, 0)
+transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 10, 0)
 layers = 2
 material_override = SubResource("ShaderMaterial_7sokg")
 mesh = SubResource("BoxMesh_87ps8")
 
 [node name="CuboFrontal" type="MeshInstance3D" parent="."]
-transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 0, 0)
+transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 10, 0)
 material_override = SubResource("ShaderMaterial_87ps8")
 mesh = SubResource("BoxMesh_87ps8")
 
@@ -116,6 +116,7 @@ cull_mask = 1048573
 script = ExtResource("4_7sokg")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
 subViewPort = NodePath("../SubViewport")
+velocidad_movimiento = 15.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPrincipal"]
 remote_path = NodePath("../../SubViewport/CamaraTrasera")
