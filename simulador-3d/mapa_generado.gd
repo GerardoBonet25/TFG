@@ -114,21 +114,26 @@ func _obtener_indice_1d(x: int, y: int, z: int) -> int:
 func enviar_mapa_combustibles_a_gpu():
 	var total_celdas = resolucion_matriz * resolucion_y * resolucion_matriz
 	var array_combustibles = PackedByteArray()
-	array_combustibles.resize(total_celdas) # Se llena de 0 (aire/roca) automáticamente
+	array_combustibles.resize(total_celdas) # Se llena de 0 (aire/roca) por defecto
 	
-	# Mapeo a prueba de balas: Forzamos el orden Z -> Y -> X
 	for z in range(resolucion_matriz):
 		for y in range(resolucion_y):
 			for x in range(resolucion_matriz):
 				
-				# 1. Leemos el estado usando TU función de indexado original
+				# 1. Leemos el estado de la CPU usando tu función de indexado
 				var indice_cpu = _obtener_indice_1d(x, y, z)
 				var estado = voxel_grid[indice_cpu]
 				
-				# Solo modificamos si arde (si es aire/roca, se queda el 0 por defecto)
-				if estado == ESTADO_MATORRAL or estado == ESTADO_ARBOL:
-					# 2. Escribimos usando la fórmula ESTRICTA de la GPU para texturas 3D
-					var indice_gpu = (z * resolucion_matriz * resolucion_y) + (y * resolucion_matriz) + x
+				# 2. Calculamos el índice de la GPU (Formato 3D estricto)
+				var indice_gpu = (z * resolucion_matriz * resolucion_y) + (y * resolucion_matriz) + x
+				
+				# 3. Traducimos los estados a bytes (0-255) para que el Shader entienda qué quema
+				if estado == ESTADO_MATORRAL:
+					# Enviamos 100. El shader leerá 0.39 (Combustible ligero, arde muy rápido)
+					array_combustibles[indice_gpu] = 100
+					
+				elif estado == ESTADO_ARBOL:
+					# Enviamos 255. El shader leerá 1.00 (Combustible pesado, arde más lento)
 					array_combustibles[indice_gpu] = 255
 	
 	if controlador:
