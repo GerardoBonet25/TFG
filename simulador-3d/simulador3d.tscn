@@ -81,10 +81,15 @@ subdivide_depth = 256
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal", "slider_viento")]
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal", "slider_DirViento", "slider_humedad", "slider_VelViento", "label_DirViento", "label_humedad", "label_VelViento")]
 script = ExtResource("1_7sokg")
 cubo_frontal = NodePath("../CuboFrontal")
-slider_viento = NodePath("../CanvasLayer/HSlider")
+slider_DirViento = NodePath("../CanvasLayer/DirVientoSlider")
+slider_humedad = NodePath("../CanvasLayer/HumedadSlider")
+slider_VelViento = NodePath("../CanvasLayer/VelVientoSlider")
+label_DirViento = NodePath("../CanvasLayer/DirViento")
+label_humedad = NodePath("../CanvasLayer/Humedad")
+label_VelViento = NodePath("../CanvasLayer/VelViento")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -93,7 +98,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.9685788, 0.5, 24.876, 53.349)
+transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.9685788, 0.5, 45.775543, 47.98252)
 cull_mask = 1048574
 
 [node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
@@ -111,7 +116,7 @@ mesh = SubResource("BoxMesh_87ps8")
 remote_path = NodePath("../../SubViewport/CuboTrasero")
 
 [node name="CameraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera", "subViewPort")]
-transform = Transform3D(1, 0, 0, 0, 0.96857876, 0.24870679, 0, -0.24870677, 0.9685788, 0.5, 24.876, 53.349)
+transform = Transform3D(1, 0, 0, 0, 0.96857876, 0.24870679, 0, -0.24870677, 0.9685788, 0.5, 45.775543, 47.98252)
 cull_mask = 1048573
 script = ExtResource("4_7sokg")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
@@ -128,20 +133,46 @@ mesh = SubResource("BoxMesh_n1arj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer"]
-offset_left = 4.0
+[node name="DirVientoSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 7.0
 offset_top = 23.0
-offset_right = 197.0
+offset_right = 200.0
 offset_bottom = 46.0
 max_value = 360.0
 value = 90.0
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="DirViento" type="Label" parent="CanvasLayer"]
 offset_left = 7.0
 offset_top = 2.0
 offset_right = 199.0
 offset_bottom = 25.0
 text = "Direccion del viento"
+
+[node name="HumedadSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 79.0
+offset_right = 200.0
+offset_bottom = 102.0
+
+[node name="Humedad" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 56.0
+offset_right = 199.0
+offset_bottom = 79.0
+text = "% Humedad"
+
+[node name="VelVientoSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 220.0
+offset_top = 23.0
+offset_right = 413.0
+offset_bottom = 46.0
+
+[node name="VelViento" type="Label" parent="CanvasLayer"]
+offset_left = 220.0
+offset_top = 2.0
+offset_right = 412.0
+offset_bottom = 25.0
+text = "Velocidad viento"
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -151,7 +182,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer"]
 custom_minimum_size = Vector2(5, 5)

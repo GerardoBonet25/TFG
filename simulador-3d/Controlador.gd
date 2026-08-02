@@ -1,7 +1,15 @@
 extends Node
 
 @export var cubo_frontal: MeshInstance3D 
-@export var slider_viento: HSlider
+
+@export var slider_DirViento: HSlider
+@export var slider_humedad: HSlider
+@export var slider_VelViento: HSlider
+
+@export var label_DirViento: Label
+@export var label_humedad: Label
+@export var label_VelViento: Label
+
 
 const TAMANO_GRID = Vector3i(192, 60, 192)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
@@ -50,6 +58,19 @@ func _ready():
 
 	# Encender el fuego inicial y conectar el visor
 	crear_puente_visual()
+	
+	#Conecto los sliders
+	if slider_VelViento and label_VelViento:
+		slider_VelViento.value_changed.connect(_on_vel_viento_cambiado)
+		_on_vel_viento_cambiado(slider_VelViento.value) # Forzamos el texto inicial al arrancar
+
+	if slider_DirViento and label_DirViento:
+		slider_DirViento.value_changed.connect(_on_dir_viento_cambiado)
+		_on_dir_viento_cambiado(slider_DirViento.value)
+
+	if slider_humedad and label_humedad:
+		slider_humedad.value_changed.connect(_on_humedad_cambiada)
+		_on_humedad_cambiada(slider_humedad.value)
 
 
 func _process(_delta):
@@ -63,18 +84,26 @@ func _process(_delta):
 # EL BUCLE PRINCIPAL
 func ejecutar_compute_shader():
 	# Empaquetamos el tiempo actual
-	var tiempo_float = Time.get_ticks_msec() / 1000.0
-
-	# NUEVO: Leemos los grados del Slider de la UI (si existe, si no, usamos 90)
+	var semilla_cpu = Time.get_ticks_msec() / 1000.0
+	# Leemos la DIRECCIÓN del viento
 	var direccion_grados = 90.0
-	if slider_viento != null:
-		direccion_grados = slider_viento.value
-
+	if slider_DirViento != null:
+		direccion_grados = slider_DirViento.value
 	var dir_rad = deg_to_rad(direccion_grados)
-
+	
+	#Leemos la velocidad del viento
+	var velViento = 15.0
+	if slider_VelViento != null:
+		velViento = slider_VelViento.value
+	
+	#Leemos la humedad
+	var humedad = 0.2
+	if slider_humedad != null:
+		humedad = slider_humedad.value / 100.0
+	
 	# Empaquetamos los 8 flotantes (32 bytes exactos). 
 	# Los 4 primeros son el tiempo, los 4 segundos el entorno.
-	var push_constant = PackedFloat32Array([tiempo_float, 0.0, 0.0, 0.0,15.0, dir_rad, 0.2, 0.0 ])
+	var push_constant = PackedFloat32Array([semilla_cpu, 0.0, 0.0, 0.0, velViento, dir_rad, humedad, 0.0 ])
 	var bytes = push_constant.to_byte_array()
 	
 	# Preparamos las órdenes de la GPU 
@@ -204,3 +233,14 @@ func agregar_fuego_en(cx: int, cy: int, cz: int):
 func cargar_mapa_combustibles(array_datos: PackedByteArray):
 	rd.texture_update(textura_combustibles, 0, array_datos)
 	print("🌳 Mapa de combustibles inyectado en la GPU correctamente.")
+
+
+# --- NUEVO: FUNCIONES DE ACTUALIZACIÓN ---
+func _on_vel_viento_cambiado(valor: float):
+	label_VelViento.text = "Vel. Viento: " + str(valor) + " km/h"
+
+func _on_dir_viento_cambiado(valor: float):
+	label_DirViento.text = "Dirección: " + str(valor) + "º"
+
+func _on_humedad_cambiada(valor: float):
+	label_humedad.text = "Humedad: " + str(valor) + " %"

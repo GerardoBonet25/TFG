@@ -61,7 +61,7 @@ void main() {
 	float humedad = params.datos_ambiente.z;
 
 	vec2 vector_viento = vec2(sin(dir_viento), -cos(dir_viento));
-	float factor_humedad = exp(-2.5 * humedad); 
+	float factor_humedad = exp(-4 * humedad); 
 
 	float riesgo_ignicion = 0.0;
 
@@ -90,11 +90,11 @@ void main() {
 						} 
 						
 						// Hacemos la curva exponencial mas agresiva a favor del viento
-						float factor_viento = exp(vel_viento * 0.8 * cos_theta);
+						float factor_viento = exp(vel_viento * 0.15 * cos_theta);
 						
 						// Si el viento sopla en contra (cos_theta negativo), aplastamos la probabilidad
 						if (cos_theta < 0.0) {
-							factor_viento *= 0.15; // El fuego a contraviento casi no avanza
+							factor_viento *= 0.4; // El fuego a contraviento casi no avanza
 						}
 
 

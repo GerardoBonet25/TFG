@@ -48,7 +48,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	# --- CONTROL DE MOVIMIENTO (WASD) ---
 	var direccion = Vector3.ZERO
-	var basis = global_transform.basis # Obtenemos la orientación local de la cámara
 
 	# Comprobamos las teclas físicas para que funcione independientemente de la distribución del teclado
 	if Input.is_physical_key_pressed(KEY_W):
