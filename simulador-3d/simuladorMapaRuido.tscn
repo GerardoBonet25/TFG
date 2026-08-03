@@ -1,0 +1,186 @@
+[gd_scene load_steps=21 format=3 uid="uid://csxuk475kho22"]
+
+[ext_resource type="Script" uid="uid://clglvc3i35fc5" path="res://Controlador.gd" id="1_7sokg"]
+[ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="1_hdr1k"]
+[ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="2_r6i3w"]
+[ext_resource type="Script" uid="uid://boowel001yj7e" path="res://SyncCameras.gd" id="4_7sokg"]
+[ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_ylp4m"]
+[ext_resource type="Shader" uid="uid://cc44xxxri5f08" path="res://Shaders/GeneraciónMapaAutomatica.gdshader" id="9_uv25n"]
+[ext_resource type="Script" uid="uid://cadt206stngf3" path="res://mapa_generado.gd" id="10_8o6jm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sokg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_hdr1k")
+
+[sub_resource type="BoxMesh" id="BoxMesh_87ps8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_87ps8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87ps8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_r6i3w")
+shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_87ps8")
+shader_parameter/MAX_STEPS = 220
+shader_parameter/multiplicador_opacidad = 39.9410018496975
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hge4g"]
+albedo_texture = ExtResource("5_ylp4m")
+
+[sub_resource type="BoxMesh" id="BoxMesh_n1arj"]
+material = SubResource("StandardMaterial3D_hge4g")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ywcy4"]
+seed = 3
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sjpyu"]
+noise = SubResource("FastNoiseLite_ywcy4")
+
+[sub_resource type="Gradient" id="Gradient_tkjlm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.46415094)
+colors = PackedColorArray(0, 1, 0, 1, 0.4372994, 0.23990926, 0.019768983, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_srwpp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lwqux"]
+noise = SubResource("FastNoiseLite_srwpp")
+color_ramp = SubResource("Gradient_tkjlm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8o6jm"]
+render_priority = 0
+shader = ExtResource("9_uv25n")
+shader_parameter/mapa_elevacion = SubResource("NoiseTexture2D_sjpyu")
+shader_parameter/escala_altura = 20.0
+shader_parameter/mapa_vegetacion = SubResource("NoiseTexture2D_lwqux")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ywcy4"]
+material = SubResource("ShaderMaterial_8o6jm")
+size = Vector2(64, 64)
+subdivide_width = 256
+subdivide_depth = 256
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal", "slider_DirViento", "slider_humedad", "slider_VelViento", "label_DirViento", "label_humedad", "label_VelViento")]
+script = ExtResource("1_7sokg")
+cubo_frontal = NodePath("../CuboFrontal")
+slider_DirViento = NodePath("../CanvasLayer/DirVientoSlider")
+slider_humedad = NodePath("../CanvasLayer/HumedadSlider")
+slider_VelViento = NodePath("../CanvasLayer/VelVientoSlider")
+label_DirViento = NodePath("../CanvasLayer/DirViento")
+label_humedad = NodePath("../CanvasLayer/Humedad")
+label_VelViento = NodePath("../CanvasLayer/VelViento")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+use_hdr_2d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.9685788, 0.5, 56.504677, 70.74437)
+cull_mask = 1048574
+
+[node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 10, 0)
+layers = 2
+material_override = SubResource("ShaderMaterial_7sokg")
+mesh = SubResource("BoxMesh_87ps8")
+
+[node name="CuboFrontal" type="MeshInstance3D" parent="."]
+transform = Transform3D(64, 0, 0, 0, 20, 0, 0, 0, 64, 0, 10, 0)
+material_override = SubResource("ShaderMaterial_87ps8")
+mesh = SubResource("BoxMesh_87ps8")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CuboFrontal"]
+remote_path = NodePath("../../SubViewport/CuboTrasero")
+
+[node name="CameraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera", "subViewPort")]
+transform = Transform3D(1, 0, 0, 0, 0.96857876, 0.24870679, 0, -0.24870677, 0.9685788, 0.5, 56.504677, 70.74437)
+cull_mask = 1048573
+script = ExtResource("4_7sokg")
+camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
+subViewPort = NodePath("../SubViewport")
+velocidad_movimiento = 70.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPrincipal"]
+remote_path = NodePath("../../SubViewport/CamaraTrasera")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6944528, 21.729723, 0)
+visible = false
+mesh = SubResource("BoxMesh_n1arj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DirVientoSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 23.0
+offset_right = 200.0
+offset_bottom = 46.0
+max_value = 360.0
+value = 90.0
+
+[node name="DirViento" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 199.0
+offset_bottom = 25.0
+text = "Direccion del viento"
+
+[node name="HumedadSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 79.0
+offset_right = 200.0
+offset_bottom = 102.0
+
+[node name="Humedad" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 56.0
+offset_right = 199.0
+offset_bottom = 79.0
+text = "% Humedad"
+
+[node name="VelVientoSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 220.0
+offset_top = 23.0
+offset_right = 413.0
+offset_bottom = 46.0
+
+[node name="VelViento" type="Label" parent="CanvasLayer"]
+offset_left = 220.0
+offset_top = 2.0
+offset_right = 412.0
+offset_bottom = 25.0
+text = "Velocidad viento"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.9280485, 0.00072176877, 0.9317136, 1)
+
+[node name="MapaGenerado" type="MeshInstance3D" parent="." node_paths=PackedStringArray("controlador", "cubo_frontal")]
+mesh = SubResource("PlaneMesh_ywcy4")
+script = ExtResource("10_8o6jm")
+controlador = NodePath("../Node")
+cubo_frontal = NodePath("../CuboFrontal")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.809647, 0)
+light_energy = 1.782
+omni_range = 46.590603
+omni_attenuation = 0.023

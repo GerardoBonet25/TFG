@@ -1,48 +1,59 @@
 shader_type spatial;
 
-// ==========================================
-// PARÁMETROS DEL INSPECTOR
-// ==========================================
+uniform sampler2D mapa_vegetacion : source_color;
+uniform sampler2D mapa_elevacion : hint_default_black, repeat_disable; 
 
-// 1. EL MAPA FÍSICO (Topografía - Archivo .EXR)
-uniform sampler2D mapa_vegetacion: source_color;
-uniform sampler2D mapa_elevacion;
-uniform float escala_altura = 1.0;
-uniform float altura_base = 1300.0; // Altitud a la que cortamos la montaña
+uniform float escala_altura = 140.648;
+uniform float altura_base = 0; // Altitud a la que cortamos la montaña
 
-
+// Distancia entre píxeles (1.0 / resolución de tu imagen EXR). 
+// Por defecto 0.005 asume una imagen de 200x200 aprox.
+uniform float tamano_pixel = 0.005; 
 
 
 // ==========================================
-// PROCESAMIENTO GEOMÉTRICO (LEVANTAR LA MALLA)
+// 2. PROCESAMIENTO GEOMÉTRICO (LEVANTAR LA MALLA)
 // ==========================================
 void vertex() {
-    // Leemos la altitud exacta del píxel (usamos Lod 0.0 para evitar interpolaciones rotas)
+    // A. Leemos la altitud exacta
     float altura_leida = textureLod(mapa_elevacion, UV, 0.0).r;
 
-    float altura_segura = altura_leida;
-    //if (isnan(altura_leida) || isinf(altura_leida) || altura_leida < -100.0 || altura_leida > 5000.0) {
-       // altura_segura = altura_base;
-    //}
+    // B. Protección matemática (Sustituye a tu bloque comentado de forma optimizada)
+    // Si la imagen EXR tiene píxeles corruptos (Infinito o Not-a-Number), forzamos la altura base.
+    float altura_segura = (isinf(altura_leida) || isnan(altura_leida)) ? altura_base : altura_leida;
 
-    // DESPLAZAMIENTO 3D:
-    // Restamos la altura base para que el valle empiece en la coordenada Y=0 de Godot.
+    // C. Desplazamiento 3D
     VERTEX.y += (altura_segura - altura_base) * escala_altura;
+
+    // D. RECONSTRUCCIÓN DE NORMALES (Iluminación y Sombras)
+    // Leemos la altura de los 4 píxeles vecinos (arriba, abajo, izquierda, derecha)
+    vec2 offset_x = vec2(tamano_pixel, 0.0);
+    vec2 offset_y = vec2(0.0, tamano_pixel);
+    
+    float h_izq = textureLod(mapa_elevacion, UV - offset_x, 0.0).r * escala_altura;
+    float h_der = textureLod(mapa_elevacion, UV + offset_x, 0.0).r * escala_altura;
+    float h_aba = textureLod(mapa_elevacion, UV - offset_y, 0.0).r * escala_altura;
+    float h_arr = textureLod(mapa_elevacion, UV + offset_y, 0.0).r * escala_altura;
+    
+    // Calculamos la inclinación en los ejes X y Z
+    vec3 vector_tangente = normalize(vec3(tamano_pixel * 2.0, h_der - h_izq, 0.0));
+    vec3 vector_binormal = normalize(vec3(0.0, h_arr - h_aba, tamano_pixel * 2.0));
+    
+    // El producto cruzado (cross) nos da el vector perpendicular exacto de la ladera
+    NORMAL = normalize(cross(vector_binormal, vector_tangente));
 }
 
 
 // ==========================================
-// PROCESAMIENTO VISUAL (PINTAR LOS COLORES)
+// 3. PROCESAMIENTO VISUAL (PINTAR LOS COLORES)
 // ==========================================
 void fragment() {
-    // Leemos el color exacto de tu mapa de GIMP en estas coordenadas UV
+    // Leemos el color del mapa de vegetación (rojo, verde, etc.)
     vec3 color_combustible = texture(mapa_vegetacion, UV).rgb;
 
-    // Aplicamos el color (rojo, azul, verde, rosa...) a la superficie de la montaña 3D
     ALBEDO = color_combustible;
 
-    // Opcional: Reducimos un poco el brillo para que los colores no sean tan fosforitos
-    // y la luz del sol en Godot genere mejores sombras sobre el relieve.
-    ROUGHNESS = 0.9;
-    SPECULAR = 0.1;
+    // Terreno mate y rugoso: evita que las montañas parezcan de plástico bajo el sol
+    ROUGHNESS = 0.95;
+    SPECULAR = 0.05;
 }

@@ -11,7 +11,7 @@ extends Node
 @export var label_VelViento: Label
 
 
-const TAMANO_GRID = Vector3i(192, 60, 192)
+const TAMANO_GRID = Vector3i(356, 60, 356)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
 
 

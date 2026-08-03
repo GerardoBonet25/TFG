@@ -1,8 +1,5 @@
 shader_type spatial;
 
-// ==========================================
-// PARÁMETROS DEL SANDBOX (PRUEBAS PROCEDURALES)
-// ==========================================
 
 // RELIEVE
 uniform sampler2D mapa_elevacion : hint_default_black;
