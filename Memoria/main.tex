@@ -1,0 +1,57 @@
+\documentclass[a4paper,11pt]{report}
+
+\usepackage{estilo}
+
+% ----------------------------------------------
+% Configuración específica del documento (fuera del .sty)
+% ----------------------------------------------
+\decimalpoint
+\hypersetup{
+    pdfauthor = {\myName (alvarolopez03@correo.ugr.es)},
+    pdftitle = {\myTitle}
+}
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@%%%%%% PORTADA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%\input{portada/portada}
+%%\input{portada/portada_2}
+
+%\input{prefacio}
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+
+%\setlength{\parskip}{5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECCIONES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{Capitulos/01_Introduccion}
+
+\input{Capitulos/02_TrabajosRelacionados}
+
+\input{Capitulos/03_Metodología}
+
+\input{Capitulos/04_Resultados}
+
+\input{Capitulos/05_Conclusiones}
+
+\appendix
+\input{Capitulos/Anexos}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFÍA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\addcontentsline{toc}{chapter}{Referencias} % Añadir la bibliografía al índice
+\bibliographystyle{IEEEtran} % Estilo de cita 
+\bibliography{Capitulos/Referencias}
+
+%
+\newpage
+
+
+\end{document}

@@ -11,21 +11,15 @@ uniform float altura_base = 0; // Altitud a la que cortamos la montaña
 uniform float tamano_pixel = 0.005; 
 
 
-// ==========================================
-// 2. PROCESAMIENTO GEOMÉTRICO (LEVANTAR LA MALLA)
-// ==========================================
 void vertex() {
-    // A. Leemos la altitud exacta
     float altura_leida = textureLod(mapa_elevacion, UV, 0.0).r;
 
-    // B. Protección matemática (Sustituye a tu bloque comentado de forma optimizada)
     // Si la imagen EXR tiene píxeles corruptos (Infinito o Not-a-Number), forzamos la altura base.
     float altura_segura = (isinf(altura_leida) || isnan(altura_leida)) ? altura_base : altura_leida;
 
-    // C. Desplazamiento 3D
     VERTEX.y += (altura_segura - altura_base) * escala_altura;
 
-    // D. RECONSTRUCCIÓN DE NORMALES (Iluminación y Sombras)
+    // D. RECONSTRUCCIÓN DE NORMALES
     // Leemos la altura de los 4 píxeles vecinos (arriba, abajo, izquierda, derecha)
     vec2 offset_x = vec2(tamano_pixel, 0.0);
     vec2 offset_y = vec2(0.0, tamano_pixel);
@@ -44,9 +38,7 @@ void vertex() {
 }
 
 
-// ==========================================
-// 3. PROCESAMIENTO VISUAL (PINTAR LOS COLORES)
-// ==========================================
+
 void fragment() {
     // Leemos el color del mapa de vegetación (rojo, verde, etc.)
     vec3 color_combustible = texture(mapa_vegetacion, UV).rgb;

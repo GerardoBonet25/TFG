@@ -1,19 +1,19 @@
 [gd_scene load_steps=18 format=3 uid="uid://w02y0v6qnpir"]
 
-[ext_resource type="Script" uid="uid://clglvc3i35fc5" path="res://Controlador.gd" id="1_7sokg"]
-[ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="1_hdr1k"]
-[ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="2_r6i3w"]
-[ext_resource type="Script" uid="uid://boowel001yj7e" path="res://SyncCameras.gd" id="4_7sokg"]
-[ext_resource type="Shader" uid="uid://cfngyxcqwu3pd" path="res://Shaders/creacionMapa.gdshader" id="5_n1arj"]
-[ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_ylp4m"]
-[ext_resource type="Texture2D" uid="uid://dxpway6oy77jr" path="res://Modelos/ElevacionesRecortado.exr" id="7_uv25n"]
-[ext_resource type="Texture2D" uid="uid://bn6itgpfbyrk2" path="res://Modelos/TexturaVegetación.png" id="8_8o6jm"]
-[ext_resource type="Script" uid="uid://bohdb21r0entv" path="res://mapa_elevaciones.gd" id="9_ywcy4"]
+[ext_resource type="Script" uid="uid://clglvc3i35fc5" path="res://Scripts/MapaElevaciones/ControladorElevaciones.gd" id="1_hfr07"]
+[ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="2_j7csj"]
+[ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="3_ml4tx"]
+[ext_resource type="Script" uid="uid://boowel001yj7e" path="res://Scripts/SyncCameras.gd" id="4_2xap3"]
+[ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_4m3wy"]
+[ext_resource type="Shader" uid="uid://cfngyxcqwu3pd" path="res://Shaders/creacionMapa.gdshader" id="6_8824l"]
+[ext_resource type="Texture2D" uid="uid://dxpway6oy77jr" path="res://Modelos/ElevacionesRecortado.exr" id="7_btdxh"]
+[ext_resource type="Texture2D" uid="uid://bn6itgpfbyrk2" path="res://Modelos/TexturaVegetación.png" id="8_naqj5"]
+[ext_resource type="Script" uid="uid://bohdb21r0entv" path="res://Scripts/MapaElevaciones/mapa_elevaciones.gd" id="9_up8ov"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sokg"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_hdr1k")
+shader = ExtResource("2_j7csj")
 
 [sub_resource type="BoxMesh" id="BoxMesh_87ps8"]
 
@@ -23,22 +23,22 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_87ps8"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_r6i3w")
+shader = ExtResource("3_ml4tx")
 shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_87ps8")
 shader_parameter/MAX_STEPS = 220
 shader_parameter/multiplicador_opacidad = 39.9410018496975
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hge4g"]
-albedo_texture = ExtResource("5_ylp4m")
+albedo_texture = ExtResource("5_4m3wy")
 
 [sub_resource type="BoxMesh" id="BoxMesh_n1arj"]
 material = SubResource("StandardMaterial3D_hge4g")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ylp4m"]
 render_priority = 0
-shader = ExtResource("5_n1arj")
-shader_parameter/mapa_vegetacion = ExtResource("8_8o6jm")
-shader_parameter/mapa_elevacion = ExtResource("7_uv25n")
+shader = ExtResource("6_8824l")
+shader_parameter/mapa_vegetacion = ExtResource("8_naqj5")
+shader_parameter/mapa_elevacion = ExtResource("7_btdxh")
 shader_parameter/escala_altura = 140.648
 shader_parameter/altura_base = 0.0
 shader_parameter/tamano_pixel = 0.005
@@ -51,7 +51,7 @@ subdivide_depth = 512
 [node name="Node3D" type="Node3D"]
 
 [node name="Node" type="Node" parent="." node_paths=PackedStringArray("cubo_frontal", "slider_DirViento", "slider_humedad", "slider_VelViento", "label_DirViento", "label_humedad", "label_VelViento")]
-script = ExtResource("1_7sokg")
+script = ExtResource("1_hfr07")
 cubo_frontal = NodePath("../CuboFrontal")
 slider_DirViento = NodePath("../CanvasLayer/DirVientoSlider")
 slider_humedad = NodePath("../CanvasLayer/HumedadSlider")
@@ -87,7 +87,7 @@ remote_path = NodePath("../../SubViewport/CuboTrasero")
 [node name="CameraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera", "subViewPort")]
 transform = Transform3D(1, 0, 0, 0, 0.96857876, 0.24870679, 0, -0.24870677, 0.9685788, 0.5, 208.1973, 190.39511)
 cull_mask = 1048573
-script = ExtResource("4_7sokg")
+script = ExtResource("4_2xap3")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
 subViewPort = NodePath("../SubViewport")
 velocidad_movimiento = 70.0
@@ -161,10 +161,11 @@ color = Color(0.9280485, 0.00072176877, 0.9317136, 1)
 [node name="MapaElevaciones" type="MeshInstance3D" parent="." node_paths=PackedStringArray("controlador", "cubo_frontal")]
 material_override = SubResource("ShaderMaterial_ylp4m")
 mesh = SubResource("PlaneMesh_uv25n")
-script = ExtResource("9_ywcy4")
+script = ExtResource("9_up8ov")
 controlador = NodePath("../Node")
 cubo_frontal = NodePath("../CuboFrontal")
 tamano_plano_x = 904.0
 tamano_plano_z = 856.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 359.80185, 0)

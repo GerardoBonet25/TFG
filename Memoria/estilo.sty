@@ -1,0 +1,205 @@
+\ProvidesPackage{estilo} % Nombre del paquete
+% Permite numerar hasta el nivel subsubsection (nivel 3)
+\setcounter{secnumdepth}{3}
+
+% Incluye en el TOC hasta subsubsection (nivel 3)
+\setcounter{tocdepth}{3}
+
+% ----------------------------------------------
+% Carga de paquetes (usar \RequirePackage en lugar de \usepackage)
+% ----------------------------------------------
+\RequirePackage{listings}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish]{babel}
+\RequirePackage{dcolumn}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{afterpage}
+\RequirePackage{longtable}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{url}
+\RequirePackage{colortbl}
+\RequirePackage[stable]{footmisc}
+\RequirePackage{pdfpages}
+\RequirePackage{pgfgantt} % Paquete para diagramas de Gantt
+\RequirePackage{tikz} 
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{tabularx}
+\RequirePackage{pgfplots}
+\RequirePackage{float}
+
+\RequirePackage{array}       
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} 
+\newcolumntype{Z}[1]{>{\centering\arraybackslash}m{#1}}  % centrado
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}} % alineado a la izquierda
+
+
+\addto\captionsspanish{
+  \renewcommand{\listtablename}{Índice de tablas}
+  \renewcommand{\tablename}{Tabla}
+}
+
+
+\pgfplotsset{compat=1.18}
+
+
+\RequirePackage{xcolor} % Para colores opcionales
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+
+\lstdefinestyle{GDS}{
+  language=Python, 
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{gray},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=6.5pt,
+  tabsize=2,
+  showspaces=false,
+  showstringspaces=false,
+  breaklines=true,
+  frame=single
+}
+
+\lstdefinelanguage{GDScript}{
+  morekeywords={func,var,const,if,elif,else,while,for,in,break,continue,return,match,pass,class,extends,signal,enum,tool,static,export,onready,setget,self,true,false,null,await,as,is,not,and,or},
+  sensitive=true,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+
+
+\lstdefinelanguage{GodotShader}{
+  morekeywords={
+    shader_type, render_mode, uniform, varying, void, if, else, return,
+    sampler2D, sampler3D, samplerCube, vec2, vec3, vec4, mat4,
+    float, int, bool, true, false,
+    ALBEDO, EMISSION, SPECULAR, NORMAL, ALPHA, ROUGHNESS, METALLIC,
+    VERTEX, COLOR, UV, UV2, SCREEN_UV, POINT_SIZE,
+    TIME, INSTANCE_ID, POSITION, NORMALMAP,
+    FRAGCOORD, MODELVIEW_MATRIX, PROJECTION_MATRIX, WORLD_MATRIX,
+  },
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+}
+
+
+% ----------------------------------------------
+% Configuración de columnas decimales
+% ----------------------------------------------
+\newcolumntype{.}{D{.}{\esperiod}{-1}}
+\makeatletter
+\addto\shorthandsspanish{\let\esperiod\es@period@code}
+\makeatother
+
+% ----------------------------------------------
+% Definición de metadatos reutilizables
+% ----------------------------------------------
+\newcommand{\myTitle}{Visualizador de volúmenes mediante trazado de rayos en Godot}
+\newcommand{\myDegree}{Grado en Ingeniería Informatica}
+\newcommand{\myName}{Álvaro López Vergara}
+\newcommand{\myProf}{Germán Arroyo Moreno}
+\newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}
+\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de Telecomunicación}
+\newcommand{\myDepartment}{Departamento de ...}
+\newcommand{\myUni}{\protect{Universidad de Granada}}
+\newcommand{\myLocation}{Granada}
+\newcommand{\myTime}{\today}
+\newcommand{\myVersion}{Versión 0.1\xspace}
+
+% ----------------------------------------------
+% Configuración de encabezados y pies de página (sin \pagestyle)
+% ----------------------------------------------
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark}
+\fancyhead[R,L]{\textbf{\thepage}}
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}}
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}}
+\setlength{\headheight}{1.5\headheight}
+
+% ----------------------------------------------
+% Definición de teoremas y ejemplos
+% ----------------------------------------------
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{definicion}{Definición}[section]
+
+% ----------------------------------------------
+% Configuración de colores para listados de código
+% ----------------------------------------------
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray30}{gray}{.94}
+
+% ----------------------------------------------
+% Configuración de código fuente con listings
+% ----------------------------------------------
+\lstset{
+    frame=Ltb,
+    framerule=0.5pt,
+    backgroundcolor=\color{gray97},
+    stringstyle=\ttfamily,
+    showstringspaces = false,
+    basicstyle=\scriptsize\ttfamily,
+    commentstyle=\color{gray45},
+    keywordstyle=\bfseries,
+    numbers=left,
+    breaklines=true,
+}
+
+% Estilos personalizados para código en C, C++ y consola
+\lstdefinestyle{CodigoC}{
+    basicstyle=\scriptsize,
+    frame=single,
+    language=C,
+    numbers=left
+}
+\lstdefinestyle{CodigoC++}{
+    basicstyle=\small,
+    frame=single,
+    backgroundcolor=\color{gray30},
+    language=C++,
+    numbers=left
+}
+\lstdefinestyle{Consola}{
+    basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray30},
+    frame=single,
+    numbers=none
+}
+
+% ----------------------------------------------
+% Definir regla grande
+% ----------------------------------------------
+\newcommand{\bigrule}{\titlerule[0.5mm]}
+
+% ----------------------------------------------
+% Evitar encabezados en páginas en blanco
+% ----------------------------------------------
+\makeatletter
+\def\clearpage{%
+  \ifvmode
+    \ifnum \@dbltopnum =\m@ne
+      \ifdim \pagetotal <\topskip
+        \hbox{}
+      \fi
+    \fi
+  \fi
+  \newpage
+  \thispagestyle{empty}
+  \write\m@ne{}
+  \vbox{}
+  \penalty -\@Mi
+}
+\makeatother
+
+\endinput

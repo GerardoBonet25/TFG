@@ -56,7 +56,7 @@ func _ready():
 	set_a_lee_b_escribe = crear_conexiones(textura_a, textura_b, shader_id)
 	set_b_lee_a_escribe = crear_conexiones(textura_b, textura_a, shader_id)
 
-	# Encender el fuego inicial y conectar el visor
+	
 	crear_puente_visual()
 	
 	#Conecto los sliders
@@ -232,7 +232,7 @@ func agregar_fuego_en(cx: int, cy: int, cz: int):
 
 func cargar_mapa_combustibles(array_datos: PackedByteArray):
 	rd.texture_update(textura_combustibles, 0, array_datos)
-	print("🌳 Mapa de combustibles inyectado en la GPU correctamente.")
+	print("Mapa de combustibles inyectado en la GPU correctamente.")
 
 
 # --- NUEVO: FUNCIONES DE ACTUALIZACIÓN ---

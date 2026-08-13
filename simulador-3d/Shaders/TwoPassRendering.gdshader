@@ -53,6 +53,6 @@ void fragment() {
     // Bordes (baja densidad) = Naranja/Rojo. Núcleo (alta densidad) = Amarillo puro.
     vec3 color_fuego = mix(vec3(1.0, 0.2, 0.0), vec3(1.0, 0.9, 0.0), densidad_acumulada);
 
-    ALBEDO = vec3(1.0, 0.2, 0.0);
+    ALBEDO = color_fuego;
     ALPHA = clamp(densidad_acumulada, 0.0, 1.0);
 }

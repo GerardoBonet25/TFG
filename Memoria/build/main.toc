@@ -1,0 +1,24 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Trabajos relacionados y antecedentes}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Metodología}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Selección de herramientas: Elección del motor}{6}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Comparativa de motores gráficos}{7}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Arquitectura del Simulador}{8}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Fundamentos tecnológicos: El \textit {Pipeline} de Cómputo}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}El Autómata Celular y el Modelo de Rothermel}{9}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Comunicación y Sincronización CPU-GPU}{13}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Geometría y Datos Topográficos}{15}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Procesamiento SIG, normalización y adecuación de formatos}{16}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Renderizado del terreno: Desplazamiento y normales}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Extracción a memoria principal y discretización volumétrica}{17}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Interacción y Control Dinámico}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Generación de colisiones topográficas}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Navegación espacial y cámara libre}{18}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Sistema de Ignición: Interacción espacial y traducción}{18}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Interfaz de Usuario y Control Meteorológico}{19}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Desafíos Técnicos y Soluciones}{20}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Sincronización de Espacios de Coordenadas}{20}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Anomalías Geométricas en la Generación del Relieve}{21}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Desincronización de Cámaras en el Contenedor Volumétrico}{21}{subsection.3.5.3}%
+\contentsline {chapter}{Referencias}{22}{subsection.3.5.3}%
