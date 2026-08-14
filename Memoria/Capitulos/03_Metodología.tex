@@ -356,10 +356,39 @@ El sistema de ignición interactiva presentaba una desincronización espacial. A
 Se desarrolló un flujo de traducción de coordenadas secuencial. Primero, el punto de impacto global devuelto por el \textit{RayCast} se transforma al espacio local del contenedor. Debido a que las coordenadas de la malla se encuentran entre -0.5 y 0.5, se le suma un vector \texttt{(0.5, 0.5, 0.5)} para obtener coordenadas normalizadas estrictamente positivas entre 0.0 y 1.0. Finalmente, este valor decimal se multiplica por la resolución máxima de la matriz del autómata 
 
 \subsection{Anomalías Geométricas en la Generación del Relieve}
+\textbf{El problema:} 
+Durante las primeras pruebas de importación de los mapas de elevaciones (DEM), el desplazamiento de los vértices en el \textit{shader} generaba columnas gigantes y picos que no coincidían con la topografía real. Investigandolo se descubrió que este fallo se originaba por dos factores. En primer lugar, los datos del DEM representaban altitudes reales en metros que producían un desbordamiento que disparaba los vértices fuera de los límites de renderizado. En segundo lugar, al recortar las regiones de interés en QGIS, algunos píxeles se exportaban con valores nulos (\texttt{NaN}), o infinitos (\texttt{Inf}).\\
+
+\textbf{La solución:} 
+Para solucionar el primer problema se optó por la normalización de la textura en QGIS. Mediante el uso de álgebra de mapas, todas las cotas se remapearon a un rango de 0.0 a 1.0, permitiendo que el desplazamiento de vértices usando un escalado para la altura de como resultado una visualización correcta. 
+
+Para el segundo problema se aplicó directamente un filtro en el \textit{shader} que se encarga de evaluar las alturas leídas de la textura normalizada mediante las funciones nativas \texttt{isinf()} e \texttt{isnan()}. Si el píxel es nulo o infinito, fuerza su altitud a la altura base.\\
+
+
+\begin{lstlisting}[language=C, basicstyle=\ttfamily\footnotesize, frame=single]
+// Proteccion matematica contra pixeles corruptos
+float altura_leida = textureLod(mapa_elevacion, UV, 0.0).r;
+
+// Si la imagen EXR tiene errores (Infinito o NaN), forzamos la altura base
+float altura_segura = (isinf(altura_leida) || isnan(altura_leida)) 
+                      ? altura_base : altura_leida;
+
+// Desplazamiento 3D proporcional tras la normalizacion en QGIS
+VERTEX.y += (altura_segura - altura_base) * escala_altura;
+\end{lstlisting}
 
 
 \subsection{Desincronización de Cámaras en el Contenedor Volumétrico}
 
+\textbf{El problema:} 
+Cuando el usuario utilizaba la cámara libre para moverse por el escenario ocurrían varios errores en la visualización del fuego, como que el volumen del fuego aparecía cortado o que flotaba fuera de su posición. Tras investigarlo se descubrió que el origen del error se daba en la técnica de doble pase, más concretamente en la sincronización de las posiciones. Para que el cálculo del vector del rayo sea correcto la cámara secundaria del \texttt{SubViewport} debe observar el cubo desde el mismo ángulo exacto que la cámara principal.
+
+\textbf{La solución:} 
+Para solucionar estos errores se desarrolló un \textit{script} que garantiza que al inicio de la simulación la cámara secundaria copie los parámetros de proyección de la cámara principal, es decir, el \textit{FOV}, el \textit{Near} y el \textit{Far}.
+ 
+ Por otro lado, se usó un nodo que proporciona Godot, el  (\texttt{RemoteTransform3D}), sobre la cámara principal vinculandolo con la cámara del \texttt{SubViewport}. Este nodo se encarga de que la cámara secundaria replique continuamente la posición, rotación y escala de la principal.
+
+Al sincronizar perfectamente ambas cámaras, las coordenadas de textura proyectadas en el \texttt{SubViewport} coinciden sin errores, haciendo que se visualice correctamente desde cualquier ángulo y distancia.
 
 
 

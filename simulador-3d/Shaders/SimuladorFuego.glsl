@@ -102,11 +102,11 @@ void main() {
 						float factor_pendiente = 1.0;
 						// Si y == -1, el fuego viene del vecino de ABAJO. El calor sube, asi que avanza muy rapido.
 						if (y == -1) {
-							factor_pendiente = 3.5; 
+							factor_pendiente = 150; 
 						} 
 						// Si y == 1, el fuego viene del vecino de ARRIBA. Al fuego le cuesta mucho bajar laderas.
 						else if (y == 1) {
-							factor_pendiente = 0.2; 
+							factor_pendiente = 0.00000000001; 
 						}
 
 						// --- 4. CALCULO FINAL  ---

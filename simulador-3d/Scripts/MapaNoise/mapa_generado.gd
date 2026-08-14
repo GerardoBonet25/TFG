@@ -58,7 +58,6 @@ func _ready():
 
 
 func _generar_matriz_3d():
-	print("Traduciendo texturas a Voxel Grid 3D...")
 	
 	# 1. Preparamos el array plano gigante
 	var total_celdas = resolucion_matriz * resolucion_y * resolucion_matriz
@@ -81,16 +80,17 @@ func _generar_matriz_3d():
 			var color_veg = imagen_vegetacion.get_pixel(x, z)
 			var estado_superficie = ESTADO_AIRE
 			
-			# Umbrales para detectar el color puro del NoiseTexture
-			if color_veg.g > (color_veg.r + 0.15):
-				# Si el verde supera al rojo por un poco, es Matorral
-				estado_superficie = ESTADO_MATORRAL
-			elif color_veg.r > (color_veg.g - 0.2):
-				# Si el rojo tiene fuerza (típico de tu marrón #703d05), es Árbol
+			
+			# Si el azul domina y no hay casi rojo -> ÁRBOL
+			if color_veg.b > 0.5 and color_veg.r < 0.5:
 				estado_superficie = ESTADO_ARBOL
+			
+			# Si el rojo domina y no hay casi azul -> MATORRAL
+			elif color_veg.r > 0.5 and color_veg.b < 0.5:
+				estado_superficie = ESTADO_MATORRAL
+			
+			# Cualquier otra cosa (verde, gris, negro...) -> SUBSUELO
 			else:
-				# Hemos reducido drásticamente la "zona muerta". 
-				# Ahora casi todo el mapa será combustible y habrá mucha menos roca.
 				estado_superficie = ESTADO_SUBSUELO
 				
 			# C. Rellenar verticalmente esa coordenada (Gravedad)

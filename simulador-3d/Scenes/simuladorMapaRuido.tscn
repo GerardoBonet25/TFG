@@ -39,16 +39,15 @@ frequency = 0.002
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sjpyu"]
 noise = SubResource("FastNoiseLite_ywcy4")
 
-[sub_resource type="Gradient" id="Gradient_tkjlm"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.46415094)
-colors = PackedColorArray(0, 1, 0, 1, 0.4372994, 0.23990926, 0.019768983, 1)
+[sub_resource type="Gradient" id="Gradient_1o5ci"]
+offsets = PackedFloat32Array(0, 0.9932886)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_srwpp"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lwqux"]
 noise = SubResource("FastNoiseLite_srwpp")
-color_ramp = SubResource("Gradient_tkjlm")
+color_ramp = SubResource("Gradient_1o5ci")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8o6jm"]
 render_priority = 0
@@ -56,6 +55,7 @@ shader = ExtResource("6_446q6")
 shader_parameter/mapa_elevacion = SubResource("NoiseTexture2D_sjpyu")
 shader_parameter/escala_altura = 20.0
 shader_parameter/mapa_vegetacion = SubResource("NoiseTexture2D_lwqux")
+shader_parameter/tamano_pixel = 0.005
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ywcy4"]
 material = SubResource("ShaderMaterial_8o6jm")
@@ -179,8 +179,8 @@ script = ExtResource("7_arnhw")
 controlador = NodePath("../Node")
 cubo_frontal = NodePath("../CuboFrontal")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.012618369, 0.99992037, 0, -0.99992037, -0.012618369, 0, 15.792813, 0)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.851532, 0)
-light_energy = 1.782
-omni_range = 14.481459
-omni_attenuation = 0.023
+omni_range = 14.516831

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  13 AUG 2026 22:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  14 AUG 2026 17:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -768,31 +768,77 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 Package babel Info: Main language set to 'spanish'.
-(c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.toc
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+(Portada.tex
+\centeroffset=\skip79
+<imagenes/logo_ugr.jpg, id=137, 186.6975pt x 55.6479pt>
+File: imagenes/logo_ugr.jpg Graphic file (type jpg)
+<use imagenes/logo_ugr.jpg>
+Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
+(pdftex.def)             Requested size: 323.9978pt x 96.57689pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+)
+<imagenes/etsiit_logo.png, id=138, 110.814pt x 40.4712pt>
+File: imagenes/etsiit_logo.png Graphic file (type png)
+<use imagenes/etsiit_logo.png>
+Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 32.
+(pdftex.def)             Requested size: 108.0011pt x 39.44412pt.
+ [1
+
+{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./imagenes/logo_ugr.jpg> <./imagenes/etsiit_logo.png>]) (prefacio.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4 \cleardoublepage
+                     [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+[3
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+[4
+
+] [5
+
+
+]) (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [6
+
+
+])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [1
-
-
-{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.lof
+ [7] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [2
+ [8
 
 ] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.lot
 LaTeX Info: Redefining \. on input line 1.
@@ -801,17 +847,17 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
- (Capitulos/01_Introduccion.tex [3
+ (Capitulos/01_Introduccion.tex [9
 
 ]
 Cap\'{\i }tulo 1.
-) (Capitulos/02_TrabajosRelacionados.tex [4
+) (Capitulos/02_TrabajosRelacionados.tex [10
 
 ]
 Cap\'{\i }tulo 2.
 ) (Capitulos/03_Metodología.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
-) [5
+) [11
 
 ]
 Cap\'{\i }tulo 3.
@@ -820,7 +866,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-[6
+[12
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 46--46
@@ -847,12 +893,12 @@ Overfull \hbox (2.71568pt too wide) in paragraph at lines 46--46
 []|\OT1/cmr/m/n/9 Propietaria| 
  []
 
-[7]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
-[8
+[14
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -877,12 +923,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[9] [10]
+[15] [16]
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-[11]
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
@@ -897,7 +943,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
  []
 
-[12]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
@@ -917,7 +963,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--148
 
  []
 
-[13] [14]
+[19] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
@@ -932,7 +978,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
-[15]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
@@ -951,7 +997,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 241--242
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 ) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-) [16]
+) [22]
 Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
@@ -966,7 +1012,7 @@ Overfull \hbox (22.46106pt too wide) in paragraph at lines 270--271
 \OT1/cmr/m/n/10.95 va-lo-res se asu-me co-mo te-rreno que no pue-de in-cen-diar-se (\OT1/cmtt/m/n/10.95 ESTADO[]SUBSUELO\OT1/cmr/m/n/10.95 ) 
  []
 
-[17]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
@@ -981,7 +1027,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
 
-[18]
+[24]
 Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
@@ -1006,16 +1052,90 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-[19]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 337--340
 
  []
 
-) (Capitulos/04_Resultados.tex) (Capitulos/05_Conclusiones.tex) (Capitulos/Anexos.tex) [20] [21] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--361
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+
+ []
+
+[27]
+Overfull \hbox (28.03943pt too wide) in paragraph at lines 389--390
+[]\OT1/cmr/m/n/10.95 Por otro la-do, se us^^So un no-do que pro-por-cio-na Go-dot, el (\OT1/cmtt/m/n/10.95 RemoteTransform3D\OT1/cmr/m/n/10.95 ),
+ []
+
+) (Capitulos/04_Resultados.tex [28]
+Cap\'{\i }tulo 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+[29
+
+]
+<imagenes/CasoEstudioA.png, id=444, 811.833pt x 440.847pt>
+File: imagenes/CasoEstudioA.png Graphic file (type png)
+<use imagenes/CasoEstudioA.png>
+Package pdftex.def Info: imagenes/CasoEstudioA.png  used on input line 44.
+(pdftex.def)             Requested size: 251.9989pt x 136.83604pt.
+ [30]
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+<imagenes/CasoEstudioB.png, id=453, 740.7675pt x 414.348pt>
+File: imagenes/CasoEstudioB.png Graphic file (type png)
+<use imagenes/CasoEstudioB.png>
+Package pdftex.def Info: imagenes/CasoEstudioB.png  used on input line 58.
+(pdftex.def)             Requested size: 251.9989pt x 140.95232pt.
+[31
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.65 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.65 
+      <./imagenes/CasoEstudioA.png> <./imagenes/CasoEstudioB.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+<imagenes/CasoEstudioC.png, id=460, 760.64175pt x 452.892pt>
+File: imagenes/CasoEstudioC.png Graphic file (type png)
+<use imagenes/CasoEstudioC.png>
+Package pdftex.def Info: imagenes/CasoEstudioC.png  used on input line 78.
+(pdftex.def)             Requested size: 251.9989pt x 150.0422pt.
+[32
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.85     \subsection
+                    {Conclusión de la Validación Física} <./imagenes/CasoEstudioC.png>]) (Capitulos/05_Conclusiones.tex [33]
+Cap\'{\i }tulo 5.
+) (Capitulos/Anexos.tex) [34
+
+] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 24.
 
-) [22
+) [35
 
 ] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.aux
 LaTeX Info: Redefining \. on input line 11.
@@ -1026,20 +1146,25 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EF9CD8FEE14E6551F35ACABC51241F16;6049.
- ) 
+(rerunfilecheck)             Checksum: 8D3F0E3878E9ADE7628FFEFE7320FE74;8635.
+ )
+(\end occurred inside a group at level 2)
+
+### simple group (level 2) entered at line 36 ({)
+### simple group (level 1) entered at line 17 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 37329 strings out of 467510
- 857789 string characters out of 5407823
- 1657159 words of memory out of 5000000
- 65782 multiletter control sequences out of 15000+600000
- 639868 words of font info for 85 fonts, out of 8000000 for 9000
+ 37453 strings out of 467510
+ 860303 string characters out of 5407823
+ 1658413 words of memory out of 5000000
+ 65857 multiletter control sequences out of 15000+600000
+ 640470 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 114i,12n,132p,793b,2195s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (22 pages, 329968 bytes).
+ 114i,12n,132p,793b,2442s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (36 pages, 628770 bytes).
 PDF statistics:
- 435 PDF objects out of 1000 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 590 PDF objects out of 1000 (max. 8388607)
+ 191 named destinations out of 1000 (max. 500000)
+ 302 words of extra memory for PDF output out of 10000 (max. 10000000)
 
