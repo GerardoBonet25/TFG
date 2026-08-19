@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex build/main"] 1786720386.8829 "build/main.aux" "build/main.bbl" "build/main" 1786722014.17116 0
+["bibtex build/main"] 1787164438.8439 "build/main.aux" "build/main.bbl" "build/main" 1787164734.27102 0
   "./Capitulos/Referencias.bib" 1786352450 0 d41d8cd98f00b204e9800998ecf8427e ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "build/main.aux" 1786722012 6946 49d9941839be43989e4813aad56f29c4 "pdflatex"
+  "build/main.aux" 1787164733 9204 b917324900b3ed042003e954c2c8c229 "pdflatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["pdflatex"] 1786722010.65842 "c:/Users/USUARIO/Documents/TFG/TFG/Memoria/main.tex" "build/main.pdf" "main" 1786722014.17192 0
+["pdflatex"] 1787164730.82677 "c:/Users/USUARIO/Documents/TFG/TFG/Memoria/main.tex" "build/main.pdf" "main" 1787164734.2719 0
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786383209 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1786121345 13368033 4563cca4011dd3b06819253cdb961337 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -258,21 +258,24 @@
   "Capitulos/01_Introduccion.tex" 1786365102 25 59d86bd94662938d4b1d85e98d35affe ""
   "Capitulos/02_TrabajosRelacionados.tex" 1786365060 46 8ea6d43e4b0307b13a7c09b4ecbde17e ""
   "Capitulos/03_Metodología.tex" 1786696693 41027 c5311c47bf605431656593ae9d86d143 ""
-  "Capitulos/04_Resultados.tex" 1786722009 7945 da19cc20f72d6ead18c8283d8381afc4 ""
+  "Capitulos/04_Resultados.tex" 1787164730 16508 d60bf861c706867c2f66484a2dccdfab ""
   "Capitulos/05_Conclusiones.tex" 1786699362 22 a79e722b62e8948d7bf24fbd45b92ac6 ""
   "Capitulos/Anexos.tex" 1786125546 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Portada.tex" 1786699939 1218 641d71d9211de087022f53a655a7b878 ""
-  "build/main.aux" 1786722012 6946 49d9941839be43989e4813aad56f29c4 "pdflatex"
-  "build/main.bbl" 1786720387 901 628a2a8c68e066122d1514411e0b8455 "bibtex build/main"
-  "build/main.lof" 1786722012 601 7dc854e9f3d2899196635872e66c124b "pdflatex"
-  "build/main.lot" 1786722012 235 e0ac0f53fb25dcbb9a7c89e9bccb8ac2 "pdflatex"
-  "build/main.out" 1786722012 8635 8d3f0e3878e9ade7628ffefe7320fe74 "pdflatex"
-  "build/main.toc" 1786722012 3506 fc9807becbba394c173896a2c92f12d1 "pdflatex"
+  "build/main.aux" 1787164733 9204 b917324900b3ed042003e954c2c8c229 "pdflatex"
+  "build/main.bbl" 1787164439 901 628a2a8c68e066122d1514411e0b8455 "bibtex build/main"
+  "build/main.lof" 1787164733 1039 090765849c5187c93505a22fb0c29560 "pdflatex"
+  "build/main.lot" 1787164733 516 93cbf37197b1045e4ca3785299b0b504 "pdflatex"
+  "build/main.out" 1787164733 10043 54bd9c1222557fe7b93af7bf76fe32b7 "pdflatex"
+  "build/main.toc" 1787164733 4016 b60d19535cafbbfff230f03295f64258 "pdflatex"
   "c:/Users/USUARIO/Documents/TFG/TFG/Memoria/main.tex" 1786700394 1282 16cfe7aec65f362936ffc884319c20e2 ""
   "estilo.sty" 1786700529 6159 1745814cf02b280ba893dc641f6d08d5 ""
   "imagenes/CasoEstudioA.png" 1786710316 37689 df74381d1c38e9ba013fa5f1d5249364 ""
   "imagenes/CasoEstudioB.png" 1786713682 35208 c769483656e073e828fa307151d85c96 ""
   "imagenes/CasoEstudioC.png" 1786720141 148724 15800d5447f279e9dbb587ad28bf00aa ""
+  "imagenes/MapaDEM.png" 1786722859 764155 b7cf1a41ecfebd8df8771cb29024d1cb ""
+  "imagenes/Rendimiento.png" 1787161070 16843 384821bebcb913abb69ba4988b76e562 ""
+  "imagenes/RendimientoProp.png" 1787163869 15690 7f1c50339c6e47ff1609163b299b95c2 ""
   "imagenes/etsiit_logo.png" 1761750742 15686 96fbb972320ee192b868b64d57775747 ""
   "imagenes/logo_ugr.jpg" 1761750742 37331 36715764ca5f2282a9a31c4aa2c47eb6 ""
   "main.tex" 1786700394 1282 16cfe7aec65f362936ffc884319c20e2 ""

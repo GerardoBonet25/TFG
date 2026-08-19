@@ -21,8 +21,8 @@ const ESTADO_FUEGO = 99   # Fuego activo
 var imagen_elevacion: Image
 var imagen_vegetacion: Image
 
-var resolucion_matriz = 356
-var resolucion_y = 60 # Altura de la matriz volumétrica
+var resolucion_matriz = 1024
+var resolucion_y = 256 # Altura de la matriz volumétrica
 
 # Ajustado al valor de tu nuevo shader (Diferencia entre Min y Max del DEM)
 var escala_altura = 140.648 

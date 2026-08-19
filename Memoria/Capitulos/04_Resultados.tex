@@ -17,17 +17,17 @@
 
     \subsection{Métricas y Metodología de Evaluación}
 
-        La validación del simulador no consiste solo en comprobar su correcto funcionamiento visual, sino que se han llevado a cabo tres ejes de evaluación distintos para medir tanto su validez científica como su eficiencia computacional.
+        La validación del simulador no consiste solo en comprobar su correcto funcionamiento visual, sino que se han llevado a cabo varias pruebas de evaluación distintas para medir tanto su validez científica como su eficiencia computacional.
 
         \begin{enumerate}
             \item \textbf{Validación del modelo físico:} En estas pruebas se plantean escenarios de control aislados para observar cómo reacciona el fuego ante variaciones de la topografía (pendiente) y de las variables meteorológicas (velocidad, dirección del viento y humedad), comprobando si la propagación respeta las ecuaciones del modelo de Rothermel. 
             
             \item \textbf{Rendimiento y coste computacional:} Para estas pruebas se monitoriza la carga de trabajo del procesador gráfico (GPU), midiendo el coste en milisegundos (\textit{ms}) de la ejecución del \textit{Compute Shader} frente al renderizado del \textit{Raymarching}. Además, se registrará la tasa de FPS para asegurar que mantiene una buena fluidez durante toda la simulación a pesar de la alta carga volumétrica.
             
-            \item \textbf{Análisis predictivo (Método Montecarlo):} En esta prueba se evaluará la viabilidad del simulador en un entorno de prevención real. Aprovechando la separación que hay entre la lógica de propagación y el renderizado visual, se cambiará el flujo de ejecución para realizar miles de simulaciones con un tiempo límite a velocidad acelerada sobre un mismo terreno con el objetivo de obtener un mapa de calor estocástico que identifique las zonas topográficas de mayor riesgo probabilístico frente a condiciones meteorológicas variables.
+            %\item \textbf{Análisis predictivo (Método Montecarlo):} En esta prueba se evaluará la viabilidad del simulador en un entorno de prevención real. Aprovechando la separación que hay entre la lógica de propagación y el renderizado visual, se cambiará el flujo de ejecución para realizar miles de simulaciones con un tiempo límite a velocidad acelerada sobre un mismo terreno con el objetivo de obtener un mapa de calor estocástico que identifique las zonas topográficas de mayor riesgo probabilístico frente a condiciones meteorológicas variables.
         \end{enumerate}
 
-        Tras el análisis de los resultados de estas tres evaluaciones se podrá concluir si la solución desarrollada cumple con los requisitos para un sistema portátil de apoyo a la toma de decisiones en la lucha contra incendios forestales.
+        Tras el análisis de los resultados de estas evaluaciones se podrá concluir si la solución desarrollada cumple con los requisitos para un sistema portátil de apoyo a la toma de decisiones en la lucha contra incendios forestales.
 
 \section{Validación del Modelo Físico de Rothermel}
 
@@ -85,4 +85,100 @@
     \subsection{Conclusión de la Validación Física}
 
         El analisis de los tres casos de estudio confirma que la implementación en el  \textit{Compute Shader} de los factores probabilísticos de viento ($p_w$) y pendiente ($p_s$) son correctos. Como resultado se puede concluir que el simulador es capaz de ofrecer una representación orgánica y fiel a las físicas del fuego sin caer en el crecimiento artificial en forma de ciertos patrones propios de autómatas celulares mal calibrados.
+        \begin{figure}[H]
+            \centering
+             \includegraphics[width=0.7\textwidth]{imagenes/MapaDEM.png}
+            \caption{Comportamiento de la simulación con el mapa de elevaciones DEM.}
+            \label{fig:simulacion_mapa_elevaciones}
+        \end{figure}
+
+        \subsection{Evaluación de Rendimiento y Escalabilidad}
+
+Una vez validada la precisión física del modelo de Rothermel, resulta imperativo evaluar la viabilidad computacional del sistema. Para que el simulador sea funcional en hardware portátil convencional, debe mantener una tasa de refresco interactiva (idealmente superior a 30 fotogramas por segundo) frente a la carga masiva que supone el renderizado volumétrico y el cálculo del autómata celular en tres dimensiones.
+
+\section{Impacto del rendimiento a las distintas resoluciones}
+
+Para determinar el impacto de rendimiento se han realizado una serie de mediciones. En el primer experimento se ha evaluado el límite de estrés de la tarjeta gráfica para encontrar el punto óptimo entre una buena resolución de voxeles y un buen rendimiento. Posteriormente, tras haber encontrado la resolución ideal, se ha evaluado y analizado el rendimiento en las distintas etapas de la propagación del incendio.\\
+
+Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sync) y retirando los limitadores de velocidad de ejecución que se encuentran en el código, pudiendo medir así la capacidad bruta de procesamiento. Además para todos ellos se utilizó un mapa de elevaciones con tamaño 904x856 en el que toda la vegetación se cambió por vegetación alta para que no hubiese alteraciones. \\
+
+\subsubsection{Experimento 1: Escalabilidad espacial y límite de estrés}
+    Como se ha mencionado anteriormente este experimento busca someter a la arquitectura a una prueba de estrés progresiva en la que se va aumentando el número de voxeles de la matriz tridimensional comenzando con una resolución baja y llegando al límite de la tarjeta gráfica del dispositivo usado antes de saturarse por completo.\\
+
+    \begin{table}[H]
+    \centering
+    \makebox[\textwidth][c]{
+        \begin{tabular}{l r c c}
+            \textbf{Resolución (X, Y, Z)} & \textbf{Total Vóxeles} & \textbf{Rendimiento (FPS)} & \textbf{Tiempo de Frame (ms)} \\
+            $64 \times 20 \times 64$ & 81.920 & 308 & 2,78 \\
+            $128 \times 40 \times 128$ & 655.360 & 293 & 3,30 \\
+            $192 \times 60 \times 192$ & 2.21.840 & 267 & 3,40 \\
+            $256 \times 80 \times 256$ & 5.242.880 & 230 & 4,05 \\
+            $384 \times 120 \times 384$ & 17.694.720 & 176 & 6,14 \\
+            $512 \times 160 \times 512$ & 41.943.040 & 113 & 9,09 \\
+            $768 \times 200 \times 768$ & 117.964.800 & 53 & 18,30 \\
+            $1024 \times 256 \times 1024$ & 268.435.456 & 16 & 65,28 \\
+        \end{tabular}
+    }
+    \caption{Evolución del rendimiento frente al incremento de la matriz volumétrica.}
+    \label{tab:rendimiento_resolucion}
+    \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{imagenes/Rendimiento.png}
+        \caption{Curva de caída de rendimiento frente incremento de la matriz volumétrica.}
+        \label{fig:grafico_escalabilidad}
+    \end{figure}
+
+    Los datos anteriores (\textit{Tabla \ref{tab:rendimiento_resolucion}} y \textit{Figura \ref{fig:grafico_escalabilidad}}) muestran el buen rendimiento del simulador donde la GPU es capaz de realizar los cálculos y mantener una buena fluidez por encima de los 30 FPS para resoluciones con más de 100 millones de voxeles. Solo cae en el caso de de la más alta, 1024x256x1024, en la cual baja a 16 FPS en el momento de mayor estrés siendo esto ya demasiado bajo para el correcto funcionamiento de un simulador en tiempo real.\\
+
+    Sin embargo, durante las pruebas se comprobó que durante la fase de inicialización de la simulación había un cuello de botella que se comienza a notar con resoluciones a partir de 384x120x384. La CPU necesita un  tiempo para leer los mapas topográficos, clasificar los tipos de combustible y alojar la matriz en la memoria RAM antes de transferirla a los \textit{buffers} de la VRAM ya que lo hace con un procesamiento secuencial y dicho tiempo puede variar entre unos pocos segundos, como en el caso de 384x120x384 que necesita alrededor de 12 segundos, a unos pocos minutos en las resoluciones más altas.\\
+
+    Este fenómeno nos ayuda a entender la decisión arquitectónica de realizar los cálculos principales de la propagación en la GPU, ya que  si el procesador se satura solo con recorrer e inicializar la matriz una vez, resultaría inviable que se encargase del recálculo de las físicas 60 veces por segundo. 
+
+    Al usar un \textit{Compute Shader} esta carga de trabajo se realiza de forma paralela  permitiendo tener la resolución en $384 \times 120 \times 384$ vóxeles, asumiendo los 12 segundos de inicialización, garantizando un buen equilibrio entre resolución geométrica y altas tasas de fotogramas ($176$ FPS).
+
+\subsubsection{Experimento 2: Rendimiento sostenido frente a la carga dinámica}
+
+    Una vez decidida que la resolución ideal que se va a usar es $384 \times 120 \times 384$ vóxeles, este segundo experimento se encarga de evaluar la estabilidad de los FPS durante la ejecución completa de un incendio, desde el inicio del foco hasta que quede completamente cubierto de llamas el mapa. El propósito principal es evaluar cómo le afecta al rendimiento el incremento de voxeles con fuego.
+
+    La metodología que se ha seguido ha consistido en encender un foco en el centro y dejar que se propague de manera libre, sin viento ni humedad, a través de todo el mapa con las mismas condiciones que los anteriores(sin limitaciones de fotogramas y con vegetación continua).  Se han registrado los datos de FPS cada 4 segundos desde el segundo 0, justo antes de iniciar el incendio, hasta que se haya propagado y cubierto el mapa por completo.
+
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{l l c}
+    \textbf{Tiempo (s)} & \textbf{Estado Visual del Incendio} & \textbf{Rendimiento (FPS)} \\
+    0 & Reposo (Sin ignición) & 172 \\
+    4 & Foco central en expansión & 164 \\
+    8 & Crecimiento radial acelerado & 169 \\
+    12 & Cobertura media del mapa & 180 \\
+    16 & Incendio masivo (Casi total) & 196 \\
+    20 & Mapa crítico (Llegando a bordes) & 204 \\
+    24 & Estabilización (Totalmente calcinado) & 210 \\
+    28 & Estabilización final & 210 \\
+    \end{tabular}
+    \caption{Evolución dinámica del rendimiento durante la propagación }
+    \label{tab:carga_termica}
+    \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{imagenes/RendimientoProp.png}
+        \caption{Evolución de Fotogramas por Segundo (FPS) durante la expansión térmica.}
+        \label{fig:grafico_carga_termica}
+    \end{figure}
+
+    Lejos de sufrir una caída de fotogramas a medida que el fuego cubre todo el mapa como se hubiese esperado, en \textit{Tabla \ref{tab:carga_termica}} y \textit{Figura \ref{fig:grafico_carga_termica}} se observa un ligero descenso del rendimiento en los primeros instantes, momento en el que el frente de es más activo y la GPU calcula un mayor número de probabilidades, para después volver a subir. \\
+    
+    %Revisar a partir de aqui
+    
+    A partir del segundo 8, la tasa de fotogramas inicia un ascenso  hasta estabilizarse en 210 FPS. Este incremento exponencial del rendimiento, superior incluso al estado de reposo inicial, valida contundentemente las dos directrices de optimización programadas en la arquitectura visual y física:
+
+    \begin{enumerate}
+        \item \textbf{Cese computacional (Compute Shader):} Al implementar una cláusula de guarda (\textit{early exit}) que omite las celdas cuyo estado supera el umbral de ignición ($0.5$), la GPU deja de calcular matemáticas complejas en las áreas ya calcinadas del interior de la matriz.
+        \item \textbf{Oclusión volumétrica (Raymarching):} El algoritmo de trazado de rayos detiene su avance iterativo en el momento en el que la densidad del humo acumulado alcanza el valor de $1.0$ (opacidad total). A medida que el fuego cubre la pantalla, los rayos chocan inmediatamente con el humo exterior y se interrumpen prematuramente, ahorrando millones de lecturas internas del volumen tridimensional.
+    \end{enumerate}
+
+
 

@@ -30,5 +30,9 @@
 \contentsline {subsection}{\numberline {4.2.2}Caso de Estudio B: Influencia eólica y deformación elíptica}{31}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Caso de Estudio C: Influencia topográfica y convección}{32}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Conclusión de la Validación Física}{33}{subsection.4.2.4}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{34}{chapter.5}%
-\contentsline {chapter}{Referencias}{35}{chapter.5}%
+\contentsline {subsection}{\numberline {4.2.5}Evaluación de Rendimiento y Escalabilidad}{33}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Impacto del rendimiento a las distintas resoluciones}{33}{section.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.0.1}Experimento 1: Escalabilidad espacial y límite de estrés}{34}{subsubsection.4.3.0.1}%
+\contentsline {subsubsection}{\numberline {4.3.0.2}Experimento 2: Rendimiento sostenido frente a la carga dinámica}{36}{subsubsection.4.3.0.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{38}{chapter.5}%
+\contentsline {chapter}{Referencias}{39}{chapter.5}%

@@ -11,7 +11,7 @@ extends Node
 @export var label_VelViento: Label
 
 
-const TAMANO_GRID = Vector3i(192, 60, 192)
+const TAMANO_GRID = Vector3i(128, 40, 128)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
 
 
@@ -74,9 +74,9 @@ func _ready():
 
 
 func _process(_delta):
-	frame_actual += 1
-	if frame_actual % 10 != 0:
-		return
+	#frame_actual += 1
+	#if frame_actual % 10 != 0:
+		#return
 		
 	ejecutar_compute_shader()
 

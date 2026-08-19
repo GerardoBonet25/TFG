@@ -20,8 +20,8 @@ var imagen_vegetacion: Image
 
 # Esta es la resolución de la matriz tridimensional que usará tu simulador.
 # Como el mapa mide 64x64 metros, usaremos 64 celdas.
-var resolucion_matriz = 192
-var resolucion_y = 60 # Altura de la matriz volumétrica
+var resolucion_matriz = 128
+var resolucion_y = 40 # Altura de la matriz volumétrica
 
 var escala_altura =  20
 

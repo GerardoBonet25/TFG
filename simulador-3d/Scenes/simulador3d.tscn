@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://w02y0v6qnpir"]
+[gd_scene load_steps=21 format=3 uid="uid://w02y0v6qnpir"]
 
 [ext_resource type="Script" uid="uid://clglvc3i35fc5" path="res://Scripts/MapaElevaciones/ControladorElevaciones.gd" id="1_hfr07"]
 [ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="2_j7csj"]
@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://boowel001yj7e" path="res://Scripts/SyncCameras.gd" id="4_2xap3"]
 [ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_4m3wy"]
 [ext_resource type="Shader" uid="uid://cfngyxcqwu3pd" path="res://Shaders/creacionMapa.gdshader" id="6_8824l"]
+[ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scenes/Metricas.gd" id="6_j7csj"]
 [ext_resource type="Texture2D" uid="uid://dxpway6oy77jr" path="res://Modelos/ElevacionesRecortado.exr" id="7_btdxh"]
-[ext_resource type="Texture2D" uid="uid://bn6itgpfbyrk2" path="res://Modelos/TexturaVegetación.png" id="8_naqj5"]
 [ext_resource type="Script" uid="uid://bohdb21r0entv" path="res://Scripts/MapaElevaciones/mapa_elevaciones.gd" id="9_up8ov"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sokg"]
@@ -34,10 +34,20 @@ albedo_texture = ExtResource("5_4m3wy")
 [sub_resource type="BoxMesh" id="BoxMesh_n1arj"]
 material = SubResource("StandardMaterial3D_hge4g")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml4tx"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+
+[sub_resource type="Gradient" id="Gradient_hfr07"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7csj"]
+gradient = SubResource("Gradient_hfr07")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ylp4m"]
 render_priority = 0
 shader = ExtResource("6_8824l")
-shader_parameter/mapa_vegetacion = ExtResource("8_naqj5")
+shader_parameter/mapa_vegetacion = SubResource("GradientTexture2D_j7csj")
 shader_parameter/mapa_elevacion = ExtResource("7_btdxh")
 shader_parameter/escala_altura = 140.648
 shader_parameter/altura_base = 0.0
@@ -67,7 +77,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.9685788, 0.5, 208.1973, 190.39511)
+transform = Transform3D(1, 0, 0, 0, 0.21287686, 0.97707903, 0, -0.97707903, 0.21287686, 0.5, 757.21765, 187.75954)
 cull_mask = 1048574
 
 [node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
@@ -85,7 +95,7 @@ mesh = SubResource("BoxMesh_87ps8")
 remote_path = NodePath("../../SubViewport/CuboTrasero")
 
 [node name="CameraPrincipal" type="Camera3D" parent="." node_paths=PackedStringArray("camaraTrasera", "subViewPort")]
-transform = Transform3D(1, 0, 0, 0, 0.96857876, 0.24870679, 0, -0.24870677, 0.9685788, 0.5, 208.1973, 190.39511)
+transform = Transform3D(1, 0, 0, 0, 0.21287684, 0.977079, 0, -0.977079, 0.2128769, 0.5, 757.21765, 187.75954)
 cull_mask = 1048573
 script = ExtResource("4_2xap3")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
@@ -157,6 +167,15 @@ custom_minimum_size = Vector2(5, 5)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.9280485, 0.00072176877, 0.9317136, 1)
+
+[node name="Metricas" type="Label" parent="CanvasLayer"]
+offset_left = 919.0
+offset_top = 3.0
+offset_right = 1146.0
+offset_bottom = 26.0
+theme_override_constants/outline_size = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ml4tx")
+script = ExtResource("6_j7csj")
 
 [node name="MapaElevaciones" type="MeshInstance3D" parent="." node_paths=PackedStringArray("controlador", "cubo_frontal")]
 material_override = SubResource("ShaderMaterial_ylp4m")

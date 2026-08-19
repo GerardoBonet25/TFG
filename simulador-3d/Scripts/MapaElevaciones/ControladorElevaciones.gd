@@ -11,14 +11,14 @@ extends Node
 @export var label_VelViento: Label
 
 
-const TAMANO_GRID = Vector3i(356, 60, 356)
+const TAMANO_GRID = Vector3i(1024, 256, 1024)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
 
 
 # --- VARIABLES DE LA GPU ---
 var rd: RenderingDevice
 var shader_pipeline: RID #RID --> Resource ID
-
+	
 
 
 # Memoria VRAM (Ping-Pong)
@@ -74,9 +74,9 @@ func _ready():
 
 
 func _process(_delta):
-	frame_actual += 1
-	if frame_actual % 10 != 0:
-		return
+	#frame_actual += 1
+	#if frame_actual % 10 != 0:
+		#return
 		
 	ejecutar_compute_shader()
 
