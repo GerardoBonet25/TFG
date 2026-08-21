@@ -171,14 +171,15 @@ Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sy
 
     Lejos de sufrir una caída de fotogramas a medida que el fuego cubre todo el mapa como se hubiese esperado, en \textit{Tabla \ref{tab:carga_termica}} y \textit{Figura \ref{fig:grafico_carga_termica}} se observa un ligero descenso del rendimiento en los primeros instantes, momento en el que el frente de es más activo y la GPU calcula un mayor número de probabilidades, para después volver a subir. \\
     
-    %Revisar a partir de aqui
     
-    A partir del segundo 8, la tasa de fotogramas inicia un ascenso  hasta estabilizarse en 210 FPS. Este incremento exponencial del rendimiento, superior incluso al estado de reposo inicial, valida contundentemente las dos directrices de optimización programadas en la arquitectura visual y física:
+    A partir del segundo 8, la tasa de fotogramas comienza a subir hasta estabilizarse en 210 FPS. Este incremento del rendimiento, mayor que en el estado de reposo inicial, válida las dos reglas de optimización programadas en la arquitectura visual y física:
 
     \begin{enumerate}
-        \item \textbf{Cese computacional (Compute Shader):} Al implementar una cláusula de guarda (\textit{early exit}) que omite las celdas cuyo estado supera el umbral de ignición ($0.5$), la GPU deja de calcular matemáticas complejas en las áreas ya calcinadas del interior de la matriz.
-        \item \textbf{Oclusión volumétrica (Raymarching):} El algoritmo de trazado de rayos detiene su avance iterativo en el momento en el que la densidad del humo acumulado alcanza el valor de $1.0$ (opacidad total). A medida que el fuego cubre la pantalla, los rayos chocan inmediatamente con el humo exterior y se interrumpen prematuramente, ahorrando millones de lecturas internas del volumen tridimensional.
+        \item \textbf{Cese computacional (Compute Shader):} Al implementar una validación que salta las celdas cuyo estado es ya “En llamas” , la GPU deja de calcular las matemáticas complejas de las probabilidades en las áreas ya quemadas del interior de la matriz.
+        \item \textbf{Oclusión volumétrica (Raymarching):} El algoritmo de trazado de rayos detiene su avance en el momento en el que la densidad del humo acumulado alcanza el valor de $1.0$ (opacidad total) ahorrando así millones de lecturas internas cuanto más porcentaje de mapa quemado haya
     \end{enumerate}
+
+
 
 
 
