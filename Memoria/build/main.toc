@@ -1,38 +1,41 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{10}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Trabajos relacionados y antecedentes}{13}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Metodología}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Selección de herramientas: Elección del motor}{14}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Comparativa de motores gráficos}{15}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Arquitectura del Simulador}{16}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Fundamentos tecnológicos: El \textit {Pipeline} de Cómputo}{16}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}El Autómata Celular y el Modelo de Rothermel}{17}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Comunicación y Sincronización CPU-GPU}{21}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Geometría y Datos Topográficos}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Procesamiento SIG, normalización y adecuación de formatos}{24}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Renderizado del terreno: Desplazamiento y normales}{24}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Extracción a memoria principal y discretización volumétrica}{25}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Interacción y Control Dinámico}{25}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Generación de colisiones topográficas}{26}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Navegación espacial y cámara libre}{26}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Sistema de Ignición: Interacción espacial y traducción}{26}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Interfaz de Usuario y Control Meteorológico}{27}{subsection.3.4.4}%
-\contentsline {section}{\numberline {3.5}Desafíos Técnicos y Soluciones}{28}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Sincronización de Espacios de Coordenadas}{28}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Anomalías Geométricas en la Generación del Relieve}{29}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Desincronización de Cámaras en el Contenedor Volumétrico}{29}{subsection.3.5.3}%
-\contentsline {chapter}{\numberline {4}Resultados y Validación}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Entorno de Pruebas y Metodología de Evaluación}{31}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Entorno de Hardware y Software}{31}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Métricas y Metodología de Evaluación}{31}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Validación del Modelo Físico de Rothermel}{32}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Caso de Estudio A: Escenario Base}{32}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Caso de Estudio B: Influencia eólica y deformación elíptica}{33}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Caso de Estudio C: Influencia topográfica y convección}{34}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Conclusión de la Validación Física}{35}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Evaluación de Rendimiento y Escalabilidad}{35}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Impacto del rendimiento a las distintas resoluciones}{35}{section.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.0.1}Experimento 1: Escalabilidad espacial y límite de estrés}{36}{subsubsection.4.3.0.1}%
-\contentsline {subsubsection}{\numberline {4.3.0.2}Experimento 2: Rendimiento sostenido frente a la carga dinámica}{38}{subsubsection.4.3.0.2}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{40}{chapter.5}%
-\contentsline {chapter}{Referencias}{41}{chapter.5}%
+\contentsline {section}{\numberline {1.1}Motivaciones}{14}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{16}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Planificación}{18}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Trabajos relacionados y antecedentes}{19}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Metodología}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Selección de herramientas: Elección del motor}{20}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Comparativa de motores gráficos}{21}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Arquitectura del Simulador}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Fundamentos tecnológicos: El \textit {Pipeline} de Cómputo}{22}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}El Autómata Celular y el Modelo de Rothermel}{23}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Comunicación y Sincronización CPU-GPU}{27}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Geometría y Datos Topográficos}{29}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Procesamiento SIG, normalización y adecuación de formatos}{30}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Renderizado del terreno: Desplazamiento y normales}{30}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Extracción a memoria principal y discretización volumétrica}{31}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Interacción y Control Dinámico}{31}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Generación de colisiones topográficas}{32}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Navegación espacial y cámara libre}{32}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Sistema de Ignición: Interacción espacial y traducción}{32}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Interfaz de Usuario y Control Meteorológico}{33}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Desafíos Técnicos y Soluciones}{34}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Sincronización de Espacios de Coordenadas}{34}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Anomalías Geométricas en la Generación del Relieve}{35}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Desincronización de Cámaras en el Contenedor Volumétrico}{35}{subsection.3.5.3}%
+\contentsline {chapter}{\numberline {4}Resultados y Validación}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Entorno de Pruebas y Metodología de Evaluación}{37}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Entorno de Hardware y Software}{37}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Métricas y Metodología de Evaluación}{37}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Validación del Modelo Físico de Rothermel}{38}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Caso de Estudio A: Escenario Base}{38}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Caso de Estudio B: Influencia eólica y deformación elíptica}{39}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Caso de Estudio C: Influencia topográfica y convección}{40}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Conclusión de la Validación Física}{41}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Evaluación de Rendimiento y Escalabilidad}{41}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Impacto del rendimiento a las distintas resoluciones}{41}{section.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.0.1}Experimento 1: Escalabilidad espacial y límite de estrés}{42}{subsubsection.4.3.0.1}%
+\contentsline {subsubsection}{\numberline {4.3.0.2}Experimento 2: Rendimiento sostenido frente a la carga dinámica}{44}{subsubsection.4.3.0.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{46}{chapter.5}%
+\contentsline {chapter}{Referencias}{47}{chapter.5}%

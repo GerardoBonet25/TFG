@@ -25,7 +25,59 @@ Debido a estos problemas, las dos técnicas podrían ser consideradas para la re
 
 Para el desarrollo de estos y poder aprovechar al máximo la capacidad de procesamiento paralelo de las tarjetas gráficas modernas, la técnica elegida para este simulador es el trazado de rayos volumétrico(\textit{Raymarching}). Este algoritmo lanza rayos virtuales desde la cámara hacia la cuadrícula 3D, avanzando a través del volumen en pequeños pasos, donde en cada uno de ellos evalúa los datos del vóxel y calcula cómo la luz se acumula, se bloquea o se dispersa al atravesarlo.\\
 
-Además de la visualización de los volúmenes, en un simulador hay que añadirle el coste computacional del cálculo de las físicas continuas. Para ello normalmente se requiere resolver complejas ecuaciones para cada voxel que se actualice en sistemas de autómatas celulares. Realizar estos cálculos  en la unidad central de procesamiento (CPU) resultaría prácticamente imposible y rompería el simulador.\\
+Además de la visualización de los volúmenes, en un simulador hay que añadirle el coste computacional del cálculo de las físicas continuas. Para ello normalmente se requiere resolver complejas ecuaciones por cada voxel que se actualice en sistemas de autómatas celulares. Realizar estos cálculos  en la unidad central de procesamiento (CPU) resultaría prácticamente imposible y rompería el simulador.\\
+
+Es a partir de aquí donde coge toda la prioridad la evolución de las Unidades de Procesamiento Gráfico (GPU) las cuales, a parte de  dedicarse a la generación de imágenes, las GPU más modernas permiten la ejecución de programas de propósito general denominados \textit{Compute Shaders}. Estos programas consiguen aprovechar los miles de núcleos de la tarjeta gráfica para así paralelizar cálculos matemáticos masivos, que  permiten resolver toda la lógica de un autómata celular y las físicas implicadas, como en el caso de la propagación de un incendio, en una fracción del tiempo que requeriría una CPU.\\
+
+Bajo este contexto, en el presente trabajo se desarrollará un sistema que combinará el modelado topográfico para construir un entorno navegable donde se aplicará un modelo físico de propagación de incendios usando autómatas celulares mediante un \textit{Compute Shaders} para una mayor eficiencia. Finalmente, la visualización de dicho entorno se llevará a cabo utilizando técnicas de renderizado volumétrico directo (\textit{Raymarching}) en tiempo real.\\
+
+\clearpage
+
+\section{Motivaciones}
+El modelado volumétrico se ha convertido en un pilar fundamental en varios ámbitos científicos ya que permite tener representaciones detalladas del interior de las estructuras. Esto destaca en áreas como la medicina, donde la reconstrucción tridimensional de tomografías y resonancias permite el diagnóstico no invasivo, o en la ingeniería y aerodinámica, donde es imprescindible para analizar el comportamiento de los fluidos. En la actualidad, gracias a la evolución de las GPU y su gran capacidad de paralelización es posible procesar y renderizar estos volúmenes dinámicos en tiempo real abriendo la puerta al desarrollo de simuladores científicos que no necesitan un hardware altamente especializado para su ejecución.\\ 
+
+Uno de los sectores que necesita adoptar este salto tecnológico con mayor urgencia es en el ámbito medioambiental, más concretamente la prevención y gestión de incendios forestales. Se ha podido observar que en los últimos años ha cambiado el clima en la península Ibérica, provocando que cada vez ocurran incendios más frecuentemente con  fuegos mucho más impredecibles, haciendo que cada vez sea más compleja su extinción minimizando las pérdidas ecológicas y humanas.\\  
+
+Para hacer frente a este cambio, resultaría de gran ayuda que los equipos de emergencia tengan a sus disposición herramientas de simulación que ofrezcan predicciones precisas, pero hasta el momento, la simulación de de estos desastres se ha apoyado principalmente en modelos bidimensionales (2D) sobre Sistemas de Información Geográfica (SIG). Si bien, los modelos matemáticos de estos simuladores procesan toda la topografía del terreno y los factores medioambientales para predecir la propagación correctamente, su representación en mapas 2D hace que sea más compleja su comprensión obligando al  operador a interpretar el relieve a través de curvas de nivel o mapas de color.\\ 
+
+La implementación de un entorno visual tridimensional (3D) elimina este problema facilitando a los operativos de emergencias una rápida comprensión del estado actual del incendio. Al renderizar el relieve con su verdadera escala y volumen les proporciona una percepción directa de la orografía identificando así rápidamente futuros  corredores topográficos y puntos críticos para mejorar la toma de decisiones tácticas y planificación de la extinción.\\
+
+\newpage
+
+Por concluyente, la motivación principal de este trabajo es proponer una solución que combine la precisión de modelos matemáticos de propagación, como el estándar de Rothermel, con un entorno gráfico tridimensional que aproveche los avances en tecnología de la GPU. Para lograr esta interacción entre el cálculo de las físicas y la ejecución en tiempo real sin que se vea afectado el rendimiento se hará uso de la técnica de renderizado de volúmen directo( \textit{Raymarching}) junto con \textit{Compute Shaders} para la paralelización de cálculos masivos. El resultado final esperado es un aherramienta donde se junte los modelos tradicionales con una representación espacial interactiva, facilitando así la toma de decisiones estratégicas durante una emergencia.\\ 
+
+\clearpage
+\section{Objetivos}
+El objetivo principal de este proyecto es diseñar e implementar un simulador de incendios forestales en tiempo real mediante la técnica de renderizado de \textit{Raymarching} y autómatas celulares dentro del motor gráfico Godot. El fin es proporcionar una herramienta interactiva que fusione modelos matemáticos precisos de propagación (como el de Rothermel) con técnicas de renderizado avanzado, superando las limitaciones visuales de los sistemas 2D clásicos.\\
+
+Para alcanzar este objetivo, se establecen los siguientes objetivos:
+
+\begin{enumerate}
+    \item \textbf{Investigar y procesar datos geográficos reales para la generación de la topografía 3D.} \\
+   Este objetivo consiste en la obtención y tratamiento de Modelos Digitales de Elevación (MDE), para convertirlos en mapas de alturas (\textit{heightmaps}) que serán usados para generar el relieve tridimensional sobre el que interactuará el modelo del incendio.
+    
+   \item \textbf{Dominar el entorno de Godot 4, GDScript y su lenguaje de \textit{shaders} visuales.} \\
+    Este objetivo se centra en familiarizarse con la arquitectura general del motor y dominar su lenguaje de \textit{scripting} (GDScript) para la gestión de la aplicación, la interfaz y la interacción con el usuario, además de profundizar en el lenguaje de \textit{shaders} propio de Godot para la representación gráfica y la programación del algoritmo de renderizado.
+    
+    \item \textbf{Investigar e integrar \textit{Compute Shaders} para cálculos de propósito general (GPGPU).} \\
+    Este objetivo es crítico para el rendimiento del proyecto,consiste en aprender a desarrollar subprogramas de cálculo puro (\textit{Compute Shaders}) y comprender cómo se  sincroniza el flujo de datos entre la CPU y la GPU dentro del entorno de Godot estableciendo la infraestructura necesaria para el cálculo masivo
+    
+    \item \textbf{Implementar la lógica matemática de propagación mediante autómatas celulares .} \\
+       Una vez establecida la infraestructura GPGPU, este objetivo se centra traducir las reglas físicas del fuego y los algoritmos estocásticos a un sistema de autómatas celulares, donde la lógica de actualización celda a celda se programará dentro del \textit{Compute Shader}, permitiendo procesar el avance del incendio de forma paralela y en tiempo real.\\\\
+
+    \item \textbf{Diseñar e implementar el renderizado volumétrico mediante \textit{Raymarching}.} \\
+    Para poder representar visualmente los datos calculados en el paso anterior es necesario construir un algoritmo de renderizado directo el cual se programará en un \textit{shader} espacial que seguirá la técnica de \textit{Raymarching} para visualizar el humo y el fuego  en función de los valores térmicos que el autómata celular actualiza en tiempo real.
+    
+    \item \textbf{Integrar los sistemas en un entorno interactivo y controlable por el usuario.} \\
+    El objetivo es unificar la topografía, el autómata celular y el algoritmo de \textit{Raymarching} en una única aplicación desarrollando una interfaz interactiva que permita al usuario configurar las variables iniciales de la simulación, como el foco de ignición o los factores ambientales, y observar la simulación en tiempo real.
+    
+    \item \textbf{Evaluar el rendimiento computacional y la estabilidad de la simulación.} \\
+    Se trata de analizar y medir la solución desarrollada sometiendo al simulador  a diferentes escenarios y pruebas de carga con el fin de monitorizar el consumo general de los recursos de hardware y la fluidez del renderizado. De este modo, se pretende demostrar que la solución técnica propuesta es escalable y viable como herramienta interactiva.
+
+\end{enumerate}
 
 
+\clearpage
+
+\section{Planificación}
 
