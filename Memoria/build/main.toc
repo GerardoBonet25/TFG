@@ -44,4 +44,5 @@
 \contentsline {subsubsection}{\numberline {4.3.0.1}Experimento 1: Escalabilidad espacial y límite de estrés}{52}{subsubsection.4.3.0.1}%
 \contentsline {subsubsection}{\numberline {4.3.0.2}Experimento 2: Rendimiento sostenido frente a la carga dinámica}{54}{subsubsection.4.3.0.2}%
 \contentsline {chapter}{\numberline {5}Conclusiones}{56}{chapter.5}%
-\contentsline {chapter}{Referencias}{57}{Item.20}%
+\contentsline {section}{\numberline {5.1}Posibles líneas y mejoras futuras de trabajo}{57}{section.5.1}%
+\contentsline {chapter}{Referencias}{60}{section*.15}%

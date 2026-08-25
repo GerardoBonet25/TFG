@@ -1,0 +1,22 @@
+\chapter*{Anexos}
+En este anexo se detallan las instrucciones necesarias para acceder al código, así como los requisitos técnicos para compilar y ejecutar el simulador gráfico de incendios forestales de forma local.
+
+\section*{Acceso al Código Fuente}
+El proyecto está versionado utilizando el sistema Git y alojado en la plataforma GitHub. El repositorio incluye tanto el código fuente de Godot (GDScript) como los \textit{Shaders} de la GPU para el correcto funcionamiento del Autómata Celular y el \textit{Raymarching}.
+
+\begin{itemize}
+    \item \textbf{Enlace al repositorio:} \url{https://github.com/GerardoBonet25/TFG}
+    \item \textbf{Rama principal:} \texttt{main} (contiene la versión estable documentada en esta memoria).
+\end{itemize}
+En este directorio se encuentran los archivos tanto del simulador principal (SimuladorIncendios) como los archivos de la memoria y un pequeño simulador inicial 2D que realicé para comprender las bases (InicioPropagacion2D).\\
+
+\section*{Requisitos del Sistema}
+Debido al uso de tecnologías de renderizado avanzado y paralelización masiva en GPU, el equipo informático destinado a ejecutar la simulación debe cumplir con los siguientes requisitos mínimos:\\
+
+\begin{itemize}
+    \item \textbf{Sistema Operativo:} Windows 10/11.
+    \item \textbf{Motor Gráfico:} Godot Engine versión 4.2 o superior.
+    \item \textbf{API Gráfica:} Tarjeta gráfica (GPU) dedicada o integrada con soporte completo para \textbf{Vulkan 1.2}. Este requisito es fundamental ya que la API utilizada para despachar los \textit{Compute Shaders} del Autómata Celular no es compatible con versiones antiguas de OpenGL.
+
+\end{itemize}
+

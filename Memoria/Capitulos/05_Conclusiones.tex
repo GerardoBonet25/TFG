@@ -8,4 +8,30 @@ A continuación se detalla el grado en el que se han cumplido los objetivos plan
    
     \item \textbf{Dominar el entorno de Godot 4, GDScript y su lenguaje de \textit{shaders} visuales:} Se ha dominado la arquitectura de nodos del motor, desarrollando scripts robustos en GDScript para orquestar el ciclo de vida de la aplicación, y el lenguaje de  \textit{shaders} imprescindible para la manipulación a bajo nivel del \textit{pipeline} gráfico.
 
+    \item \textbf{Investigar e integrar \textit{Compute Shaders} para cálculos de propósito general (GPGPU):} Ha supuesto una de las mayores complicaciones técnicas del proyecto pero se ha implementado con éxito el uso de la API \texttt{RenderingDevice} de Godot, estableciendo una comunicación segura y sincronizada mediante \textit{buffers} de memoria entre la CPU y la GPU para delegar la carga algorítmica masiva.
+    
+    \item \textbf{Implementar la lógica matemática de propagación mediante autómatas celulares:} El \textit{Compute Shader} evalúa iterativamente el estado de cada celda, aplicando las ecuaciones termodinámicas de Rothermel de manera paralela en cada fotograma, logrando un comportamiento orgánico y físicamente fundamentado.
+    
+    \item \textbf{Diseñar e implementar el renderizado volumétrico mediante \textit{Raymarching}:} Se ha programado un \textit{shader} espacial que ejecuta el algoritmo de \textit{Raymarching}. El cual se encarga de leer los datos térmicos generados por el autómata celular y renderiza el fuego volumétrico en tiempo real.
+    
+    \item \textbf{Integrar los sistemas en un entorno interactivo y controlable por el usuario:} Se ha desarrollado una Interfaz de Usuario (UI) funcional y modular en la cual el usuario puede inyectar focos de ignición mediante el puntero y alterar las variables medioambientales críticas (velocidad y dirección del viento, nivel de humedad) observando la reacción del modelo de forma inmediata.
+    
+    \item \textbf{Evaluar el rendimiento computacional y la estabilidad de la simulación:} Las pruebas de estrés realizadas demuestran la eficiencia del simulador permitiendo mantener tasas de fotogramas (FPS) estables con grandes resoluciones.
+
 \end{enumerate}
+
+\section{Posibles líneas y mejoras futuras de trabajo}
+La arquitectura desarrollada en este proyecto establece unas bases sólidas para realizar  diversas expansiones y optimizaciones técnicas en un futuro. Se proponen las siguientes mejoras:
+
+\begin{itemize}
+   \item \textbf{Implementación y dinámica volumétrica del humo:} Debido a las restricciones temporales en el desarrollo de este Trabajo de Fin de Grado, el modelo visual se ha centrado en el avance directo del frente de llamas. Una mejora prioritaria consistiría en ampliar los \textit{buffers} del \textit{Compute Shader} para emitir densidad de partículas y extender el \textit{Raymarching} para renderizar la dispersión y el auto-sombreado de las columnas de humo, incrementando drásticamente el realismo y el valor táctico de la herramienta.
+
+    \item \textbf{Implementación completa del Método de Monte Carlo:} Aprovechando el rendimiento del \textit{Compute Shader}, se podría adaptar el simulador para ejecutar múltiples instancias del incendio simultáneamente, generando un mapa de un mapa de calor que muestre las probabilidades de que se queme cada voxel del terreno.
+    
+    \item \textbf{Integración de Datos Vectoriales GIS y Tipos de Combustible:} Modificar el sistema para que admita múltiples capas de textura (\textit{Splatmaps}), permitiendo leer la densidad y el tipo de vegetación real (pinar, matorral, pasto) de fuentes satelitales, alterando dinámicamente la variable de Probabilidad Base ($P_0$) en distintas zonas del terreno.
+    
+    \item \textbf{Simulación de focos secundarios (Pavesas):} Incorporar un modelo para calcular el movimiento de pavesas propulsadas por el viento que inicien nuevos focos, con esto se lograría aumentar el realismo haciendo que el fuego pueda llegar a cruzar barreras como ríos o cortafuegos y que no se pare en seco.
+    
+    
+\end{itemize}
+

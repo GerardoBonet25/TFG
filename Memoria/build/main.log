@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  25 AUG 2026 19:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  25 AUG 2026 23:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -770,7 +770,7 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 Package babel Info: Main language set to 'spanish'.
 (Portada.tex
 \centeroffset=\skip79
-<imagenes/logo_ugr.jpg, id=190, 186.6975pt x 55.6479pt>
+<imagenes/logo_ugr.jpg, id=194, 186.6975pt x 55.6479pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
@@ -783,7 +783,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<imagenes/etsiit_logo.png, id=191, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=195, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 32.
@@ -1413,7 +1413,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
 [47
 
 ]
-<imagenes/CasoEstudioA.png, id=616, 811.833pt x 440.847pt>
+<imagenes/CasoEstudioA.png, id=621, 811.833pt x 440.847pt>
 File: imagenes/CasoEstudioA.png Graphic file (type png)
 <use imagenes/CasoEstudioA.png>
 Package pdftex.def Info: imagenes/CasoEstudioA.png  used on input line 44.
@@ -1428,7 +1428,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
-<imagenes/CasoEstudioB.png, id=624, 740.7675pt x 414.348pt>
+<imagenes/CasoEstudioB.png, id=629, 740.7675pt x 414.348pt>
 File: imagenes/CasoEstudioB.png Graphic file (type png)
 <use imagenes/CasoEstudioB.png>
 Package pdftex.def Info: imagenes/CasoEstudioB.png  used on input line 58.
@@ -1448,7 +1448,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-<imagenes/CasoEstudioC.png, id=631, 760.64175pt x 452.892pt>
+<imagenes/CasoEstudioC.png, id=636, 760.64175pt x 452.892pt>
 File: imagenes/CasoEstudioC.png Graphic file (type png)
 <use imagenes/CasoEstudioC.png>
 Package pdftex.def Info: imagenes/CasoEstudioC.png  used on input line 78.
@@ -1459,7 +1459,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) h
                                                   \__shipout_drop_firstpage_...
 l.85     \subsection
                     {Conclusión de la Validación Física} <./imagenes/CasoEstudioC.png>]
-<imagenes/MapaDEM.png, id=637, 778.70924pt x 452.892pt>
+<imagenes/MapaDEM.png, id=642, 778.70924pt x 452.892pt>
 File: imagenes/MapaDEM.png Graphic file (type png)
 <use imagenes/MapaDEM.png>
 Package pdftex.def Info: imagenes/MapaDEM.png  used on input line 90.
@@ -1488,7 +1488,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
-<imagenes/Rendimiento.png, id=643, 693.59125pt x 451.6875pt>
+<imagenes/Rendimiento.png, id=648, 693.59125pt x 451.6875pt>
 File: imagenes/Rendimiento.png Graphic file (type png)
 <use imagenes/Rendimiento.png>
 Package pdftex.def Info: imagenes/Rendimiento.png  used on input line 129.
@@ -1518,7 +1518,7 @@ Overfull \hbox (25.83788pt too wide) in paragraph at lines 150--161
  [][] 
  []
 
-<imagenes/RendimientoProp.png, id=655, 602.25pt x 372.39125pt>
+<imagenes/RendimientoProp.png, id=660, 602.25pt x 372.39125pt>
 File: imagenes/RendimientoProp.png Graphic file (type png)
 <use imagenes/RendimientoProp.png>
 Package pdftex.def Info: imagenes/RendimientoProp.png  used on input line 167.
@@ -1545,13 +1545,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-) (Capitulos/Anexos.tex) [56
+
+Overfull \hbox (11.49292pt too wide) in paragraph at lines 11--12
+[]\OT1/cmr/bx/n/10.95 Investigar e in-te-grar \OT1/cmr/bx/it/10.95 Com-pu-te Sha-ders \OT1/cmr/bx/n/10.95 pa-ra c^^Salcu-los de prop^^Sosi-
+ []
+
+[56
+
+] [57]) (Capitulos/Anexos.tex [58]
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+) [59
 
 ] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 24.
 
-) [57
+) [60
 
 ] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.aux
 LaTeX Info: Redefining \. on input line 11.
@@ -1562,7 +1579,7 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1EFDCE34E1CF6E9AD7D1D6234DD8653E;12335.
+(rerunfilecheck)             Checksum: 964DC945BAA1F04DDF8E66098947AEA1;12635.
  )
 (\end occurred inside a group at level 2)
 
@@ -1570,17 +1587,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 ### simple group (level 1) entered at line 17 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 38130 strings out of 467510
- 874784 string characters out of 5407823
- 1663875 words of memory out of 5000000
- 66482 multiletter control sequences out of 15000+600000
+ 38143 strings out of 467510
+ 874902 string characters out of 5407823
+ 1663878 words of memory out of 5000000
+ 66483 multiletter control sequences out of 15000+600000
  642184 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  114i,12n,132p,1064b,2450s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (58 pages, 1525524 bytes).
+Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (61 pages, 1535346 bytes).
 PDF statistics:
- 821 PDF objects out of 1000 (max. 8388607)
- 242 named destinations out of 1000 (max. 500000)
- 421 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 851 PDF objects out of 1000 (max. 8388607)
+ 254 named destinations out of 1000 (max. 500000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 
