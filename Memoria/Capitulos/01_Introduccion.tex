@@ -79,5 +79,82 @@ Para alcanzar este objetivo, se establecen los siguientes objetivos:
 
 \clearpage
 
-\section{Planificación}
 
+\section{Planificación}
+Este trabajo se ha planificado siguiendo una metodología iterativa e incremental, lo que permite el desarrollo de las diferentes fases de la realización de este proyecto de manera estructurada. A continuación, se justifica la distribución temporal de las actividades, estimando una duración aproximada para cada una de ellas:\\
+\begin{itemize}
+    \item \textbf{Investigación y Estado del Arte (3 semanas):} Antes de comenzar es necesario realizar una investigación sobre los conceptos matemáticos y las tecnologías gráficas relacionadas para comprender las limitaciones de los sistemas actuales y definir la arquitectura a implementar en Godot 4.
+
+    \item \textbf{Creación del modelo volumétrico (3 semanas):} Una vez establecida la base teórica, se comenzará con la primera fase práctica que consiste en el desarrollo del algoritmo de visualización mediante el uso del lenguaje de \textit{shaders} de Godot. El objetivo es generar un sistema capaz de interpretar texturas o matrices 3D para generar una  representación volumétrica realista del fuego y el humo.
+
+    \item \textbf{Implementación lógica mediante autómatas celulares (4 semanas):} Una vez que el sistema sea capaz de renderizar volúmenes y terrenos, se desarrollará el autómata celular encargado de calcular la propagación utilizando \textit{Compute Shaders} para su paralelización en GPU. El punto crítico de esta fase será lograr conectar dinámicamente los datos resultantes de este cálculo con el modelo volumétrico creado en la etapa anterior.
+
+    \item \textbf{Procesamiento de modelos topográficos y de elevación (2 semanas):} Hasta este punto toda la estructura y desarrollo se ha realizado sobre un mapa simple generado para hacer pruebas y es a partir de este momento cuando se procederá a la obtención y tratamiento de Modelos Digitales de Elevación (MDE). En esta fase se lleva a cabo el filtrado de estos datos geográficos y su exportación a mapas de alturas (\textit{heightmaps}) para poder generar el relieve tridimensional.
+
+    \item \textbf{Desarrollo de la interfaz de usuario (2 semanas):} Con los motores físico y gráfico integrados y funcionando en conjunto, se construirá el entorno interactivo utilizando GDScript donde se añadirá una interfaz gráfica que permita al usuario modificar parámetros clave (como los factores ambientales) e interactuar con la simulación en tiempo real.
+
+    \item \textbf{Pruebas de estrés y evaluación de resultados (2 semanas):} Se llevarán a cabo simulaciones en distintos escenarios de carga para evaluar la estabilidad de la herramienta. Durante esta fase se monitorizará el uso de la memoria gráfica, la carga computacional de la GPU y la tasa de fotogramas, realizando si es necesario optimizaciones finales para garantizar la estabilidad del sistema.
+
+    \item \textbf{Redacción de la memoria (4 semanas):} Aunque la documentación del código y la recopilación de referencias se realizará desde el inicio a la vez que el desarrollo del sistema, será en las últimas semanas cuando se llevará a cabo la redacción formal de esta memoria, estructurando la metodología, analizando los resultados obtenidos y elaborando las conclusiones finales del proyecto.
+
+\end{itemize}
+
+\subsection{Diagrama de Gantt}
+\hspace*{-1.2cm}
+\begin{ganttchart}[
+    x unit=0.55cm, 
+    y unit title=0.8cm,
+    y unit chart=0.9cm,
+    vgrid,
+    hgrid,
+    bar/.append style={fill=teal, shift={(0,0.1cm)}},
+    title label font=\small, 
+    bar label font=\scriptsize, 
+    group label font=\footnotesize, 
+    bar height=0.55, 
+    group height=0.3,
+    group left shift=0, 
+    group right shift=0, 
+    bar label node/.append style={align=right, yshift=0.15cm}, 
+    group label node/.append style={draw, thin, align=center, font=\bfseries\small, inner sep=1.4pt} 
+]{1}{20} % Rango total de 20 semanas
+
+% Definir las semanas
+\gantttitle{Semanas}{20} \\
+\gantttitlelist{1,...,20}{1} \\
+
+% 1. Investigación y Estado del Arte (3 semanas)
+  \ganttgroup{\parbox{3.7cm}{Investigación}}{1}{3} \\
+  \ganttbar{\parbox{3.4cm}{Revisión bibliográfica}}{1}{3} \\
+
+% 2. Modelo Volumétrico (3 semanas)
+  \ganttgroup{\parbox{3.7cm}{Modelo Volumétrico}}{4}{6} \\
+  \ganttbar{\parbox{3.4cm}{Godot y uso de \textit{Shaders}}}{4}{5} \\
+  \ganttbar{\parbox{3.4cm}{Algoritmo \textit{Raymarching}}}{5}{6} \\
+
+% 3. Lógica y Autómatas Celulares (4 semanas)
+  \ganttgroup{\parbox{3.7cm}{Lógica y Autómatas}}{7}{10} \\
+  \ganttbar{\parbox{3.4cm}{Autómata celular}}{7}{8} \\
+  \ganttbar{\parbox{3.4cm}{Paralelización (GPU)}}{8}{9} \\
+  \ganttbar{\parbox{3.4cm}{Integración volumétrica}}{9}{10} \\
+
+% 4. Procesamiento Topográfico (2 semanas)
+  \ganttgroup{\parbox{3.7cm}{Procesamiento Topográfico}}{11}{12} \\
+  \ganttbar{\parbox{3.4cm}{Tratamiento de MDE}}{11}{11} \\
+  \ganttbar{\parbox{3.4cm}{Generación de la topografía}}{12}{12} \\
+
+% 5. Interfaz de Usuario (2 semanas)
+  \ganttgroup{\parbox{3.7cm}{Interfaz de Usuario}}{13}{14} \\
+  \ganttbar{\parbox{3.4cm}{Controles interactivos}}{13}{14} \\
+
+% 6. Pruebas y Evaluación (2 semanas)
+  \ganttgroup{\parbox{3.7cm}{Evaluación y Pruebas}}{15}{16} \\
+  \ganttbar{\parbox{3.4cm}{Simulaciones de estrés}}{15}{15} \\
+  \ganttbar{\parbox{3.4cm}{Monitorización y ajuste}}{16}{16} \\
+
+% 7. Redacción de la Memoria (Continua + 4 semanas finales)
+  \ganttgroup{\parbox{3.7cm}{Memoria}}{1}{20} \\
+  \ganttbar{\parbox{3.4cm}{Documentación continua}}{1}{16} \\
+  \ganttbar{\parbox{3.4cm}{Redacción formal}}{17}{20}
+
+\end{ganttchart}

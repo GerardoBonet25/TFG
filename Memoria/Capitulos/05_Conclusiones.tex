@@ -1,1 +1,11 @@
 \chapter{Conclusiones}
+En este Trabajo de Fin de Grado se presenta como objetivo el desarrollo de un simulador interactivo de incendios forestales desarrollado en Godot 4 que unifica el rigor termodinámico científico con la inmersión visual de los motores gráficos. Este objetivo se ha logrado mediante el diseño de una arquitectura de software basada en la computación masivamente paralela (GPGPU) en la que por un lado, se ha implementado la lógica de Autómatas Celulares para calcular la propagación física del fuego mientras que por el otro se ha logrado una representación realista usando algoritmos de Raymarching volumétrico sumados a mapas de elevaciones para la topografía. La sincronización de ambos sistemas ha dado como resultado una herramienta interactiva capaz de simular y visualizar la propagación del fuego con rigor físico y un alto rendimiento computacional.\\
+
+A continuación se detalla el grado en el que se han cumplido los objetivos planteados al inicio de este proyecto:
+
+\begin{enumerate}
+    \item \textbf{Investigar y procesar datos geográficos reales para la generación de la topografía 3D:} Se ha establecido un flujo de trabajo para la obtención de Modelos Digitales de Elevación (como los provistos por el CNIG). Mediante el uso del software de sistemas de información geográfica \textbf{QGIS}, estos datos en bruto han sido procesados, dimensionados y convertidos a mapas de alturas (\textit{heightmaps}) normalizados permitiendo su correcta importación y reconstrucción tridimensional dentro del motor gráfico. 
+   
+    \item \textbf{Dominar el entorno de Godot 4, GDScript y su lenguaje de \textit{shaders} visuales:} Se ha dominado la arquitectura de nodos del motor, desarrollando scripts robustos en GDScript para orquestar el ciclo de vida de la aplicación, y el lenguaje de  \textit{shaders} imprescindible para la manipulación a bajo nivel del \textit{pipeline} gráfico.
+
+\end{enumerate}
