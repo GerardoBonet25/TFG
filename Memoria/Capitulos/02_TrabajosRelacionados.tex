@@ -8,13 +8,24 @@
     Durante las primeras décadas la representación de la estructura 3D de los objetos se llevaba a cabo mediante vértices, que son puntos en el espacio definidos por coordenadas cartesianas (x, y, z) y aristas que los unían. La unión de 3 de estos vértices forma un triángulo, lo que se conoce como cara, que es la unidad fundamental con la que está constituida una malla poligonal (\textit{Boundary Representation} o B-Rep) debido a su eficiencia para la tecnología de la época.\\
 
     Una vez construida la malla se requiere de un proceso para su visualización conocido como rasterización que consiste en aplicar cálculos espaciales para adaptar los objetos 3D a la perspectiva de la cámara y proyectarlos de forma plana sobre las coordenadas de la pantalla. Una vez que los triángulos están proyectados en el plano 2D el sistema evalúa matemáticamente el área de los triángulos proyectados para identificar qué píxeles concretos quedan cubiertos por ellos. Finalmente, para los píxeles de cada triángulo se le aplica la interacción lumínica siguiendo modelos como el sombreado de Phong o Gouraud,  que calculan la interacción de la luz estimando la reflexión difusa y especular basándose en la normal de la malla. \\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{imagenes/Rasterización.png}
+        \caption{Proceso de Rasterización}
+        \label{fig:Rasterizacion}
+    \end{figure}
 
     Además de la rasterización otra de las técnica más avanzada era el \textbf{Trazado de Rayos (\textit{Ray Tracing})} que simula el comportamiento de la luz lanzando rayos virtuales desde la cámara a través de cada píxel de la pantalla, buscando la intersección más cercana contra los triángulos del modelo que se encontraba en escena. La principal ventaja de este método frente a la rasterización es la forma en la que hace el cálculo lumínico ya que en lugar de proyectar la geometría en un plano bidimensional para luego aplicar una estimación de la luz, el trazado de rayos realiza una simulación física y espacial directa. Al calcular analíticamente el recorrido exacto de los rayos en el espacio tridimensional, esta técnica logra representar lo fenómenos como reflejos y sombras de una forma más perfecta y realista que no se puede conseguir mediante las aproximaciones que se realizan en la rasterización.\\
     
     Sin embargo, la evolución de sectores como el diseño asistido por ordenador (CAD) y los efectos visuales (VFX) hizo que se fuesen demandando cada vez modelos con formas más orgánicas y realistas que prácticamente no se podían representar con vértices ya que requerían una cantidad enorme que saturaba la limitada capacidad de memoria del hardware. Esta limitación hizo que se comenzaran a utilizar modelos analíticos continuos, consolidando la adopción de los B-Splines Racionales No Uniformes (NURBS).\\
 
     A diferencia de los triángulos, que representan la geometría con una aproximación con múltiples caras, los NURBS permiten curvar y adaptar la geometría con una alta precisión mediante la manipulación de vértices de control externos y funciones base racionales\\
-
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{imagenes/SuperficieNURBS.png}
+        \caption{Una superficie NURBS y sus puntos de control}
+        \label{fig:burbs}
+    \end{figure}
     Pese a esta nueva implementación, tanto las mallas triangulares como las NURBS siguen presentando una gran limitación, solo modelan la superficie exterior, lo que no presenta inconveniente para modelos sólidos y opacos pero sería inviable para intentar representar fenómenos sin fronteras definidas, como el fuego o el humo.\\
 
     Los primeros intentos de simular dichos fenomenos se realizaron superponiendo capas de polígonos semitransparentes (\textit{alpha-blending}) pero esto fracasó debido a que generaban errores visuales al calcular qué capa estaba delante de otra (\textit{depth-sorting}) y no lograban simular cómo la luz iluminaba el interior del fluido. Para solucionar este problema, pioneros como James Kajiya y Brian Von Herzen demostraron en 1984, con su trabajo fundacional \textit{Ray Tracing Volume Densities}, que era necesario dejar de modelar solo la superficie exterior de los elementos y pasar a un enfoque de modelado volumétrico. Consolidado teóricamente posteriormente por Nelson Max en 1995, el cual transformó conceptualmente el espacio de un simple contenedor pasivo a una matriz tridimensional activa, capaz de almacenar datos continuos de densidad y temperatura en cada punto. \\
@@ -51,6 +62,12 @@
     Por una parte tenemos el renderizado de volúmenes indirecto (IVR) que intentan extraer una malla poligonal a partir de los datos espaciales, destacando el algoritmo de \textit{Marching Cubes}.  El funcionamiento de de este algoritmo se basa en analizar el volumen dividiéndolo en cubos lógicos formados por ocho vóxeles vecinos comparando para cada cubo el valor escalar de sus ocho vértices ($v_1, v_2, ..., v_8$) frente a un umbral o iso-valor predefinido ($I$). \\
 
     Si el valor del vértice comparado es mayor o igual al umbral ($v_i \ge I$), se clasifica como dentro de la superficie (1) mientras que si es menor queda fuera (0), generando así con los 8 vértices una combinación de ceros y unos que se consulta en una tabla precalculada (\textit{look-up table}) en la que se indica exactamente qué configuración de triángulos debe dibujarse dentro de ese cubo.\\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{imagenes/MarchingCubesCases.png}
+        \caption{Posibles casos de MarchingCubes}
+        \label{fig:MarchingCubesCases}
+    \end{figure}
 
     Sin embargo, esta técnica presenta dos limitaciones críticas. 
     \begin{itemize}
@@ -79,7 +96,12 @@
 
     Para lograr esta movilidad en tiempo real, se tuvo que trasladar la carga computacional a la tarjeta gráfica debido al alto número de cálculos y actualizaciones que se necesitan, mapeando la cuadrícula espacial del renderizado sobre texturas tridimensionales alojadas en la memoria de vídeo (VRAM).\\
     %\textit{GPU Gems 3} (NVIDIA, 2007)
- 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{imagenes/RenderDVR.png}
+        \caption{Descripción conceptual del trazado de rayos}
+        \label{fig:RenderDVR}
+    \end{figure}
     Aprovechando la arquitectura de la GPU, en lugar de calcular trayectorias de partículas individuales, se utiliza programas  con una alta capacidad de paralelizar cálculos, como los \textit{Compute} o \textit{Fragment Shaders}, y así evaluar simultáneamente millones de celdas estáticas. Dado que la GPU no permite leer y escribir sobre el mismo bloque de memoria de forma segura al mismo tiempo se mantener dos texturas 3D idénticas donde en cada iteración el \textit{shader} lee los datos de una y escribe el resultado en la segunda, cambiando los roles en el siguiente ciclo. Esta técnica es conocida como \textbf{\textit{Ping-Ponging}}.\\
 
     Una vez que la infraestructura de memoria está lista para la actualización dinámica y paralela, se necesitaba definir un marco matemático que gobernase su evolución temporal. Para ello se recurre a la investigación operativa a través de los \textbf{Autómatas Celulares}, los cuales se adaptan perfectamente al funcionamiento del \textit{Raymarching} y permiten evaluar cada celda espacial de forma iterativa mediante reglas de transición basadas en su situación actual y en las condiciones de sus vóxeles adyacentes. \\
@@ -170,7 +192,12 @@
         \end{itemize}
 
         No obstante, aunque estos sistemas mejoraron la velocidad de cálculo, la visualización seguía estando limitada en gran medida a entornos bidimensionales o representaciones topográficas esquemáticas. \\
-    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{imagenes/MapaCalorIncendio.png}
+            \caption{Ejemplo de mapa de calor 2D de un incendio}
+            \label{fig:MapaCalor}
+        \end{figure}
     A pesar de los grandes avances tanto en el renderizado 3D como en el cálculo de las probabilidades de incendios  todavía nos encontramos con una gran desconexión entre ellos. Por un lado, los simuladores forestales científicos, nutridos con rigor termodinámico, carecen de representaciones volumétricas inmersivas que dificultan la comprensión del volumen y la orografía real, mientras que por el otro ,la industria gráfica y los motores de videojuegos disponen de una avanzada tecnología de renderizado volumétrico en tiempo real pero que  pero generan sus fluidos alimentando las ecuaciones ópticas mediante algoritmos de ruido procedimental.\\
 
     Este proyecto propone fusionar ambos paradigmas, desarrollando un simulador interactivo en el motor Godot 4 que delegue la lógica matemática de propagación basada en Autómatas Celulares a la GPU mediante el uso de \textit{Compute Shaders}. Además de usar Modelos Digitales de Elevación reales (\textit{Heightmaps}) como entorno físico y \textit{Raymarching} como técnica de renderización volumétrica, consiguiendo así una herramienta con un rigor matemático de la prevención de incendios y fidelidad visual.\\

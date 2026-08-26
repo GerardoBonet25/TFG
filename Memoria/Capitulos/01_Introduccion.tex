@@ -9,6 +9,12 @@ La informática gráfica tiene una gran variedad de aplicaciones que abarcan pr�
 En este último ámbito, la integración de Sistemas de Información Geográfica (SIG) permite procesar datos reales para generar una topografía avanzada y realista. Dichos datos se consiguen principalmente de nubes de puntos LiDAR (Light Detection and Ranging), que son conjuntos masivos de coordenadas que se han obtenido al mapear la superficie terrestre con alta precisión. A partir del filtrado de estos puntos se pueden obtener Modelos Digitales de Elevación (MDE) que son matrices bidimensionales donde cada píxel almacena el valor exacto de la altitud del terreno, pudiendo crear con ellos mapas de alturas (heightmaps). Estas representaciones son vitales para el modelado de simulaciones complejas de flujos de fluidos, meteorología o la propagación de desastres naturales ya que proporcionan el relieve tridimensional exacto sobre el que interactúan los modelos físicos.\\
 
 Para llevar a cabo estas representaciones, tradicionalmente se ha optado por el modelado mediante mallas, que consisten en una estructura  formada por vértices colocados en el espacio y que se unen mediante aristas creando polígonos (generalmente triángulos) que acaban dando forma a un modelo el cual está vacío en su interior. Posteriormente la renderización de estas mallas se realiza mediante la rasterización, que es el proceso algorítmico que proyecta estos triángulos tridimensionales sobre un plano bidimensional, pudiendose representar así en los píxeles de una pantalla.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/MallaConjo.png}
+    \caption{Ejemplo de una malla de triángulos}
+    \label{fig:malla_conejo}
+\end{figure}
 
 Este enfoque es muy eficiente para representar elementos sólidos con limites bien definidos, como el relieve de una montaña o un edificio pero cuando se trata de modelar fenómenos amorfos y caóticos como el fuego las mallas poligonales no son funcionales ya que estos elementos no tienen una superficie sólida y estática. Para solucionar esto, se decide usar el modelado volumétrico mediante vóxeles, que utiliza una estructura tridimensional de celdas para representar no solo la frontera, sino el interior de un modelo, donde cada vóxel almacena propiedades físicas continuas, como la densidad, la temperatura o la concentración de combustible.\\
 
@@ -25,10 +31,22 @@ Debido a estos problemas, las dos técnicas podrían ser consideradas para la re
 
 Para el desarrollo de estos y poder aprovechar al máximo la capacidad de procesamiento paralelo de las tarjetas gráficas modernas, la técnica elegida para este simulador es el trazado de rayos volumétrico(\textit{Raymarching}). Este algoritmo lanza rayos virtuales desde la cámara hacia la cuadrícula 3D, avanzando a través del volumen en pequeños pasos, donde en cada uno de ellos evalúa los datos del vóxel y calcula cómo la luz se acumula, se bloquea o se dispersa al atravesarlo.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/RayMarching.png}
+    \caption{Proceso de Raymarching}
+    \label{fig:Raynarching_simple}
+\end{figure}
+
 Además de la visualización de los volúmenes, en un simulador hay que añadirle el coste computacional del cálculo de las físicas continuas. Para ello normalmente se requiere resolver complejas ecuaciones por cada voxel que se actualice en sistemas de autómatas celulares. Realizar estos cálculos  en la unidad central de procesamiento (CPU) resultaría prácticamente imposible y rompería el simulador.\\
 
 Es a partir de aquí donde coge toda la prioridad la evolución de las Unidades de Procesamiento Gráfico (GPU) las cuales, a parte de  dedicarse a la generación de imágenes, las GPU más modernas permiten la ejecución de programas de propósito general denominados \textit{Compute Shaders}. Estos programas consiguen aprovechar los miles de núcleos de la tarjeta gráfica para así paralelizar cálculos matemáticos masivos, que  permiten resolver toda la lógica de un autómata celular y las físicas implicadas, como en el caso de la propagación de un incendio, en una fracción del tiempo que requeriría una CPU.\\
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/VolumenAgua.png}
+    \caption{Simulación de un fluido en tiempo real}
+    \label{fig:VolumenAgua}
+\end{figure}
 Bajo este contexto, en el presente trabajo se desarrollará un sistema que combinará el modelado topográfico para construir un entorno navegable donde se aplicará un modelo físico de propagación de incendios usando autómatas celulares mediante un \textit{Compute Shaders} para una mayor eficiencia. Finalmente, la visualización de dicho entorno se llevará a cabo utilizando técnicas de renderizado volumétrico directo (\textit{Raymarching}) en tiempo real.\\
 
 \clearpage
@@ -54,7 +72,7 @@ Para alcanzar este objetivo, se establecen los siguientes objetivos:
 
 \begin{enumerate}
     \item \textbf{Investigar y procesar datos geográficos reales para la generación de la topografía 3D.} \\
-   Este objetivo consiste en la obtención y tratamiento de Modelos Digitales de Elevación (MDE), para convertirlos en mapas de alturas (\textit{heightmaps}) que serán usados para generar el relieve tridimensional sobre el que interactuará el modelo del incendio.
+    Este objetivo consiste en la obtención y tratamiento de Modelos Digitales de Elevación (MDE), para convertirlos en mapas de alturas (\textit{heightmaps}) que serán usados para generar el relieve tridimensional sobre el que interactuará el modelo del incendio.
     
    \item \textbf{Dominar el entorno de Godot 4, GDScript y su lenguaje de \textit{shaders} visuales.} \\
     Este objetivo se centra en familiarizarse con la arquitectura general del motor y dominar su lenguaje de \textit{scripting} (GDScript) para la gestión de la aplicación, la interfaz y la interacción con el usuario, además de profundizar en el lenguaje de \textit{shaders} propio de Godot para la representación gráfica y la programación del algoritmo de renderizado.

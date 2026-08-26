@@ -11,7 +11,7 @@ extends Node
 @export var label_VelViento: Label
 
 
-const TAMANO_GRID = Vector3i(1024, 256, 1024)
+const TAMANO_GRID = Vector3i(256, 80, 256)
 const TAMANO_WORKGROUP = Vector3i(8,8,8)
 
 
@@ -74,9 +74,9 @@ func _ready():
 
 
 func _process(_delta):
-	#frame_actual += 1
-	#if frame_actual % 10 != 0:
-		#return
+	frame_actual += 1
+	if frame_actual % 10 != 0:
+		return
 		
 	ejecutar_compute_shader()
 
@@ -148,7 +148,7 @@ func crear_memoria_3d_vacia() -> RID:
 	formato.format = RenderingDevice.DATA_FORMAT_R8_UNORM 
 	formato.usage_bits = RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT
 	
-	# NUEVO: Llenamos el buffer de ceros (apagado) antes de mandarlo a VRAM
+	# Llenamos el buffer de ceros (apagado) antes de mandarlo a VRAM
 	var total_bytes = TAMANO_GRID.x * TAMANO_GRID.y * TAMANO_GRID.z
 	var array_vacio = PackedByteArray()
 	array_vacio.resize(total_bytes)
@@ -209,7 +209,6 @@ func crear_puente_visual():
 		push_error("El Cubo Frontal no esta asignado")
 
 func actualizar_puente_visual():
-	# Apuntamos el visor siempre al buffer más reciente
 	if buffer_a_es_lectura:
 		textura_visual.texture_rd_rid = textura_b
 	else:
@@ -218,7 +217,7 @@ func actualizar_puente_visual():
 func agregar_fuego_en(cx: int, cy: int, cz: int):
 	var indice = (cz * TAMANO_GRID.x * TAMANO_GRID.y) + (cy * TAMANO_GRID.x) + cx
 	
-	# Averiguamos qué textura está leyendo la gráfica en este frame
+	# Obtenemos qué textura está leyendo la gráfica en este frame
 	var textura_activa = textura_a if buffer_a_es_lectura else textura_b
 	
 	# Descargamos la memoria actual de la gráfica al procesador
@@ -235,7 +234,7 @@ func cargar_mapa_combustibles(array_datos: PackedByteArray):
 	print("Mapa de combustibles inyectado en la GPU correctamente.")
 
 
-# --- NUEVO: FUNCIONES DE ACTUALIZACIÓN ---
+# --- FUNCIONES DE ACTUALIZACIÓN ---
 func _on_vel_viento_cambiado(valor: float):
 	label_VelViento.text = "Vel. Viento: " + str(valor) + " km/h"
 

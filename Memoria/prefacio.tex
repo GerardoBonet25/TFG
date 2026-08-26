@@ -1,7 +1,5 @@
 \section*{}
 
-
-\cleardoublepage
 \thispagestyle{empty}
 
 \begin{center}
@@ -15,9 +13,15 @@
 %\vspace{0.7cm}
 
 \noindent{\textbf{Palabras clave:}
+Incendios forestales, Godot 4, Autómatas Celulares, Raymarching, Renderizado Volumétrico, Compute Shaders, GPGPU, Modelo Volumétrico, Shaders}
 
 \vspace{0.7cm}
 \noindent{\textbf{Resumen}}\\
+La simulación precisa e inmersiva de incendios forestales en tiempo real supone un desafío crítico para la prevención y la toma de decisiones operativas durante las emergencias medioambientales. Sin embargo, sigue habiendo una gran brecha tecnológica entre los simuladores de alto rigor científico, que carecen de representaciones tridimensionales inmersivas, y las aproximaciones desde los motores gráficos, que tienen una gran fidelidad visual pero sin seguir un rigor termodinámico.\\
+
+Para resolver esta brecha, en este Trabajo de Fin de Grado se presenta un simulador de incendios interactivo construido en el motor Godot 4 que unifica la precisión de los modelos de propagación científicos con el renderizado visual. La solución propuesta delega el cálculo de la propagación, basado en las ecuaciones de Rothermel, a la GPU aprovechando su paralelismo mediante Autómatas Celulares y Compute Shaders. A su vez, el sistema visualiza el volumen del fuego calculado por la GPU sobre Modelos Digitales de Elevación (DEM) reales utilizando un algoritmo de Raymarching interactivo, uniendo así los dos ámbitos. \\
+
+Los experimentos de evaluación demuestran que el sistema replica el comportamiento físico del fuego ante las distintas variaciones topográficas y medioambientales, logrando procesar matrices volumétricas masivas manteniendo un rendimiento superior a los 150 fotogramas por segundo. Este enfoque integrado representa un avance tecnológico muy prometedor para la creación de herramientas portátiles de apoyo a la toma de decisiones en la gestión de incendios forestales.\\
 
 
 \cleardoublepage
@@ -34,10 +38,15 @@
 
 %\vspace{0.7cm}
 \noindent{\textbf{Keywords:}
+Wildfire, Godot 4, Cellular Automata, Raymarching, Volumetric Rendering, Compute Shaders, GPGPU, Volumetric Model, Shaders}
 
 \vspace{0.7cm}
 \noindent{\textbf{Abstract}}\\
+Accurate and immersive real-time simulation of wildfires poses a critical challenge for prevention and operational decision-making during environmental emergencies. However, there remains a significant technological gap between simulators with high scientific rigor, which lack immersive three-dimensional representations, and graphics engine approaches, which offer high visual fidelity but lack thermodynamic rigor.\\
 
+To bridge this gap, this Bachelor's Degree Final Project presents an interactive fire simulator built in the Godot 4 engine that unifies the precision of scientific propagation models with visual rendering. The proposed solution delegates the calculation of fire spread, based on Rothermel's equations, to the GPU, leveraging its parallelism through Cellular Automata and Compute Shaders. Simultaneously, the system visualizes the fire volume calculated by the GPU over real Digital Elevation Models (DEM) using an interactive Raymarching algorithm, thus uniting both fields.\\
+
+Evaluation experiments demonstrate that the system replicates the physical behavior of fire under various topographical and environmental variations, successfully processing massive volumetric matrices while maintaining a performance of over 150 frames per second. This integrated approach represents a highly promising technological advancement for the creation of portable decision-support tools in forest fire management.\\
 
 \cleardoublepage
 
@@ -72,7 +81,12 @@ Granada, \myTime
 
 \vspace{1cm}
 
-%%Agredecimientos aquí
+En primer lugar, me gustaría agradecer a mi tutor, Germán, por darme la oportunidad y por su constante implicación y paciencia durante todo el desarrollo de este Trabajo de Fin de Grado. Gracias a su orientación y sus valiosos consejos que me han guiado y ayudado a afrontar los distintos retos del proyecto con gran seguridad.\\
 
+También quiero dar las gracias a todos esos amigos que me han acompañado en los años de estudio en ETSIIT, con quienes he compartido interminables horas de clases y de estudio pero también de risas y buenos recuerdos. Su compañía me ha hecho mucho más llevadero el día a día de la carrera, convirtiendo esta etapa en una experiencia inolvidable.\\
+
+Por último, el agradecimiento más profundo es para mi familia, en especial a mis padres, por el apoyo incondicional en el día a día, dándome la confianza que necesitaba para seguir adelante y poder llegar hasta este punto. \\
+
+A todos vosotros, gracias por formar parte de este camino.
 
 \cleardoublepage

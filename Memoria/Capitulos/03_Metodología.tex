@@ -79,7 +79,12 @@ Para tomar una decisón se han comparado los tres motores de desarrollo mas usad
         El desarrollo de esta técnica requiere aislar el volumen de simulación dentro de une (\textit{bounding box}), es decir dentro de la malla de un cubo. Para determinar la trayectoria exacta que debe recorrer cada rayo a través del interior de este cubo, se aplica una estrategia de renderizado de doble pase la cual consiste en hacer dos lecturas, una primera esencial que calcula la posición de las caras traseras del volumen y una segunda que calcula las delanteras para poder obtener así la dirección y tamaño del rayo del \textit{Raymarching}\\
 
         Antes de comenzar a explicar todo el funcionamiento del contenedor volumétrico y la técnica del doble pase en profundidad es necesario comprender el concepto del \textit{Frame Buffer Object} (FBO).  Normalmente la GPU calcula la geometría y los shader y lo vuelca en un buffer que posteriormente se muestra por pantalla, pero al usar un FBO permite que dichos datos pasen a guardarse en la VRAM sin llegar a mostrarse por pantalla. Esto en Godot se consigue con el nodo \texttt{SubViewport} que actúa como un entorno de renderizado aislado que almacena su resultado en una \texttt{ViewportTexture} que se puede usar posteriormente para la técnica del doble pase.\\ 
-
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{imagenes/CarasTraseras.png}
+            \caption{Vista de las caras traseras obtenidas por el FBO}
+            \label{fig:CarasTraseras}
+        \end{figure}
         El flujo técnico de este contenedor volumétrico opera de la siguiente manera:
 
         \begin{enumerate}
@@ -99,6 +104,12 @@ Para tomar una decisón se han comparado los tres motores de desarrollo mas usad
         El espacio lógico interior del simulador se divide en una matriz tridimensional que su resolución depende de la lectura directa de Modelos Digitales de Elevaciones (DEM) y sus correspondientes mapas de vegetación. Para cada posición de esta matriz se guarda su estado, cuando se genera el mapa, antes de iniciarse el incendio, puede encontrarse en aire, subsuelo, matorral, árbol, cada uno con diferentes propiedades para la propagación y una vez que se inicia el incendio dicho estado puede actualizarse a Fuego.\\
         
         La evolución del incendio se decide evaluando los estados de las celdas vecinas y los factores ambientales. Para garantizar una propagación fluida, el algoritmo evalúa una vecindad tridimensional de Moore la cual consiste en iterar un rango matricial de 3x3x3 alrededor de la celda de origen (descartando la posición central), y evaluando el estado de las 26 celdas adyacentes para calcular el riesgo total de ignición.
+         \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imagenes/VecindadMoore.png}
+            \caption{Modelo de la vecindad de Moore alrededor de la celda origen}
+            \label{fig:Moore}
+        \end{figure}
 
         \subsubsection*{Integración del modelo físico de propagación}
 
@@ -259,6 +270,12 @@ Para tomar una decisón se han comparado los tres motores de desarrollo mas usad
 
         Un problema generado por alterar los vértices de forma dinámica es que los vectores normales originales del plano dejan de ser válidos, lo que provoca que no se calcule correctamente las sombras y la iluminación. Para solucionarlo, el \textit{shader} recalcula la inclinación real del terreno leyendo la altitud de los cuatro píxeles vecinos y construyendo dos vectores direccionales (el vector tangente y el vector binormal) cuya diferencia angular conforma la pendiente. \\
         
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imagenes/MapaElevaciones.png}
+            \caption{Mapa generado a partir de un Modelo Digital de Elevaciones}
+            \label{fig:MapaElevaciones}
+        \end{figure}
 
         Finalmente, el \textit{shader} le asigna el color leyendo el mapa satelital de vegetación y ajustando los parámetros físicos del material (\texttt{ROUGHNESS} y \texttt{SPECULAR}) para simular la reflexión lumínica parecida a la de la realidad.
 
@@ -324,6 +341,12 @@ Para que el simulador sea accesible y permita al usuario visualizar la escena de
     En un entorno real durante un incendio los factores ambientales no son estáticos sino que cambian a lo largo del tiempo que dura el incendio. En el simulador se ha logrado esto mediante una  Interfaz de Usuario (UI) superpuesta al visor volumétrico.\\
 
     Dicha interfaz tiene varios \textit{sliders} representando la velocidad del viento, dirección del viento (en grados) y el índice de humedad. Estos \textit{sliders} están vinculados mediante señales al \textit{script} principal del controlador por lo que cualquier modificación realizada por el usuario es capturada instantáneamente.\\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{imagenes/InterfazUI.png}
+        \caption{Interfaz de Usuario del simulador}
+        \label{fig:UI}
+    \end{figure}
 
     Dado que estos parámetros se envían a la tarjeta gráfica empaquetados como \textit{Push Constants} en cada ciclo de iteración, el cambio en las condiciones del entorno tiene un efecto inmediato en el \textit{Compute Shader}, lo que permite observar cómo las llamas se adaptan a las nuevas variables sin necesidad de pausar, recalcular o reiniciar la simulación.\\
 

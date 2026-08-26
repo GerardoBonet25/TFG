@@ -3,17 +3,14 @@ extends MeshInstance3D
 @export var controlador: Node
 @export var cubo_frontal: MeshInstance3D
 
-# --- MEDIDAS REALES DE TU TERRENO EN GODOT ---
-# Sustituye estos valores por el "Size" exacto que le pusiste a tu PlaneMesh
 @export var tamano_plano_x: float = 1598.0
 @export var tamano_plano_z: float = 1393.0
 
-# --- VARIABLES PARA EL AUTÓMATA ---
 var voxel_grid: PackedInt32Array
 
 # Diccionario de estados del autómata celular
 const ESTADO_AIRE = 0
-const ESTADO_SUBSUELO = 1 # Roca / Camino (Rosa) / Terreno (Verde) - ¡NO ARDE!
+const ESTADO_SUBSUELO = 1 # Roca / Camino (Rosa) / Terreno (Verde) - NO ARDE
 const ESTADO_MATORRAL = 2 # Vegetación Baja (Rojo)
 const ESTADO_ARBOL = 3    # Vegetación Alta (Azul)
 const ESTADO_FUEGO = 99   # Fuego activo
@@ -21,10 +18,9 @@ const ESTADO_FUEGO = 99   # Fuego activo
 var imagen_elevacion: Image
 var imagen_vegetacion: Image
 
-var resolucion_matriz = 1024
-var resolucion_y = 256 # Altura de la matriz volumétrica
+var resolucion_matriz = 256
+var resolucion_y = 80 # Altura de la matriz volumétrica
 
-# Ajustado al valor de tu nuevo shader (Diferencia entre Min y Max del DEM)
 var escala_altura = 140.648 
 
 func _ready():
@@ -90,8 +86,6 @@ func _generar_matriz_3d():
 					voxel_grid[indice_1d] = ESTADO_SUBSUELO
 				elif y >= y_superficie and y <= y_superficie + 4:
 					voxel_grid[indice_1d] = estado_superficie
-
-	print("¡Matriz 3D lista! Total de celdas inicializadas: ", voxel_grid.size())
 
 
 func _obtener_indice_1d(x: int, y: int, z: int) -> int:
@@ -166,7 +160,7 @@ func _encender_fuego_en(x: int, z: int):
 				
 				if controlador:
 					controlador.agregar_fuego_en(x, y, z)
-					print("🔥 ¡Fuego! -> X: ", x, " Y: ", y, " Z: ", z)
+					print("Fuego en -> X: ", x, " Y: ", y, " Z: ", z)
 			elif estado_actual == ESTADO_SUBSUELO:
 				print("Has hecho clic en TIERRA/CAMINO. No arde.")
 			
@@ -174,7 +168,7 @@ func _encender_fuego_en(x: int, z: int):
 
 
 func _generar_colision_terreno():
-	print("Generando colisión física a escala real...")
+	print("Generando colisión de terreno...")
 	
 	var shape = HeightMapShape3D.new()
 	shape.map_width = resolucion_matriz
@@ -205,4 +199,3 @@ func _generar_colision_terreno():
 	cuerpo_estatico.scale = Vector3(factor_escala_x, 1.0, factor_escala_z)
 	
 	add_child(cuerpo_estatico)
-	print("¡Colisión generada! Tamaño físico: ", tamano_plano_x, " x ", tamano_plano_z)

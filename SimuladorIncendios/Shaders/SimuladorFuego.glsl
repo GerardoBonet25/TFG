@@ -47,11 +47,11 @@ void main() {
 	// Asignamos distintos pesos segun el valor de la textura.
 	float propension_combustible = 1.0;
 	
-	// Si el valor tiende a blanco puro (ej: Arbol), es mas grueso y le cuesta mas prender.
+	// Si el valor tiende a blanco puro (Arbol), es mas grueso y le cuesta mas prender.
 	if (es_combustible > 0.7) { 
 		propension_combustible = 0.4; 
 	} 
-	// Si el valor es intermedio (ej: Matorral), arde de forma extremadamente volatil.
+	// Si el valor es intermedio ( Matorral), arde de forma volatil.
 	else if (es_combustible > 0.2) { 
 		propension_combustible = 1.5; 
 	}
@@ -98,7 +98,7 @@ void main() {
 						}
 
 
-						// --- FISICAS DE PENDIENTE (TOPOGRAFIA) ---
+						// --- FISICAS DE PENDIENTE  ---
 						float factor_pendiente = 1.0;
 						// Si y == -1, el fuego viene del vecino de ABAJO. El calor sube, asi que avanza muy rapido.
 						if (y == -1) {
@@ -109,7 +109,6 @@ void main() {
 							factor_pendiente = 0.00000000001; 
 						}
 
-						// --- 4. CALCULO FINAL  ---
 						float riesgo_base = 0.003; 
 						
 						float riesgo_vecino = riesgo_base * factor_viento * factor_pendiente * factor_humedad * propension_combustible;

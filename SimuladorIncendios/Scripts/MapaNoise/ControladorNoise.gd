@@ -74,9 +74,9 @@ func _ready():
 
 
 func _process(_delta):
-	#frame_actual += 1
-	#if frame_actual % 10 != 0:
-		#return
+	frame_actual += 1
+	if frame_actual % 10 != 0:
+		return
 		
 	ejecutar_compute_shader()
 
@@ -209,7 +209,6 @@ func crear_puente_visual():
 		push_error("El Cubo Frontal no esta asignado")
 
 func actualizar_puente_visual():
-	# Apuntamos el visor siempre al buffer más reciente
 	if buffer_a_es_lectura:
 		textura_visual.texture_rd_rid = textura_b
 	else:
@@ -218,7 +217,7 @@ func actualizar_puente_visual():
 func agregar_fuego_en(cx: int, cy: int, cz: int):
 	var indice = (cz * TAMANO_GRID.x * TAMANO_GRID.y) + (cy * TAMANO_GRID.x) + cx
 	
-	# Averiguamos qué textura está leyendo la gráfica en este frame
+	# Obtenemos qué textura está leyendo la gráfica en este frame
 	var textura_activa = textura_a if buffer_a_es_lectura else textura_b
 	
 	# Descargamos la memoria actual de la gráfica al procesador
@@ -232,10 +231,10 @@ func agregar_fuego_en(cx: int, cy: int, cz: int):
 
 func cargar_mapa_combustibles(array_datos: PackedByteArray):
 	rd.texture_update(textura_combustibles, 0, array_datos)
-	print("🌳 Mapa de combustibles inyectado en la GPU correctamente.")
+	print("Mapa de combustibles inyectado en la GPU correctamente.")
 
 
-# --- NUEVO: FUNCIONES DE ACTUALIZACIÓN ---
+# ---  FUNCIONES DE ACTUALIZACIÓN ---
 func _on_vel_viento_cambiado(valor: float):
 	label_VelViento.text = "Vel. Viento: " + str(valor) + " km/h"
 

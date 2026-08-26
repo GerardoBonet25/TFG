@@ -11,13 +11,13 @@ func _ready() -> void:
 	# Capturamos el ratón al inicio para poder girar la cámara en 3D libremente
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	# 1. Sincronizamos las propiedades ópticas al inicio
+	# Sincronizamos las propiedades ópticas al inicio
 	if camaraTrasera:
 		camaraTrasera.fov = fov
 		camaraTrasera.near = near
 		camaraTrasera.far = far
 
-	# 2. Conectamos la señal nativa de cambio de tamaño de ventana a nuestra función
+	# Conectamos la señal nativa de cambio de tamaño de ventana a nuestra función
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 	
 	_on_viewport_size_changed()

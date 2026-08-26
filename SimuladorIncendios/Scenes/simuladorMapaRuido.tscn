@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://csxuk475kho22"]
+[gd_scene load_steps=20 format=3 uid="uid://csxuk475kho22"]
 
 [ext_resource type="Script" uid="uid://d1ble6aslkk5f" path="res://Scripts/MapaNoise/ControladorNoise.gd" id="1_1o5ci"]
 [ext_resource type="Shader" uid="uid://v2ulxt5o5vrv" path="res://Shaders/PasadaTrasera.gdshader" id="2_pwsq8"]
 [ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="3_4gf3d"]
 [ext_resource type="Script" uid="uid://boowel001yj7e" path="res://Scripts/SyncCameras.gd" id="4_i70e7"]
-[ext_resource type="Texture2D" uid="uid://dp55wucrqhqgl" path="res://Modelos/vegetacionEscalada.png" id="5_pl6y2"]
 [ext_resource type="Shader" uid="uid://cc44xxxri5f08" path="res://Shaders/GeneraciónMapaAutomatica.gdshader" id="6_446q6"]
 [ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scenes/Metricas.gd" id="6_pwsq8"]
 [ext_resource type="Script" uid="uid://cadt206stngf3" path="res://Scripts/MapaNoise/mapa_generado.gd" id="7_arnhw"]
@@ -26,12 +25,6 @@ shader = ExtResource("3_4gf3d")
 shader_parameter/textura_caras_traseras = SubResource("ViewportTexture_87ps8")
 shader_parameter/MAX_STEPS = 220
 shader_parameter/multiplicador_opacidad = 39.9410018496975
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hge4g"]
-albedo_texture = ExtResource("5_pl6y2")
-
-[sub_resource type="BoxMesh" id="BoxMesh_n1arj"]
-material = SubResource("StandardMaterial3D_hge4g")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gf3d"]
 content_margin_left = 5.0
@@ -89,6 +82,7 @@ render_target_update_mode = 4
 
 [node name="CamaraTrasera" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.9685788, 0.24870679, 0, -0.24870679, 0.9685788, 0.5, 56.504677, 70.74437)
+visible = false
 cull_mask = 1048574
 
 [node name="CuboTrasero" type="MeshInstance3D" parent="SubViewport"]
@@ -115,11 +109,6 @@ velocidad_movimiento = 70.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPrincipal"]
 remote_path = NodePath("../../SubViewport/CamaraTrasera")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6944528, 21.729723, 0)
-visible = false
-mesh = SubResource("BoxMesh_n1arj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -198,6 +187,7 @@ cubo_frontal = NodePath("../CuboFrontal")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.012618369, 0.99992037, 0, -0.99992037, -0.012618369, 0, 15.792813, 0)
+visible = false
 light_energy = 6.11
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
