@@ -2,34 +2,34 @@
 La informática gráfica es un campo de las ciencias de la computación que se encarga de la creación, almacenamiento y visualización de imágenes en el ordenador. Este área utiliza algoritmos complejos para transformar los datos y modelos abstractos en los pixeles que acaban formando las imágenes en nuestras pantallas. 
 Para esto hace uso de distintos campos, desde el álgebra y el cálculo para colocar los objetos en el espacio, hasta la óptica física para entender cómo la luz interactúa con las superficies y cómo interpreta nuestro cerebro los colores y el movimiento.\\
 
-Principalmente el campo se divide en dos grandes bloques. Por un lado, está el modelado 3D que se encarga de definir la geometría y la estructura de los objetos, mientras que por el otro, se encuentra el proceso de renderizado (o visualización). Este último es encargado de calcular cómo afecta la luz a los modelos generados en el bloque anterior para crear la imagen final. Hoy en día, gracias a la enorme potencia de los equipos actuales, también se generan animaciones con físicas reales, visualizaciones complejas como las de datos médicos y gráficos impulsados directamente por la inteligencia artificial.\\
+%=================Graficos===============
+Principalmente el campo se divide en dos grandes bloques. Por un lado, está el modelado 3D que se encarga de definir la geometría y la estructura de los objetos, mientras que por el otro, se encuentra el proceso de renderizado (o visualización). Este último es encargado de calcular cómo afecta la luz a los modelos generados en el bloque anterior para crear la imagen final. Hoy en día, gracias a la enorme potencia de los equipos actuales, también se generan animaciones con físicas reales, visualizaciones complejas como las de datos médicos y gráficos impulsados directamente por la inteligencia artificial.\cite{foley2014computer}\\
 
-La informática gráfica tiene una gran variedad de aplicaciones que abarcan prácticamente todos los sectores de la industria e investigación. En arquitectura y diseño industrial es muy útil para proyectar estructuras y evaluar materiales y optimizar procesos, mientras que en medicina permite la exploración no invasiva a través de tomografías computarizadas visualizando el interior del cuerpo en tres dimensiones. También es fundamental para la simulación de fenómenos naturales complejos, analizar datos topográficos y estudiar la dinámica de fluidos.\\
- 
-En este último ámbito, la integración de Sistemas de Información Geográfica (SIG) permite procesar datos reales para generar una topografía avanzada y realista. Dichos datos se consiguen principalmente de nubes de puntos LiDAR (Light Detection and Ranging), que son conjuntos masivos de coordenadas que se han obtenido al mapear la superficie terrestre con alta precisión. A partir del filtrado de estos puntos se pueden obtener Modelos Digitales de Elevación (MDE) que son matrices bidimensionales donde cada píxel almacena el valor exacto de la altitud del terreno, pudiendo crear con ellos mapas de alturas (heightmaps). Estas representaciones son vitales para el modelado de simulaciones complejas de flujos de fluidos, meteorología o la propagación de desastres naturales ya que proporcionan el relieve tridimensional exacto sobre el que interactúan los modelos físicos.\\
+Para poder definir y estructurar la geometría de estas representaciones antes de pasar a la fase de renderizado, existen diversas técnicas computacionales que se adaptan a la naturaleza del elemento que se desea crear.\\
 
-Para llevar a cabo estas representaciones, tradicionalmente se ha optado por el modelado mediante mallas, que consisten en una estructura  formada por vértices colocados en el espacio y que se unen mediante aristas creando polígonos (generalmente triángulos) que acaban dando forma a un modelo el cual está vacío en su interior. Posteriormente la renderización de estas mallas se realiza mediante la rasterización, que es el proceso algorítmico que proyecta estos triángulos tridimensionales sobre un plano bidimensional, pudiendose representar así en los píxeles de una pantalla.\\
+Tradicionalmente se ha optado por el modelado mediante mallas, que consisten en una estructura formada por vértices colocados en el espacio y que se unen mediante aristas creando polígonos (generalmente triángulos) que acaban dando forma a un modelo el cual está vacío en su interior. Posteriormente la renderización de estas mallas se realiza mediante la rasterización, que es el proceso algorítmico que proyecta estos triángulos tridimensionales sobre un plano bidimensional, pudiéndose representar así en los píxeles de una pantalla.\cite{referencia_mpg}\\\\
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{imagenes/MallaConjo.png}
-    \caption{Ejemplo de una malla de triángulos}
+    \caption[Malla de triángulos 3D]{Ejemplo de una malla de triángulos}
     \label{fig:malla_conejo}
 \end{figure}
 
 Este enfoque es muy eficiente para representar elementos sólidos con limites bien definidos, como el relieve de una montaña o un edificio pero cuando se trata de modelar fenómenos amorfos y caóticos como el fuego las mallas poligonales no son funcionales ya que estos elementos no tienen una superficie sólida y estática. Para solucionar esto, se decide usar el modelado volumétrico mediante vóxeles, que utiliza una estructura tridimensional de celdas para representar no solo la frontera, sino el interior de un modelo, donde cada vóxel almacena propiedades físicas continuas, como la densidad, la temperatura o la concentración de combustible.\\
 
-Al igual que cambia el modelado el algoritmo de renderizado también cambia cuando nos referimos a modelos volumétricos como el del fuego y pasamos de usar la rasterización a implementar técnicas de Renderizado Volumétrico Directo (DVR).  A diferencia de los métodos indirectos que extraen mallas poligonales intermedias para representar la capa exterior de un volumen, el DVR permite procesar y visualizar toda la información de forma directa sin depender de geometrías exactas.\\
+Al igual que cambia el modelado el algoritmo de renderizado también cambia cuando nos referimos a modelos volumétricos como el del fuego y pasamos de usar la rasterización a implementar técnicas de Renderizado Volumétrico Directo (DVR).  A diferencia de los métodos indirectos que extraen mallas poligonales intermedias para representar la capa exterior de un volumen, el DVR permite procesar y visualizar toda la información de forma directa sin depender de geometrías exactas.\cite{kaufman2005overview} \\
 
 Existen varias técnicas de DVR que, aunque fueron pioneras, presentan limitaciones para simulaciones dinámicas: 
 \begin{itemize}
-    \item \textbf{Splatting (Proyección de huellas):} En esta técnica, el algoritmo procesa el volumen proyectando cada vóxel individualmente sobre el plano de la imagen. A medida que estas huellas se van acumulando en la pantalla, sus colores y transparencias se suman para formar la imagen final. Aunque es un método rápido, presenta problemas de solapamiento y tiende a generar imágenes borrosas cuando se mueve la cámara.
+    \item \textbf{Splatting (Proyección de huellas):} En esta técnica, el algoritmo procesa el volumen proyectando cada vóxel individualmente sobre el plano de la imagen. A medida que estas huellas se van acumulando en la pantalla, sus colores y transparencias se suman para formar la imagen final. Aunque es un método rápido, presenta problemas de solapamiento y tiende a generar imágenes borrosas cuando se mueve la cámara.\cite{zwicker2001ewa}
     
-    \item \textbf{Renderizado basado en texturas (Texture-based Volume Rendering):} Este método divide el volumen en planos que se alinean de forma paralela a la cámara y se les asigna la información de los vóxeles como si fuera una textura 2D. Tienen dos problemas principales, por una parte si se rota la cámara todo el sistema de planos debe recalcularse para volver a alinearse con esta, y por otro lado un número bajo de láminas produce un efecto visual escalonado mientras que un número alto dispara el consumo de memoria.
+    \item \textbf{Renderizado basado en texturas (Texture-based Volume Rendering):} Este método divide el volumen en planos que se alinean de forma paralela a la cámara y se les asigna la información de los vóxeles como si fuera una textura 2D. Tienen dos problemas principales, por una parte si se rota la cámara todo el sistema de planos debe recalcularse para volver a alinearse con esta, y por otro lado un número bajo de láminas produce un efecto visual escalonado mientras que un número alto dispara el consumo de memoria.\cite{caban2008texture}
 \end{itemize}
 
 Debido a estos problemas, las dos técnicas podrían ser consideradas para la representación de volúmenes estáticos, pero para simulaciones dinámicas como las de un incendio forestal no serían lo suficientemente flexibles.\\ 
 
-Para el desarrollo de estos y poder aprovechar al máximo la capacidad de procesamiento paralelo de las tarjetas gráficas modernas, la técnica elegida para este simulador es el trazado de rayos volumétrico(\textit{Raymarching}). Este algoritmo lanza rayos virtuales desde la cámara hacia la cuadrícula 3D, avanzando a través del volumen en pequeños pasos, donde en cada uno de ellos evalúa los datos del vóxel y calcula cómo la luz se acumula, se bloquea o se dispersa al atravesarlo.\\
+Para el desarrollo de estos y poder aprovechar al máximo la capacidad de procesamiento paralelo de las tarjetas gráficas modernas, la técnica elegida para este simulador es el trazado de rayos volumétrico(\textit{Raymarching}). Este algoritmo lanza rayos virtuales desde la cámara hacia la cuadrícula 3D, avanzando a través del volumen en pequeños pasos, donde en cada uno de ellos evalúa los datos del vóxel y calcula cómo la luz se acumula, se bloquea o se dispersa al atravesarlo.\cite{VolumeDensities} \\
 
 \begin{figure}[H]
     \centering
@@ -38,16 +38,42 @@ Para el desarrollo de estos y poder aprovechar al máximo la capacidad de proces
     \label{fig:Raynarching_simple}
 \end{figure}
 
-Además de la visualización de los volúmenes, en un simulador hay que añadirle el coste computacional del cálculo de las físicas continuas. Para ello normalmente se requiere resolver complejas ecuaciones por cada voxel que se actualice en sistemas de autómatas celulares. Realizar estos cálculos  en la unidad central de procesamiento (CPU) resultaría prácticamente imposible y rompería el simulador.\\
-
-Es a partir de aquí donde coge toda la prioridad la evolución de las Unidades de Procesamiento Gráfico (GPU) las cuales, a parte de  dedicarse a la generación de imágenes, las GPU más modernas permiten la ejecución de programas de propósito general denominados \textit{Compute Shaders}. Estos programas consiguen aprovechar los miles de núcleos de la tarjeta gráfica para así paralelizar cálculos matemáticos masivos, que  permiten resolver toda la lógica de un autómata celular y las físicas implicadas, como en el caso de la propagación de un incendio, en una fracción del tiempo que requeriría una CPU.\\
+Además de la visualización de los volúmenes, en un simulador hay que añadirle el coste computacional del cálculo de las físicas continuas. Para ello se requiere resolver complejas ecuaciones por cada voxel normalmente mediante un modelo matemático que, aplicando una serie de reglas que evalúan tanto las condiciones del propio voxel como las de sus vecinos, actualice su estado. Realizar esta cantidad de cálculos en la unidad central de procesamiento (CPU) resultaría prácticamente imposible y saturaría el simulador haciéndolo inservible.\\
+Es a partir de aquí donde coge toda la prioridad la evolución de las Unidades de Procesamiento Gráfico (GPU) las cuales, a parte de  dedicarse a la generación de imágenes, las GPU más modernas permiten la ejecución de programas de propósito general denominados \textit{Compute Shaders}. Estos programas consiguen aprovechar los miles de núcleos de la tarjeta gráfica para así paralelizar cálculos matemáticos masivos, que  permiten resolver toda la lógica de un autómata celular y las físicas implicadas en una fracción del tiempo que requeriría una CPU.\cite{gpugems_ch38, gpugems3_ch30}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{imagenes/VolumenAgua.png}
     \caption{Simulación de un fluido en tiempo real}
     \label{fig:VolumenAgua}
 \end{figure}
-Bajo este contexto, en el presente trabajo se desarrollará un sistema que combinará el modelado topográfico para construir un entorno navegable donde se aplicará un modelo físico de propagación de incendios usando autómatas celulares mediante un \textit{Compute Shaders} para una mayor eficiencia. Finalmente, la visualización de dicho entorno se llevará a cabo utilizando técnicas de renderizado volumétrico directo (\textit{Raymarching}) en tiempo real.\\
+
+%=========Incendios===========
+
+La informática gráfica tiene una gran variedad de aplicaciones que abarcan prácticamente todos los sectores de la industria e investigación. En arquitectura y diseño industrial es muy útil para proyectar estructuras y evaluar materiales y optimizar procesos, mientras que en medicina permite la exploración no invasiva a través de tomografías computarizadas visualizando el interior del cuerpo en tres dimensiones. También es fundamental para la simulación de fenómenos naturales complejos, analizar datos topográficos y estudiar la dinámica de fluidos.\\
+ 
+En este último ámbito, la integración de Sistemas de Información Geográfica (SIG) permite procesar datos reales para generar una topografía avanzada y realista. Dichos datos se consiguen principalmente de nubes de puntos LiDAR (Light Detection and Ranging), que son conjuntos masivos de coordenadas que se han obtenido al mapear la superficie terrestre con un escáner de alta precisión. A partir del filtrado de estos puntos se pueden obtener Modelos Digitales de Elevación (MDE) que son matrices bidimensionales donde cada píxel almacena el valor exacto de la altitud del terreno, pudiendo crear con ellos mapas de alturas (heightmaps). Estas representaciones son vitales para el modelado de simulaciones complejas de flujos de fluidos, meteorología o la propagación de desastres naturales ya que proporcionan el relieve tridimensional exacto sobre el que interactúan los modelos físicos.\cite{qgis_software}\cite{cnig_datos}\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{imagenes/NubeLiDAR.png}
+  \caption{Coloración por elevacion de nube de puntos LiDAR}
+  \label{NubeLiDAR}
+\end{figure}
+
+Esto nos lleva a poder estudiar y predecir de una forma más exacta y visual ciertos desastres naturales entre los que destacan los incendios forestales ya que representan uno de los mayores retos a nivel ecológico y de gestión de emergencias debido a su rápido impacto y comportamiento caótico.  Históricamente, predecir el avance del fuego comenzó con observaciones cualitativas básicas, evolucionando a mediados del siglo XX hacia modelos analíticos, físicos y semi-empíricos donde destacó el modelo de Rothermel (1972) \cite{rothermel1972}, utilizado como estándar a nivel internacional hasta el día de hoy.Este modelo matemático se basa en el principio de conservación de la energía y establece una rigurosa formulación para calcular la velocidad de propagación de las llamas (\textit{Rate of Spread} o ROS) en un punto concreto, procesando variables estáticas (carga y densidad del combustible) y dinámicas (humedad, pendiente topográfica y viento).\\
+
+Sin embargo, las ecuaciones de Rothermel calculan el comportamiento del fuego de forma unidimensional y bajo condiciones uniformes, quedándose lejos de cómo evoluciona un incendio en la vida real. Para simular la expansión de un incendio sobre complejas superficies geográficas, la metodología evolucionó hacia modelos de propagación bidimensionales, donde destacaron los modelos vectoriales basados en el principio de Huygens \cite{enders2009huygens}, que modelan el frente del fuego como un conjunto de elipses continuas en expansión. La solución que aportan dichos modelos, aunque es precisa, resulta computacionalmente muy pesados a la hora de calcular intersecciones y resolver cambios topográficos bruscos en tiempo real.\cite{hirsch_1996_fbp, fbp}\\
+
+
+Ante estas desventajas se buscó una alternativa algorítmica  más eficiente, llevando a la simulación espacial a evolucionar hacia la discretización del entorno mediante sistemas de autómatas celulares. Este enfoque divide el terreno en una matriz de celdas donde cada una de ellas posee un estado térmico e información crucial acerca del combustible, para así siguiendo una serie de reglas de transición el autómata sea capaz de calcular exactamente en qué momento una celda contagia a la siguiente. Al superponer esta matriz sobre los mapas de alturas comentados anteriormente, el autómata es capaz de simular fenómenos físicos de forma natural y de manera más eficiente integrándose con las arquitecturas gráficas modernas.\\
+
+Llegados a este punto se planteó un nuevo problema, la variabilidad microclimática del terreno, como los cambios repentinos en el viento, puede provocar que el resultado predicho por la simulación no tenga nada que ver con la realidad.  
+
+Para gestionar esta incertidumbre, se han adoptado diversas técnicas, como la asimilación de datos en tiempo real y la predicción meteorológica por conjuntos (\textit{ensemble forecasting}), pero la más aceptada y usada es el método de Monte Carlo por su enorme adaptabilidad a los sistemas computacionales discretos. En lugar de generar una única proyección absoluta, este algoritmo ejecuta un número elevado de simulaciones simultáneas, cambiando ligeramente las variables y generando con todos los resultados obtenidos mapas de riesgo que indican el porcentaje de probabilidad de que el fuego alcance cada coordenada.\cite{CARMEL2009370}\cite{montecarlo_mdpi}\\
+
+
+Bajo este contexto, en el presente trabajo se desarrollará un sistema que combinará el modelado topográfico a partir de datos geográficos reales (MDE y LiDAR) para construir un entorno navegable sobre el que se aplicará un modelo físico de propagación de incendios, aprovechando la potencia de la GPU mediante un \textit{Compute Shaders} con autómatas celulares para una mayor eficiencia. Finalmente, la visualización de dicho entorno se llevará a cabo utilizando técnicas de renderizado volumétrico directo (\textit{Raymarching}) en tiempo real.\\
+
 
 \clearpage
 
@@ -117,62 +143,76 @@ Este trabajo se ha planificado siguiendo una metodología iterativa e incrementa
 
 \end{itemize}
 
-\subsection{Diagrama de Gantt}
-\hspace*{-1.2cm}
-\begin{ganttchart}[
-    x unit=0.55cm, 
-    y unit title=0.8cm,
-    y unit chart=0.9cm,
-    vgrid,
-    hgrid,
-    bar/.append style={fill=teal, shift={(0,0.1cm)}},
-    title label font=\small, 
-    bar label font=\scriptsize, 
-    group label font=\footnotesize, 
-    bar height=0.55, 
-    group height=0.3,
-    group left shift=0, 
-    group right shift=0, 
-    bar label node/.append style={align=right, yshift=0.15cm}, 
-    group label node/.append style={draw, thin, align=center, font=\bfseries\small, inner sep=1.4pt} 
-]{1}{20} % Rango total de 20 semanas
+\begin{landscape}
+  % 1. ESTO ELIMINA LA NUMERACIÓN DE LA PÁGINA
+  \thispagestyle{empty} 
+  
+  % 2. ESTO SUBE EL TÍTULO PARA GANAR ESPACIO VERTICAL
+  \vspace*{-1cm} 
+  \subsection{Diagrama de Gantt}
+  
+  \vspace{0.3cm}
+  
+  % 3. USAMOS NOINDENT Y MAKEBOX (SIN \begin{center}) PARA EVITAR EL SALTO DE PÁGINA
+  \noindent\makebox[\linewidth][c]{% 
+  \begin{ganttchart}[
+      x unit=0.9cm, 
+      y unit title=0.7cm,
+      y unit chart=0.50cm, % Ligeramente más reducido por seguridad
+      vgrid,
+      hgrid,
+      bar/.append style={fill=teal}, 
+      bar height=0.5, 
+      bar top shift=0.25,
+      group height=0.4,
+      group top shift=0.3,
+      group left shift=0, 
+      group right shift=0, 
+      title label font=\small, 
+      bar label font=\scriptsize, 
+      group label font=\footnotesize, 
+      bar label node/.append style={align=right, text width=4.8cm}, 
+      group label node/.append style={draw, thin, align=center, font=\bfseries\small, inner sep=2pt, text width=5.2cm} 
+  ]{1}{20} % Rango total de 20 semanas
 
-% Definir las semanas
-\gantttitle{Semanas}{20} \\
-\gantttitlelist{1,...,20}{1} \\
+  % Definir las semanas
+  \gantttitle{Semanas}{20} \\
+  \gantttitlelist{1,...,20}{1} \\
 
-% 1. Investigación y Estado del Arte (3 semanas)
-  \ganttgroup{\parbox{3.7cm}{Investigación}}{1}{3} \\
-  \ganttbar{\parbox{3.4cm}{Revisión bibliográfica}}{1}{3} \\
+  % 1. Investigación y Estado del Arte
+    \ganttgroup{Investigación}{1}{3} \\
+    \ganttbar{Revisión bibliográfica}{1}{3} \\
 
-% 2. Modelo Volumétrico (3 semanas)
-  \ganttgroup{\parbox{3.7cm}{Modelo Volumétrico}}{4}{6} \\
-  \ganttbar{\parbox{3.4cm}{Godot y uso de \textit{Shaders}}}{4}{5} \\
-  \ganttbar{\parbox{3.4cm}{Algoritmo \textit{Raymarching}}}{5}{6} \\
+  % 2. Modelo Volumétrico
+    \ganttgroup{Modelo Volumétrico}{4}{6} \\
+    \ganttbar{Godot y uso de \textit{Shaders}}{4}{5} \\
+    \ganttbar{Algoritmo \textit{Raymarching}}{5}{6} \\
 
-% 3. Lógica y Autómatas Celulares (4 semanas)
-  \ganttgroup{\parbox{3.7cm}{Lógica y Autómatas}}{7}{10} \\
-  \ganttbar{\parbox{3.4cm}{Autómata celular}}{7}{8} \\
-  \ganttbar{\parbox{3.4cm}{Paralelización (GPU)}}{8}{9} \\
-  \ganttbar{\parbox{3.4cm}{Integración volumétrica}}{9}{10} \\
+  % 3. Lógica y Autómatas Celulares
+    \ganttgroup{Lógica y Autómatas}{7}{10} \\
+    \ganttbar{Autómata celular}{7}{8} \\
+    \ganttbar{Paralelización (GPU)}{8}{9} \\
+    \ganttbar{Integración volumétrica}{9}{10} \\
 
-% 4. Procesamiento Topográfico (2 semanas)
-  \ganttgroup{\parbox{3.7cm}{Procesamiento Topográfico}}{11}{12} \\
-  \ganttbar{\parbox{3.4cm}{Tratamiento de MDE}}{11}{11} \\
-  \ganttbar{\parbox{3.4cm}{Generación de la topografía}}{12}{12} \\
+  % 4. Procesamiento Topográfico
+    \ganttgroup{Procesamiento Topográfico}{11}{12} \\
+    \ganttbar{Tratamiento de MDE}{11}{11} \\
+    \ganttbar{Generación de la topografía}{12}{12} \\
 
-% 5. Interfaz de Usuario (2 semanas)
-  \ganttgroup{\parbox{3.7cm}{Interfaz de Usuario}}{13}{14} \\
-  \ganttbar{\parbox{3.4cm}{Controles interactivos}}{13}{14} \\
+  % 5. Interfaz de Usuario
+    \ganttgroup{Interfaz de Usuario}{13}{14} \\
+    \ganttbar{Controles interactivos}{13}{14} \\
 
-% 6. Pruebas y Evaluación (2 semanas)
-  \ganttgroup{\parbox{3.7cm}{Evaluación y Pruebas}}{15}{16} \\
-  \ganttbar{\parbox{3.4cm}{Simulaciones de estrés}}{15}{15} \\
-  \ganttbar{\parbox{3.4cm}{Monitorización y ajuste}}{16}{16} \\
+  % 6. Pruebas y Evaluación
+    \ganttgroup{Evaluación y Pruebas}{15}{16} \\
+    \ganttbar{Simulaciones de estrés}{15}{15} \\
+    \ganttbar{Monitorización y ajuste}{16}{16} \\
 
-% 7. Redacción de la Memoria (Continua + 4 semanas finales)
-  \ganttgroup{\parbox{3.7cm}{Memoria}}{1}{20} \\
-  \ganttbar{\parbox{3.4cm}{Documentación continua}}{1}{16} \\
-  \ganttbar{\parbox{3.4cm}{Redacción formal}}{17}{20}
+  % 7. Redacción de la Memoria
+    \ganttgroup{Memoria}{1}{20} \\
+    \ganttbar{Documentación continua}{1}{16} \\
+    \ganttbar{Redacción formal}{17}{20}
 
-\end{ganttchart}
+  \end{ganttchart}%
+  }
+\end{landscape}

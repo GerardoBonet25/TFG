@@ -1,6 +1,51 @@
-% ---------------------------------------------------------
-% GPU, COMPUTE SHADERS Y FLUIDOS (GPU GEMS)
-% ---------------------------------------------------------
+@book{foley2014computer,
+  title={Computer Graphics: Principles and Practice},
+  author={Hughes, J.F.},
+  isbn={9780321399526},
+  lccn={2012045569},
+  series={The systems programming series},
+  url={https://books.google.es/books?id=OVpsAQAAQBAJ},
+  year={2014},
+  pages={388-394 and 400-402},
+  publisher={Addison-Wesley}
+}
+@article{max2002optical,
+  title={Optical models for direct volume rendering},
+  author={Max, Nelson},
+  journal={IEEE Transactions on visualization and computer graphics},
+  volume={1},
+  number={2},
+  pages={99--108},
+  year={2002},
+  publisher={IEEE}
+}
+@article{kaufman2005overview,
+  title={Overview of volume rendering.},
+  author={Kaufman, Arie E and Mueller, Klaus},
+  journal={The visualization handbook},
+  volume={7},
+  pages={127--174},
+  year={2005}
+}
+
+@inproceedings{zwicker2001ewa,
+  title={Ewa volume splatting},
+  author={Zwicker, Matthias and Pfister, Hanspeter and Van Baar, Jeroen and Gross, Markus},
+  booktitle={Proceedings Visualization, 2001. VIS'01.},
+  pages={29--538},
+  year={2001},
+  organization={IEEE}
+}
+@article{caban2008texture,
+  title={Texture-based transfer functions for direct volume rendering},
+  author={Caban, Jesus J and Rheingans, Penny},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  volume={14},
+  number={6},
+  pages={1364--1371},
+  year={2008},
+  publisher={IEEE}
+}
 
 @incollection{gpugems_ch38,
   author = {Harris, Mark J.},
@@ -35,18 +80,19 @@
 % METODOLOGÍA MONTE CARLO Y SIMULACIÓN ESTOCÁSTICA
 % ---------------------------------------------------------
 
-@article{montecarlo_fire_1,
-  title = {A framework for the robust evaluation of wildfire behaviour models using Monte Carlo simulation},
-  journal = {Fire Safety Journal},
-  year = {2017},
-  url = {https://www.sciencedirect.com/science/article/pii/S0379711217301017}
-}
-
-@article{montecarlo_fire_2,
-  title = {Modeling the spatial propagation of forest fires using a cellular automata and Monte Carlo simulation},
-  journal = {Forest Ecology and Management},
-  year = {2008},
-  url = {https://www.sciencedirect.com/science/article/pii/S0378112708006919}
+@article{CARMEL2009370,
+title = {Assessing fire risk using Monte Carlo simulations of fire spread},
+journal = {Forest Ecology and Management},
+volume = {257},
+number = {1},
+pages = {370-377},
+year = {2009},
+issn = {0378-1127},
+doi = {https://doi.org/10.1016/j.foreco.2008.09.039},
+url = {https://www.sciencedirect.com/science/article/pii/S0378112708006919},
+author = {Yohay Carmel and Shlomit Paz and Faris Jahashan and Maxim Shoshany},
+keywords = {Fire risk, Fire behavior, Fire spread model, Monte Carlo simulation, Fire management},
+abstract = {Understanding the spatial pattern of fire is essential for Mediterranean vegetation management. Fire-risk maps are typically constructed at coarse resolutions using vegetation maps with limited capacity for prescribing prevention activities. This paper describes and evaluates a novel approach for fire risk assessment that may produce a decision support system for actual fire management at fine scales. FARSITE, a two-dimensional fire growth and behavior model was activated, using ArcView VBA code, to generate Monte Carlo simulations of fire spread. The study area was 300km2 of Mt. Carmel, Israel. FARSITE fuel models were adjusted for Mediterranean conditions. The simulation session consisted of 500 runs. For each simulation run, a calendar date, fire length, ignition location, climatic data and other parameters were selected randomly from known distributions of these parameters. Distance from road served as a proxy for the probability of ignition. The resulting 500 maps of fire distribution (the entire area burnt in a specific fire) were overlaid to produce a map of ‘hotspots’ and ‘cold spots’ of fire frequency. The results revealed a clear pattern of fires, with high frequency areas concentrated in the northwestern part. The spatial pattern of the fire frequency map bears partial resemblance to the fuel map, but seems to be affected by several other factors as well, including the location of urban areas, microclimate, topography and the distribution of ignition locations (which is affected by road pattern). These results demonstrate the complexities of fire behavior, showing a very clear pattern of risk level even at fine scales, where neighboring areas have different risk levels due to combinations of vegetation cover, topography, microclimate and other factors. Comparing the distribution of historic fires in the region against the map of simulated fire frequency indicated that most fires tended to coincide with higher risk levels. This fact supports the hypothesis that simulated fire frequency may serve as a reliable surrogate for fire risk. Thus, Monte Carlo simulations of a fire spread model may produce high-resolution fire-risk maps that could be used for long-term strategic planning of fire prevention activities.}
 }
 
 @article{montecarlo_mdpi,
@@ -139,7 +185,6 @@
   doi = {10.1016/S0965-9978(98)00110-0}
 }
 
-%2.1 Pioneros que mencionaste explícitamente James Kajiya y Brian Von Herzen
 @inproceedings{VolumeDensities,
   title = {Ray tracing volume densities},
   author = {Kajiya, James T. and Von Herzen, Brian P},
@@ -199,4 +244,44 @@
   year = {2024},
   url = {https://godotengine.org},
   note = {Motor gráfico de código abierto utilizado para la arquitectura híbrida}
+}
+
+%Modelo canadiense
+@article{fbp,
+  author = {Wotton, Mike},
+  year = {2009},
+  month = {06},
+  pages = {107-131},
+  title = {Interpreting and using outputs from the Canadian Forest Fire Danger Rating System in research applications},
+  volume = {16},
+  journal = {Environmental and Ecological Statistics},
+  doi = {10.1007/s10651-007-0084-2}
+}
+
+@techreport{hirsch_1996_fbp,
+  author      = {Hirsch, K. G.},
+  title       = {Canadian Forest Fire Behavior Prediction System},
+  institution = {Canadian Forest Service Publications},
+  year        = {1996},
+  address     = {Ottawa, Canada}
+}
+
+@incollection{rasterizationAndraytracing,
+  title={3D rasterization: a bridge between rasterization and ray casting},
+  author={Davidovi{\v{c}}, Tom{\'a}{\v{s}} and Engelhardt, Thomas and Georgiev, Iliyan and Slusallek, Philipp and Dachsbacher, Carsten},
+  booktitle={Proceedings of Graphics Interface 2012},
+  pages={201--208},
+  year={2012}, 
+  url = {http://iliyan.com/publications/3DRasterization/3DRasterization_GI2012.pdf}
+}
+
+@article{enders2009huygens,
+  title={Huygens' principle as universal model of propagation},
+  author={Enders, Peter},
+  journal={Latin-American Journal of Physics Education},
+  volume={3},
+  number={1},
+  pages={4},
+  year={2009},
+  publisher={Instituto Polit{\'e}cnico Nacional}
 }

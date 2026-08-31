@@ -1,6 +1,6 @@
 \chapter{Estado del Arte y Marco Teórico}
 
-\section{Fundamentos Históricos de la Informática Gráfica y el Paradigma de la Superficie}
+\section[Fundamentos de la Informática Gráfica]{Fundamentos Históricos de la Informática Gráfica y el Paradigma de la Superficie}
     La evolución de la informática gráfica se ha caracterizado históricamente por intentar alcanzar un mayor realismo visual, exactitud geométrica y rigor físico, lo que ha conllevado el desarrollo de estructuras de datos cada vez más complejas y modelos matemáticos capaces de aprovechar al completo las arquitecturas de hardware de cada época.\\
 
     En sus inicios, la solución estándar para renderizar los objetos tridimensionales consistió en modelar únicamente la superficie externa, una forma eficiente con un bajo coste computacional pero que presentaba problemas para ciertas simulaciones físicas ya que realmente eran objetos huecos que carecían de densidad.  \\
@@ -23,7 +23,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{imagenes/SuperficieNURBS.png}
-        \caption{Una superficie NURBS y sus puntos de control}
+        \caption[Superficie NURBS]{Superficie NURBS y sus puntos de control}
         \label{fig:burbs}
     \end{figure}
     Pese a esta nueva implementación, tanto las mallas triangulares como las NURBS siguen presentando una gran limitación, solo modelan la superficie exterior, lo que no presenta inconveniente para modelos sólidos y opacos pero sería inviable para intentar representar fenómenos sin fronteras definidas, como el fuego o el humo.\\
@@ -32,31 +32,8 @@
 
 
 
-%\section{La Transición a los Volúmenes y la Dinámica de Fluidos Computacional}
-    %Una vez creado este contenedor volumétrico, el siguiente gran desafío de la informática gráfica fue dotar a esos volúmenes de un movimiento realista. Fluidos como el humo o el fuego son sistemas físicos caóticos regidos por las ecuaciones de Navier-Stokes que son un conjunto de ecuaciones en derivadas parciales no lineales que describen el movimiento de fluidos conservando la masa y el momento.\\
 
-    %$$
-    %\frac{\partial \mathbf{u}}{\partial t} = -(\mathbf{u} \cdot \nabla)\mathbf{u} - \frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}
-    %$$
-    %$$
-    %\nabla \cdot \mathbf{u} = 0
-   % $$
-   % En esta formulación, $\mathbf{u}$ representa el campo de velocidades del fluido, $\rho$ la densidad, $p$ el campo de presiones espaciales, $\nu$ la viscosidad cinemática y $\mathbf{f}$ denota las fuerzas externas aplicadas (como la flotabilidad térmica o la gravedad). El primer término del lado derecho, $-(\mathbf{u} \cdot \nabla)\mathbf{u}$, corresponde a la advección (cómo el fluido se transporta a sí mismo), siendo el principal causante de la no linealidad y turbulencia del sistema.\\
-
-    %Durante los años 90, la simulación física de estos fluidos se vio fuertemente frenada por la enorme carga de cálculo que conllevaba resolver estas ecuaciones lo que llevó a usar sistemas de partículas puramente cinemáticos (\textit{sprites} o \textit{billboards} 2D) que o ofrecían un resultado visual aceptable sin una gran carga pero que carecía de las interacciones volumétricas y el comportamiento caótico propio de un fluido real. \\
-
-    
-    %\subsection{Resolviendo Fluidos en Cuadrículas Tridimensionales (Enfoque Euleriano)}
-    %Posteriormente, para resolver el problema de las ecuaciones de Navier-Stokes y dar movimiento a la matriz volumétrica Jos Stam y Ronald Fedkiw (1999-2001) introdujeron métodos matemáticos incondicionalmente estables orientados específicamente a la simulación visual y que resuelven dichas ecuaciones.\\
-    
-    %Su gran aportación consistió en utilizar la técnica de división de operadores que separa la resolución de la ecuación de Navier-Stokes en pasos secuenciales, advección, aplicación de fuerzas, difusión y proyección. Para resolver el complejo problema de la advección Stam propuso un \textbf{esquema semi-Lagrangiano} que, en lugar de calcular hacia dónde va el fluido, rastrea la trayectoria inversa para descubrir de dónde provino en el instante anterior garantizando una estabilidad matemática.\\
-
-    %Para asegurar la conservación de la masa ($\nabla \cdot \mathbf{u} = 0$), el algoritmo aplica una fase de "proyección" que consiste en, mediante la resolución de una ecuación de Poisson, se calcula un campo de presiones que corrige las velocidades del fluido, obligándolo a mantener su volumen constante. Por otro lado, dado que el cálculo de este movimiento disipa la energía y difumina los detalles del fluido, Fedkiw introdujo el "confinamiento de vorticidad", técnica que inyecta energía artificialmente en las zonas de giro, restaurando los pequeños remolinos y las turbulencias para que el fluido mantenga un aspecto realista. \\
-
-    %Este enfoque, conocido como \textbf{Euleriano}, lograba que al combinar esta simulación física estabilizada en cuadrículas con las técnicas de \textit{Direct Volume Rendering} (DVR), procedentes de la visualización médica, se consiguiese  simular y renderizar fluidos tridimensionales de forma realista.\\
-
-
-\section{Renderizado Volumétrico y Dinámica Espacial}
+\section{Renderizado Volumétrico}
     Para dar una solución visual a las matrices tridimensionales continuas, la informática gráfica tuvo que cambiar drásticamente las técnicas que usaba para el renderizado pasándose a usar métodos de renderizado de volúmenes.\\
 
     Por una parte tenemos el renderizado de volúmenes indirecto (IVR) que intentan extraer una malla poligonal a partir de los datos espaciales, destacando el algoritmo de \textit{Marching Cubes}.  El funcionamiento de de este algoritmo se basa en analizar el volumen dividiéndolo en cubos lógicos formados por ocho vóxeles vecinos comparando para cada cubo el valor escalar de sus ocho vértices ($v_1, v_2, ..., v_8$) frente a un umbral o iso-valor predefinido ($I$). \\
@@ -65,7 +42,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{imagenes/MarchingCubesCases.png}
-        \caption{Posibles casos de MarchingCubes}
+        \caption[Formación de MarchingCubes]{Posibles casos de MarchingCubes}
         \label{fig:MarchingCubesCases}
     \end{figure}
 
@@ -99,7 +76,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{imagenes/RenderDVR.png}
-        \caption{Descripción conceptual del trazado de rayos}
+        \caption[Trazado de Rayos]{Descripción conceptual del trazado de rayos}
         \label{fig:RenderDVR}
     \end{figure}
     Aprovechando la arquitectura de la GPU, en lugar de calcular trayectorias de partículas individuales, se utiliza programas  con una alta capacidad de paralelizar cálculos, como los \textit{Compute} o \textit{Fragment Shaders}, y así evaluar simultáneamente millones de celdas estáticas. Dado que la GPU no permite leer y escribir sobre el mismo bloque de memoria de forma segura al mismo tiempo se mantener dos texturas 3D idénticas donde en cada iteración el \textit{shader} lee los datos de una y escribe el resultado en la segunda, cambiando los roles en el siguiente ciclo. Esta técnica es conocida como \textbf{\textit{Ping-Ponging}}.\\
@@ -109,7 +86,7 @@
     Finalmente al juntar estas dos técnicas se consigue transformar un contenedor volumétrico estático en un ecosistema reactivo idóneo para la creación de simuladores en tiempo real como los de incendios forestales. \\
 
 
-\section{Modelos Físicos de Propagación de Incendios Forestales}
+\section[Modelos Físicos de Propagación]{Modelos Físicos de Propagación de Incendios Forestales}
     El estudio de la propagación y el avance de los incendios forestales se ha fundamentado históricamente en la necesidad de predecir el comportamiento del fuego para la gestión de emergencias. \\
 
     Las primeras aproximaciones analíticas, que siguen siendo el estándar en la actualidad, se basaron en modelos matemáticos empíricos destacando el modelo cuasi-estacionario de Rothermel (1972), el cual calcula la tasa de propagación frontal ($R$) del fuego basándose en la carga física del combustible, la topografía y la meteorología:\\
@@ -126,13 +103,35 @@
     \end{itemize}
 
 
-    A partir de este modelo han surgido estándares internacionales en la simulación de incendios determinista destacando en el ámbito internacional FARSITE, BehavePlus,del Servicio Forestal de EE. UU. En el panorama nacional español  resalta la labor del Laboratorio de Defensa contra Incendios Forestales de la Universidad de Córdoba (LABIF-UCO), el cual bajo el liderazgo del Dr. Francisco Rodríguez y Silva, se han desarrollado sistemas como UCO40, que cataloga 40 modelos de combustible superficial para afinar el comportamiento térmico en formaciones endémicas andaluzas.\\
+    Posteriormente, en la década de 1980 y principios de 1990, se estandarizó como gran alternativa internacional el Sistema Canadiense de Predicción del Comportamiento del Fuego (FBP) que, a diferencia del balance energético de Rothermel, es estrictamente empírico. Se apoya en bases de datos masivas obtenidas de quemas controladas y de la observación de incendios forestales reales en bosques boreales, usando estos datos para relacionar directamente la velocidad de propagación empírica con el tipo de combustible topográfico y el Índice Meteorológico de Peligro de Incendio (FWI, \textit{Fire Weather Index}) a través de ecuaciones de regresión, ofreciendo resultados muy precisos en ecosistemas concretos.\\
 
-    De forma paralela, otros enfoques han optado por la Dinámica de Fluidos Computacional (CFD) para resolver las complejas ecuaciones de Navier-Stokes aplicadas a la combustión y la convección térmica. Sin embargo, tanto los modelos empíricos puros como los sistemas CFD tienen una gran limitación al resolver estas ecuaciones y es su altísimo coste computacional que hace imposible una simulación a gran escala en tiempo real ofreciendo además salidas puramente analíticas sin inmersión visual.\\
+    La ecuación principal para determinar la tasa de propagación base según el modelo FBP se define como:
+    $$ROS = a \cdot (1 - e^{-b \cdot ISI})^c$$
+    En esta formulación, a diferencia del modelo de Rothermel  los componentes son puramente estadísticos y meteorológicos:
+    \begin{itemize}
+        \item \textbf{$a, b, c$ (Constantes de regresión):} Son coeficientes empíricos precalculados para cada uno de los 16 modelos de combustible estándar definidos en Canadá (como coníferas, frondosas o pastos).
+        \item \textbf{$ISI$ (\textit{Initial Spread Index}):} Es un valor numérico del sistema FWI que combina la velocidad del viento con el contenido de humedad de los combustibles finos y que representa el potencial de propagación inmediato del fuego sin tener en cuenta la acumulación de combustible pesado.
+    \end{itemize}
 
-    \subsection{Modelos Basados en Cuadrículas y Autómatas Celulares}
+    Finalmente, esta propagación base se ajusta multiplicándola por un factor de efecto de acumulación, que introduce la influencia del combustible forestal de mayor grosor. Al basarse en coeficientes de regresión es computacionalmente mucho más ligero que Rothermel, por lo cual sistemas, como el simulador nacional canadiense \textit{Prometheus}, pueden calcular grandes expansiones de forma muy ágil, aunque perdiendo la capacidad de usarse en ecosistemas para los que no existan grandes cantidades de datos estadísticos previos.\\
 
-        Para superar estos cuellos de botella computacionales que provocan los modelos continuos y permitir simulaciones dinámicas sobre grandes extensiones de terreno, la investigación evolucionó hacia modelos basados en cuadrículas, destacando el uso de Autómatas Celulares (CA). Esta técnica, como ya se ha explicado, divide el terreno en una matriz espacial donde la evolución del fuego se calcula evaluando el estado de cada celda  según unas reglas de transición que dependen de sus condiciones internas y del estado térmico de sus vecinas.\\
+    Tanto las ecuaciones de Rothermel como las del FBP calculan la propagación en un punto específico de forma unidimensional por lo que la simulación espacial determinista de los años 90 adoptó técnicas de propagación vectorial basadas en el \textbf{Principio de Huygens}. Este principio, originario de la física ondulatoria, establece que cada punto de un frente de onda actúa como un nuevo emisor de ondas secundarias, siendo la suma de todos los bordes de estas ondas secundarias la que forman la siguiente onda grande. \\
+
+    Al adaptar este concepto matemático a los incendios forestales, el frente de onda es la línea de fuego donde se asume que cada punto activo se comporta como un foco de ignición independiente que genera su propia área de propagación. La envolvente exterior de todas estas áreas conforma el perímetro actualizado del incendio, permitiendo simular con gran precisión expansiones asimétricas, flancos que avanzan a distinta velocidad y cambios abruptos en la dirección del viento sin que el frente del fuego se rompa matemáticamente.\\
+
+    A partir de la fusión de estos modelos de propagación han surgido distintos simuladores que dominan la gestión de emergencias a nivel mundial. Por un lado, sistemas como \textit{FARSITE} y \textit{BehavePlus}, desarrollados por el Servicio Forestal de EE. UU., utilizan el modelo matemático físico de Rothermel combinado con la propagación elíptica de Huygens. Por otro lado, \textit{Prometheus}, el simulador nacional de Canadá, emplea el mismo motor de propagación vectorial de Huygens pero alimentado matemáticamente por las ecuaciones empíricas de su propio sistema nacional (FBP). \\
+
+    En el panorama nacional español resalta la labor del Laboratorio de Defensa contra Incendios Forestales de la Universidad de Córdoba (LABIF-UCO), el cual bajo el liderazgo del Dr. Francisco Rodríguez y Silva, ha desarrollado sistemas como UCO40, que cataloga 40 modelos de combustible superficial para afinar el comportamiento térmico de Rothermel en formaciones endémicas andaluzas.\\
+
+    De forma paralela, otros enfoques más modernos han optado por la Dinámica de Fluidos Computacional (CFD) para resolver las complejas ecuaciones espaciales de Navier-Stokes aplicadas a la combustión y la convección térmica. Sin embargo, tanto los modelos de expansión vectorial como los sistemas CFD tienen una gran limitación práctica: su altísimo coste computacional hace imposible una simulación a gran escala en tiempo real, ofreciendo además salidas puramente analíticas (mapas isócronos de contornos 2D) sin inmersión visual para los operativos.\\
+
+    \subsection{Autómatas Celulares}
+
+        Para superar estos cuellos de botella computacionales que provocan los modelos continuos y vectoriales, y permitir así simulaciones dinámicas sobre grandes extensiones de terreno, la investigación evolucionó hacia modelos basados en cuadrículas discretas,  mediante el uso de Autómatas Celulares (CA). \\
+
+        Un autómata celular es un modelo matemático compuesto por una matriz regular de celdas donde cada una posee un estado perteneciente a un conjunto finito de posibilidades (en el contexto forestal, típicamente: intacto, en ignición, ardiendo o calcinado). El funcionamiento se basa en la evolución iterativa de todo el sistema, para cada iteración temporal, el nuevo estado de una celda se calcula aplicando un conjunto definido de reglas de transición que evalúan tanto sus condiciones internas como el estado de las celdas adyacentes que conforman su vecindad (normalmente las ocho celdas que la rodean en el caso de un plano bidimensional,  lo que se conoce como vecindad de Moore). 
+
+        Esta arquitectura se puede trasladar a fenómenos complejos como la propagación de un gran frente de llamas a partir de interacciones locales al depender únicamente de su entorno más inmediato. Esto logra que la actualización del estado de cada celda sea totalmente independiente del resto del mapa, lo que convierte a los autómatas celulares en estructuras ideales para ser paralelizadas masivamente en sistemas de cómputo modernos.\\
 
         El enfoque contemporáneo más aceptado es el modelo estocástico propuesto por Alexandridis et al. (2008) cuya precisión quedó demostrada al simular a posteriori incendios devastadores como el de Spetses (1990) y Rodas (2008), prediciendo áreas quemadas con un margen de error mínimo y sin reajustes artificiales.\\
 
@@ -168,11 +167,11 @@
                     Probabilidad Base ($P_0$) & $0.580$ & Probabilidad base bajo condiciones de referencia mediterráneas. \\ \hline
                 \end{tabular}
             }
-            \caption{Valores empíricos de calibración para el Autómata Celular basados en el incendio de Spetses.}
+            \caption[Valores empíricos para el Autómata Celular]{Valores empíricos de calibración para el Autómata Celular basados en el incendio de Spetses.}
             \label{tab:parametros_alexandridis}
         \end{table}
 
-    \subsection{Gestión de la Incertidumbre: Método de Monte Carlo}
+    \subsection{Método de Monte Carlo}
         A pesar de los avances en los modelos empíricos y los Autómatas Celulares, la predicción de incendios forestales se enfrenta a otro problema fundamental. Variables importantes como la velocidad y dirección del viento o el grado de humedad del combustible rara vez se conocen con precisión y en muchas de las ocasiones sufren cambios repentinos que pueden conllevar a un comportamiento del fuego totalmente distinto al calculado inicialmente.\\
 
         Para resolver esta vulnerabilidad se pasó de usar un enfoque determinista, donde se produce un único resultado que ignora la variabilidad del entorno, a predicciones probabilísticas utilizando el Método de Montecarlo. 

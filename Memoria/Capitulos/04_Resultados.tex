@@ -1,9 +1,9 @@
 \chapter{Resultados y Validación}
 
-\section{Entorno de Pruebas y Metodología de Evaluación}
+\section{Entorno y Metodología de Evaluación}
 
     El análisis y evaluación de un simulador que combina renderizado volumétrico y cálculo intensivo mediante \textit{Compute Shaders} requiere definir el entorno de ejecución. Puesto que uno de los objetivos es garantizar la viabilidad del simulador en sistemas portátiles, las pruebas se han realizado sobre un equipo informático móvil (un ordenador portátil)  con especificaciones estándar de mercado.\\
-    \subsection{Entorno de Hardware y Software}
+    \subsection*{Entorno de Hardware y Software}
 
         Todas las simulaciones, extracciones de métricas y capturas de rendimiento se han ejecutado bajo el siguiente entorno:
 
@@ -15,7 +15,7 @@
             \item \textbf{Motor Gráfico y API:} Godot Engine 4.5 bajo la interfaz de renderizado de alto nivel Vulkan (Forward+).
         \end{itemize}
 
-    \subsection{Métricas y Metodología de Evaluación}
+    \subsection*{Métricas y Metodología de Evaluación}
 
         La validación del simulador no consiste solo en comprobar su correcto funcionamiento visual, sino que se han llevado a cabo varias pruebas de evaluación distintas para medir tanto su validez científica como su eficiencia computacional.
 
@@ -29,12 +29,12 @@
 
         Tras el análisis de los resultados de estas evaluaciones se podrá concluir si la solución desarrollada cumple con los requisitos para un sistema portátil de apoyo a la toma de decisiones en la lucha contra incendios forestales.
 
-\section{Validación del Modelo Físico de Rothermel}
+\section[Validación del Modelo Físico]{Validación del Modelo Físico de Rothermel}
 
     El objetivo de esta fase de pruebas es comprobar que la lógica del autómata celular responde de manera coherente a los principios térmicos establecidos por el modelo de Rothermel. Para que sea más sencillo de ver que funcione correctamente cada parámetro se han diseñado tres casos de estudio con variables ambientales y topografía diferentes.
 
 
-    \subsection{Caso de Estudio A: Escenario Base}
+    \subsection*{Caso de Estudio A: Escenario Base}
 
         En este primer escenario, se establece una topografía completamente plana con una carga de combustible homogénea (vegetación alta) y ausencia total de viento (velocidad $0$ km/h). 
 
@@ -42,21 +42,21 @@
 
             \centering
             \includegraphics[width=0.7\textwidth]{imagenes/CasoEstudioA.png}
-            \caption{Propagación isotrópica circular en terreno llano y sin viento.}
+            \caption[Propagación sin obstaculos]{Propagación circular en terreno llano y sin viento.}
             \label{fig:validacion_base}
         \end{figure}
 
         \textbf{Resultado observado:} Cuando se desencadena el incendio en un punto con toda la vegetación homogénea y con ausencia de viento el modelo estocástico hace que el fuego se propague con una probabilidad muy parecida en todas las direcciones. El incendio dibuja un patrón de crecimiento circular a medida que avanza el tiempo de simulación. Esto valida que la matriz tridimensional del autómata no sufre de sesgos direccionales por la vecindad de Moore.\\
 
 
-    \subsection{Caso de Estudio B: Influencia eólica y deformación elíptica}
+    \subsection*{Caso de Estudio B: Influencia eólica y deformación elíptica}
 
         En el segundo escenario se mantiene un terreno plano con una combustible homogéneo de vegetación alta pero se introduce una variable meteorológica: rachas de viento constante a $40$ km/h incidiendo desde un ángulo fijo. \\
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.7\textwidth]{imagenes/CasoEstudioB.png}
-            \caption{Deformación elíptica del incendio bajo la influencia de viento fuerte unidireccional.}
+            \caption[Propagación con influencia eólica]{Deformación elíptica del incendio bajo la influencia de viento fuerte unidireccional.}
             \label{fig:validacion_viento}
         \end{figure}
 
@@ -69,40 +69,37 @@
             \item \textbf{Estancamiento a contraviento (Fuego de retroceso):} El avance del fuego en contra de la dirección del viento es prácticamente nulo. Esto valida el correcto funcionamiento y la ecuación de Rothermel con respecto a la realidad.
         \end{itemize}
 
-    \subsection{Caso de Estudio C: Influencia topográfica y convección}
+    \subsection*{Caso de Estudio C: Influencia topográfica y convección}
 
         El tercer escenario evalúa el impacto del relieve, ignorando el viento. Se utiliza una geografía generada a partir de una textura de ruido con pronunciadas elevaciones y se realiza una prueba de doble ignición: el primer foco se inicia en la base de un barranco, y el segundo foco se establece en la cresta de una ladera.\\
 
         \begin{figure}[H]
             \centering
              \includegraphics[width=0.7\textwidth]{imagenes/CasoEstudioC.png}
-            \caption{Comportamiento convectivo: aceleración del fuego ladera arriba y estancamiento en el descenso.}
+            \caption[Propagación con influencia topográfica]{Comportamiento convectivo: aceleración del fuego ladera arriba y estancamiento en el descenso.}
             \label{fig:validacion_topografia}
         \end{figure}
 
         \textbf{Resultado observado:} El simulador replica el comportamiento físico de la transferencia de calor por convección. Cuando se origina un foco en mitad de una ladera se propaga rápidamente a las zonas superiores, siguiendo el factor de inclinación del modelo de Rothermel, mientras que presenta una enorme dificultad para la propagación a zonas inferiores.
 
-    \subsection{Conclusión de la Validación Física}
+    \subsection*{Conclusión de la Validación Física}
 
         El analisis de los tres casos de estudio confirma que la implementación en el  \textit{Compute Shader} de los factores probabilísticos de viento ($p_w$) y pendiente ($p_s$) son correctos. Como resultado se puede concluir que el simulador es capaz de ofrecer una representación orgánica y fiel a las físicas del fuego sin caer en el crecimiento artificial en forma de ciertos patrones propios de autómatas celulares mal calibrados.
         \begin{figure}[H]
             \centering
              \includegraphics[width=0.7\textwidth]{imagenes/MapaDEM.png}
-            \caption{Comportamiento de la simulación con el mapa de elevaciones DEM.}
+            \caption[Simulación con mapa de elevaciones]{Comportamiento de la simulación con el mapa de elevaciones DEM.}
             \label{fig:simulacion_mapa_elevaciones}
         \end{figure}
 
-        \subsection{Evaluación de Rendimiento y Escalabilidad}
 
-Una vez validada la precisión física del modelo de Rothermel, resulta imperativo evaluar la viabilidad computacional del sistema. Para que el simulador sea funcional en hardware portátil convencional, debe mantener una tasa de refresco interactiva (idealmente superior a 30 fotogramas por segundo) frente a la carga masiva que supone el renderizado volumétrico y el cálculo del autómata celular en tres dimensiones.
-
-\section{Impacto del rendimiento a las distintas resoluciones}
+\section[Evaluación del rendimiento]{Impacto del rendimiento a las distintas resoluciones}
 
 Para determinar el impacto de rendimiento se han realizado una serie de mediciones. En el primer experimento se ha evaluado el límite de estrés de la tarjeta gráfica para encontrar el punto óptimo entre una buena resolución de voxeles y un buen rendimiento. Posteriormente, tras haber encontrado la resolución ideal, se ha evaluado y analizado el rendimiento en las distintas etapas de la propagación del incendio.\\
 
 Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sync) y retirando los limitadores de velocidad de ejecución que se encuentran en el código, pudiendo medir así la capacidad bruta de procesamiento. Además para todos ellos se utilizó un mapa de elevaciones con tamaño 904x856 en el que toda la vegetación se cambió por vegetación alta para que no hubiese alteraciones. \\
 
-\subsubsection{Experimento 1: Escalabilidad espacial y límite de estrés}
+\subsubsection*{Experimento 1: Escalabilidad espacial y límite de estrés}
     Como se ha mencionado anteriormente este experimento busca someter a la arquitectura a una prueba de estrés progresiva en la que se va aumentando el número de voxeles de la matriz tridimensional comenzando con una resolución baja y llegando al límite de la tarjeta gráfica del dispositivo usado antes de saturarse por completo.\\
 
     \begin{table}[H]
@@ -120,14 +117,14 @@ Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sy
             $1024 \times 256 \times 1024$ & 268.435.456 & 16 & 65,28 \\
         \end{tabular}
     }
-    \caption{Evolución del rendimiento frente al incremento de la matriz volumétrica.}
+    \caption[Evolución del rendimiento frente a la resolución]{Evolución del rendimiento frente al incremento de la matriz volumétrica.}
     \label{tab:rendimiento_resolucion}
     \end{table}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{imagenes/Rendimiento.png}
-        \caption{Curva de caída de rendimiento frente incremento de la matriz volumétrica.}
+        \caption[Gráfica de rendimiento según la resolución]{Curva de caída de rendimiento frente incremento de la matriz volumétrica.}
         \label{fig:grafico_escalabilidad}
     \end{figure}
 
@@ -135,11 +132,11 @@ Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sy
 
     Sin embargo, durante las pruebas se comprobó que durante la fase de inicialización de la simulación había un cuello de botella que se comienza a notar con resoluciones a partir de 384x120x384. La CPU necesita un  tiempo para leer los mapas topográficos, clasificar los tipos de combustible y alojar la matriz en la memoria RAM antes de transferirla a los \textit{buffers} de la VRAM ya que lo hace con un procesamiento secuencial y dicho tiempo puede variar entre unos pocos segundos, como en el caso de 384x120x384 que necesita alrededor de 12 segundos, a unos pocos minutos en las resoluciones más altas.\\
 
-    Este fenómeno nos ayuda a entender la decisión arquitectónica de realizar los cálculos principales de la propagación en la GPU, ya que  si el procesador se satura solo con recorrer e inicializar la matriz una vez, resultaría inviable que se encargase del recálculo de las físicas 60 veces por segundo. 
+    Este fenómeno nos ayuda a entender la decisión arquitectónica de realizar los cálculos principales de la propagación en la GPU, ya que  si el procesador se satura solo con recorrer e inicializar la matriz una vez, resultaría inviable que se encargase del recálculo de las físicas 60 veces por segundo.\\
 
     Al usar un \textit{Compute Shader} esta carga de trabajo se realiza de forma paralela  permitiendo tener la resolución en $384 \times 120 \times 384$ vóxeles, asumiendo los 12 segundos de inicialización, garantizando un buen equilibrio entre resolución geométrica y altas tasas de fotogramas ($176$ FPS).
 
-\subsubsection{Experimento 2: Rendimiento sostenido frente a la carga dinámica}
+\subsubsection*{Experimento 2: Rendimiento sostenido frente a la carga dinámica}
 
     Una vez decidida que la resolución ideal que se va a usar es $384 \times 120 \times 384$ vóxeles, este segundo experimento se encarga de evaluar la estabilidad de los FPS durante la ejecución completa de un incendio, desde el inicio del foco hasta que quede completamente cubierto de llamas el mapa. El propósito principal es evaluar cómo le afecta al rendimiento el incremento de voxeles con fuego.
 
@@ -158,14 +155,14 @@ Estas pruebas se levaron a cabo deshabilitando la sincronización vertical (V-Sy
     24 & Estabilización (Totalmente calcinado) & 210 \\
     28 & Estabilización final & 210 \\
     \end{tabular}
-    \caption{Evolución dinámica del rendimiento durante la propagación }
+    \caption[Evolución del rendimiento durante la propagación ]{Evolución dinámica del rendimiento durante la propagación }
     \label{tab:carga_termica}
     \end{table}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{imagenes/RendimientoProp.png}
-        \caption{Evolución de Fotogramas por Segundo (FPS) durante la expansión térmica.}
+        \caption[Gráfica de evolución de FPS ]{Evolución de Fotogramas por Segundo (FPS) durante la expansión térmica.}
         \label{fig:grafico_carga_termica}
     \end{figure}
 
