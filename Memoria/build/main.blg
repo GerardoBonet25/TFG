@@ -13,48 +13,50 @@ Database file #1: Capitulos/Referencias.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in automatasCelulares
+Warning--empty year in automatasCelulares
 Warning--empty author in montecarlo_mdpi
 
 Done.
-You've used 16 entries,
+You've used 30 entries,
             4087 wiz_defined-function locations,
-            931 strings with 10496 characters,
-and the built_in function-call counts, 10054 in all, are:
-= -- 864
-> -- 175
-< -- 59
-+ -- 96
-- -- 32
-* -- 479
-:= -- 1689
-add.period$ -- 35
-call.type$ -- 16
-change.case$ -- 15
-chr.to.int$ -- 117
-cite$ -- 17
-duplicate$ -- 758
-empty$ -- 822
-format.name$ -- 39
-if$ -- 2293
+            1020 strings with 13434 characters,
+and the built_in function-call counts, 20139 in all, are:
+= -- 1715
+> -- 374
+< -- 143
++ -- 205
+- -- 64
+* -- 951
+:= -- 3244
+add.period$ -- 65
+call.type$ -- 30
+change.case$ -- 29
+chr.to.int$ -- 303
+cite$ -- 33
+duplicate$ -- 1484
+empty$ -- 1637
+format.name$ -- 80
+if$ -- 4647
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 140
-newline$ -- 87
-num.names$ -- 15
-pop$ -- 301
+int.to.str$ -- 30
+missing$ -- 263
+newline$ -- 139
+num.names$ -- 29
+pop$ -- 577
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 803
+skip$ -- 1610
 stack$ -- 0
-substring$ -- 312
-swap$ -- 578
-text.length$ -- 20
+substring$ -- 777
+swap$ -- 1166
+text.length$ -- 42
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 16
-warning$ -- 1
-while$ -- 36
-width$ -- 18
-write$ -- 197
-(There was 1 warning)
+type$ -- 30
+warning$ -- 3
+while$ -- 86
+width$ -- 32
+write$ -- 343
+(There were 3 warnings)

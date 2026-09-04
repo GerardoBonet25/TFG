@@ -1,25 +1,25 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Malla de triángulos 3D}}{10}{figure.1.1}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Proceso de Raymarching}}{11}{figure.1.2}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Simulación de un fluido en tiempo real}}{12}{figure.1.3}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Coloración por elevacion de nube de puntos LiDAR}}{13}{figure.1.4}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Nube de puntos LiDAR}}{10}{figure.1.1}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Malla de triángulos 3D}}{11}{figure.1.2}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Proceso de Raymarching}}{13}{figure.1.3}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Proceso de Rasterización}}{23}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Superficie NURBS}}{24}{figure.2.2}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Proceso de Rasterización}}{22}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Etapas principales del Pipeline Gráfico}}{22}{figure.2.2}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Formación de MarchingCubes}}{25}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Trazado de Rayos}}{27}{figure.2.4}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Trazado de Rayos}}{26}{figure.2.4}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Ejemplo de mapa de calor 2D de un incendio}}{33}{figure.2.5}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Vecindad de Moore}}{42}{figure.3.1}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Caras traseras obtenidas por el FBO}}{45}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Mapa generado por un DEM}}{51}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Interfaz de Usuario del simulador}}{54}{figure.3.4}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema de nodos de la escena}}{46}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Mapa generado por un DEM}}{52}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Interfaz de Usuario del simulador}}{55}{figure.3.5}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Propagación sin obstaculos}}{59}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Propagación con influencia eólica}}{60}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Propagación con influencia topográfica}}{61}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Simulación con mapa de elevaciones}}{62}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Gráfica de rendimiento según la resolución}}{63}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Gráfica de evolución de FPS }}{65}{figure.4.6}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Propagación sin obstaculos}}{60}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Propagación con influencia eólica}}{61}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Propagación con influencia topográfica}}{62}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Simulación con mapa de elevaciones}}{63}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Gráfica de rendimiento según la resolución}}{64}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Gráfica de evolución de FPS }}{66}{figure.4.6}%
 \addvspace {10\p@ }

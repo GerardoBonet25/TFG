@@ -1,15 +1,15 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{9}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motivaciones}{15}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivos}{17}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Planificación}{19}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Diagrama de Gantt}{21}{subsection.1.3.1}%
-\contentsline {chapter}{\numberline {2}Estado del Arte y Marco Teórico}{22}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Fundamentos de la Informática Gráfica}{22}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Renderizado Volumétrico}{25}{section.2.2}%
+\contentsline {section}{\numberline {1.1}Motivaciones}{14}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{16}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Planificación}{18}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Diagrama de Gantt}{20}{subsection.1.3.1}%
+\contentsline {chapter}{\numberline {2}Estado del Arte y Marco Teórico}{21}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Fundamentos de la Informática Gráfica}{21}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Renderizado Volumétrico}{24}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Modelos Físicos de Propagación}{27}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Autómatas Celulares}{30}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Método de Monte Carlo}{32}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.1}Autómatas Celulares}{29}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Método de Monte Carlo}{31}{subsection.2.3.2}%
 \contentsline {chapter}{\numberline {3}Metodología}{34}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Selección de herramientas}{34}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Comparativa de motores gráficos}{35}{subsection.3.1.1}%
@@ -18,25 +18,26 @@
 \contentsline {subsection}{\numberline {3.2.2}\textit {Pipeline} de Cómputo}{39}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}El motor de Simulación}{40}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Visualización}{44}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Sincronización CPU-GPU}{47}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.5}Sincronización CPU-GPU}{48}{subsection.3.2.5}%
 \contentsline {section}{\numberline {3.3}Topografía}{50}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Procesamiento de datos}{50}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Renderizado del terreno}{50}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Renderizado del terreno}{51}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Construcción de la matriz lógica}{52}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Interacción y Control Dinámico}{52}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Generación de colisiones}{52}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.4}Interacción y Control Dinámico}{53}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Generación de colisiones}{53}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Navegación espacial}{53}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Sistema de Ignición}{53}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}Interfaz de Usuario}{54}{subsection.3.4.4}%
 \contentsline {section}{\numberline {3.5}Desafíos Técnicos y Soluciones}{55}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Optimización del \textit {Raymarching}}{55}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Sincronización de Espacios de Coordenadas}{55}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.2}Sincronización de Espacios de Coordenadas}{56}{subsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.5.3}Anomalías en el Relieve}{56}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Desincronización de Cámaras}{56}{subsection.3.5.4}%
-\contentsline {chapter}{\numberline {4}Resultados y Validación}{58}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Entorno y Metodología de Evaluación}{58}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Validación del Modelo Físico}{59}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Evaluación del rendimiento}{62}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{66}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Posibles líneas y mejoras futuras de trabajo}{67}{section.5.1}%
-\contentsline {chapter}{Referencias}{70}{section*.25}%
+\contentsline {subsection}{\numberline {3.5.4}Desincronización de Cámaras}{57}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6}Integración y uso de Inteligencia Artificial}{58}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Resultados y Validación}{59}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Entorno y Metodología de Evaluación}{59}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Validación del Modelo Físico}{60}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Evaluación del rendimiento}{63}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{67}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Posibles líneas y mejoras futuras de trabajo}{68}{section.5.1}%
+\contentsline {chapter}{Referencias}{71}{section*.25}%

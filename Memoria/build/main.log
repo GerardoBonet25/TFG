@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  1 SEP 2026 01:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.7)  4 SEP 2026 19:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -770,7 +770,7 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 Package babel Info: Main language set to 'spanish'.
 (Portada.tex
 \centeroffset=\skip79
-<imagenes/logo_ugr.jpg, id=170, 186.6975pt x 55.6479pt>
+<imagenes/logo_ugr.jpg, id=174, 186.6975pt x 55.6479pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
@@ -783,7 +783,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<imagenes/etsiit_logo.png, id=171, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=175, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 32.
@@ -885,262 +885,8 @@ LaTeX Info: Redefining \% on input line 1.
 ]
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--4
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-[9
-
-]
-<imagenes/MallaConjo.png, id=316, 398.48875pt x 425.59pt>
-File: imagenes/MallaConjo.png Graphic file (type png)
-<use imagenes/MallaConjo.png>
-Package pdftex.def Info: imagenes/MallaConjo.png  used on input line 14.
-(pdftex.def)             Requested size: 216.0022pt x 230.69185pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-
- []
-
-[10
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.26 
-      <./imagenes/MallaConjo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
-
- []
-
-<imagenes/RayMarching.png, id=328, 2501.345pt x 1702.36pt>
-File: imagenes/RayMarching.png Graphic file (type png)
-<use imagenes/RayMarching.png>
-Package pdftex.def Info: imagenes/RayMarching.png  used on input line 36.
-(pdftex.def)             Requested size: 216.0022pt x 146.99754pt.
-<imagenes/VolumenAgua.png, id=331, 376.40625pt x 224.33812pt>
-File: imagenes/VolumenAgua.png Graphic file (type png)
-<use imagenes/VolumenAgua.png>
-Package pdftex.def Info: imagenes/VolumenAgua.png  used on input line 45.
-(pdftex.def)             Requested size: 216.0022pt x 128.7401pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--48
-
- []
-
-[11
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.48 \end{figure}
-                  <./imagenes/RayMarching.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
-
- []
-
-
-Overfull \hbox (6.0785pt too wide) in paragraph at lines 54--55
-[]\OT1/cmr/m/n/10.95 En es-te ^^Sulti-mo ^^Sambi-to, la in-te-gra-ci^^Son de Sis-te-mas de In-for-ma-ci^^Son Geogr^^Safi-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
-
-[12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.55 
-      <./imagenes/VolumenAgua.png>]
-<imagenes/NubeLiDAR.png, id=348, 329.43076pt x 171.64125pt>
-File: imagenes/NubeLiDAR.png Graphic file (type png)
-<use imagenes/NubeLiDAR.png>
-Package pdftex.def Info: imagenes/NubeLiDAR.png  used on input line 58.
-(pdftex.def)             Requested size: 288.0011pt x 150.06523pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-[13
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.66 
-      <./imagenes/NubeLiDAR.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
-
- []
-
-[15
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
-
- []
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
-
- []
-
-
-Overfull \hbox (11.49292pt too wide) in paragraph at lines 106--108
-[]\OT1/cmr/bx/n/10.95 Investigar e in-te-grar \OT1/cmr/bx/it/10.95 Com-pu-te Sha-ders \OT1/cmr/bx/n/10.95 pa-ra c^^Salcu-los de prop^^Sosi-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
-
- []
-
-[17
-
-] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
-
- []
-
-[19
-
-] [20]
-Underfull \hbox (badness 3724) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Revisi^^Son bi-bliogr^^Safi-ca
- []
-
-
-Underfull \hbox (badness 2080) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Godot y uso de \OT1/cmr/m/it/8 Sha-ders
- []
-
-
-Underfull \hbox (badness 2080) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Algoritmo \OT1/cmr/m/it/8 Ray-mar-ching
- []
-
-
-Underfull \hbox (badness 7468) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Aut^^Soma-ta ce-lu-lar
- []
-
-
-Underfull \hbox (badness 3758) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Paralelizaci^^Son (GPU)
- []
-
-
-Underfull \hbox (badness 2351) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Integraci^^Son vo-lum^^Setri-ca
- []
-
-
-Underfull \hbox (badness 3668) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Tratamiento de MDE
- []
-
-
-Underfull \hbox (badness 3514) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Controles in-ter-ac-ti-vos
- []
-
-
-Underfull \hbox (badness 3199) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Simulaciones de estr^^Ses
- []
-
-
-Underfull \hbox (badness 2310) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Monitorizaci^^Son y ajus-te
- []
-
-
-Underfull \hbox (badness 1803) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Documentaci^^Son con-ti-nua
- []
-
-
-Underfull \hbox (badness 7576) in paragraph at lines 217--217
- [][]|\OT1/cmr/m/n/8 Redacci^^Son for-mal
- []
-
-[21
-
-]) (Capitulos/02_TrabajosRelacionados.tex
-Cap\'{\i }tulo 2.
-
-Overfull \hbox (16.44461pt too wide) in paragraph at lines 3--3
-[]\OT1/cmr/bx/n/14.4 Fundamentos Hist^^Sori-cos de la In-form^^Sati-ca Gr^^Safi-
  []
 
 
@@ -1158,97 +904,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-<imagenes/Rasterización.png, id=411, 240.9pt x 271.0125pt>
-File: imagenes/Rasterización.png Graphic file (type png)
-<use imagenes/Rasterización.png>
-Package pdftex.def Info: imagenes/Rasterización.png  used on input line 13.
-(pdftex.def)             Requested size: 216.0022pt x 243.00748pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--16
-
- []
-
-[22
-
+[9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
+<imagenes/NubeLiDAR.png, id=322, 329.43076pt x 171.64125pt>
+File: imagenes/NubeLiDAR.png Graphic file (type png)
+<use imagenes/NubeLiDAR.png>
+Package pdftex.def Info: imagenes/NubeLiDAR.png  used on input line 12.
+(pdftex.def)             Requested size: 288.0011pt x 150.06523pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
-[23
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+[10
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.21 
-      <./imagenes/Rasterización.png>]
-<imagenes/SuperficieNURBS.png, id=421, 584.1825pt x 344.28625pt>
-File: imagenes/SuperficieNURBS.png Graphic file (type png)
-<use imagenes/SuperficieNURBS.png>
-Package pdftex.def Info: imagenes/SuperficieNURBS.png  used on input line 25.
-(pdftex.def)             Requested size: 216.0022pt x 127.29985pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--28
+l.22 
+      <./imagenes/NubeLiDAR.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
+<imagenes/MallaConjo.png, id=340, 398.48875pt x 425.59pt>
+File: imagenes/MallaConjo.png Graphic file (type png)
+<use imagenes/MallaConjo.png>
+Package pdftex.def Info: imagenes/MallaConjo.png  used on input line 28.
+(pdftex.def)             Requested size: 216.0022pt x 230.69185pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-[24
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2}) has been already used, duplicate ignored
+[11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.38 
-      <./imagenes/SuperficieNURBS.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-
- []
-
-<imagenes/MarchingCubesCases.png, id=427, 351.3125pt x 165.61874pt>
-File: imagenes/MarchingCubesCases.png Graphic file (type png)
-<use imagenes/MarchingCubesCases.png>
-Package pdftex.def Info: imagenes/MarchingCubesCases.png  used on input line 44.
-(pdftex.def)             Requested size: 216.0022pt x 101.83344pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--47
+l.34 
+      <./imagenes/MallaConjo.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
-[25
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3}) has been already used, duplicate ignored
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+[12]
+<imagenes/RayMarching.png, id=359, 2501.345pt x 1702.36pt>
+File: imagenes/RayMarching.png Graphic file (type png)
+<use imagenes/RayMarching.png>
+Package pdftex.def Info: imagenes/RayMarching.png  used on input line 51.
+(pdftex.def)             Requested size: 216.0022pt x 146.99754pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+[13
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.56 
-      <./imagenes/MarchingCubesCases.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+l.63 \clearpage
+                <./imagenes/RayMarching.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
@@ -1257,22 +1018,231 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-<imagenes/RenderDVR.png, id=436, 376.40625pt x 159.59625pt>
-File: imagenes/RenderDVR.png Graphic file (type png)
-<use imagenes/RenderDVR.png>
-Package pdftex.def Info: imagenes/RenderDVR.png  used on input line 78.
-(pdftex.def)             Requested size: 323.9978pt x 137.38402pt.
+[14
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--81
+]
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
 
+Overfull \hbox (11.49292pt too wide) in paragraph at lines 91--93
+[]\OT1/cmr/bx/n/10.95 Investigar e in-te-grar \OT1/cmr/bx/it/10.95 Com-pu-te Sha-ders \OT1/cmr/bx/n/10.95 pa-ra c^^Salcu-los de prop^^Sosi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+[16
+
+] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+[18
+
+] [19]
+Underfull \hbox (badness 3724) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Revisi^^Son bi-bliogr^^Safi-ca
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Godot y uso de \OT1/cmr/m/it/8 Sha-ders
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Algoritmo \OT1/cmr/m/it/8 Ray-mar-ching
+ []
+
+
+Underfull \hbox (badness 7468) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Aut^^Soma-ta ce-lu-lar
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Paralelizaci^^Son (GPU)
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Integraci^^Son vo-lum^^Setri-ca
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Tratamiento de MDE
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Controles in-ter-ac-ti-vos
+ []
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Simulaciones de estr^^Ses
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Monitorizaci^^Son y ajus-te
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Documentaci^^Son con-ti-nua
+ []
+
+
+Underfull \hbox (badness 7576) in paragraph at lines 202--202
+ [][]|\OT1/cmr/m/n/8 Redacci^^Son for-mal
+ []
+
+[20
+
+]) (Capitulos/02_TrabajosRelacionados.tex
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+[21
+
+
+]
+<imagenes/Rasterización.png, id=413, 240.9pt x 271.0125pt>
+File: imagenes/Rasterización.png Graphic file (type png)
+<use imagenes/Rasterización.png>
+Package pdftex.def Info: imagenes/Rasterización.png  used on input line 15.
+(pdftex.def)             Requested size: 216.0022pt x 243.00748pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+<imagenes/Graphics_pipeline.png, id=414, 1285.80376pt x 220.825pt>
+File: imagenes/Graphics_pipeline.png Graphic file (type png)
+<use imagenes/Graphics_pipeline.png>
+Package pdftex.def Info: imagenes/Graphics_pipeline.png  used on input line 27.
+(pdftex.def)             Requested size: 288.0011pt x 49.46109pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+[22
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.33 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.33 
+      <./imagenes/Rasterización.png> <./imagenes/Graphics_pipeline.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+
+ []
+
+<imagenes/MarchingCubesCases.png, id=432, 351.3125pt x 165.61874pt>
+File: imagenes/MarchingCubesCases.png Graphic file (type png)
+<use imagenes/MarchingCubesCases.png>
+Package pdftex.def Info: imagenes/MarchingCubesCases.png  used on input line 56.
+(pdftex.def)             Requested size: 216.0022pt x 101.83344pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--59
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+[25
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.79         \item \textbf
+                          {$C_{total}$}: Es el color final y opacidad result... <./imagenes/MarchingCubesCases.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
@@ -1282,63 +1252,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
+<imagenes/RenderDVR.png, id=451, 376.40625pt x 159.59625pt>
+File: imagenes/RenderDVR.png Graphic file (type png)
+<use imagenes/RenderDVR.png>
+Package pdftex.def Info: imagenes/RenderDVR.png  used on input line 90.
+(pdftex.def)             Requested size: 323.9978pt x 137.38402pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
-
- []
-
-[27
+[26
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.93 
-      <./imagenes/RenderDVR.png>]
-Overfull \hbox (11.62042pt too wide) in paragraph at lines 99--100
+l.96     U
+          na vez que la infraestructura de memoria está lista para la actua... <./imagenes/RenderDVR.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Overfull \hbox (11.62042pt too wide) in paragraph at lines 111--112
 []$\OML/cmm/m/it/10.95 ^^X$ \OT1/cmr/bx/n/10.95 (Flu-jo de ca-lor pro-pa-ga-do): \OT1/cmr/m/n/10.95 Frac-ci^^Son de energ^^S^^Pa con-vec-ti-va/radiante
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
-
- []
-
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
-
- []
-
-
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
@@ -1352,13 +1322,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 151--153
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
 
  []
 
@@ -1366,39 +1366,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--176
 pdfTeX warning (ext4): destination with the same identifier (name{table.2.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.176 
+l.192 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 177--179
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-
- []
-
-<imagenes/MapaCalorIncendio.png, id=468, 463.7325pt x 519.44063pt>
+<imagenes/MapaCalorIncendio.png, id=497, 463.7325pt x 519.44063pt>
 File: imagenes/MapaCalorIncendio.png Graphic file (type png)
 <use imagenes/MapaCalorIncendio.png>
-Package pdftex.def Info: imagenes/MapaCalorIncendio.png  used on input line 196.
+Package pdftex.def Info: imagenes/MapaCalorIncendio.png  used on input line 209.
 (pdftex.def)             Requested size: 216.0022pt x 241.94954pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--199
+Underfull \hbox (badness 10000) in paragraph at lines 206--212
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 202--35
+Underfull \hbox (badness 10000) in paragraph at lines 215--35
 
  []
 
@@ -1565,7 +1560,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
-<imagenes/VecindadMoore.png, id=517, 529.98pt x 218.0145pt>
+<imagenes/VecindadMoore.png, id=564, 529.98pt x 218.0145pt>
 File: imagenes/VecindadMoore.png Graphic file (type png)
 <use imagenes/VecindadMoore.png>
 Package pdftex.def Info: imagenes/VecindadMoore.png  used on input line 152.
@@ -1606,7 +1601,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--198
  []
 
 [44]
-<imagenes/CarasTraseras.png, id=534, 670.30424pt x 401.70074pt>
+<imagenes/CarasTraseras.png, id=584, 670.30424pt x 401.70074pt>
 File: imagenes/CarasTraseras.png Graphic file (type png)
 <use imagenes/CarasTraseras.png>
 Package pdftex.def Info: imagenes/CarasTraseras.png  used on input line 201.
@@ -1616,292 +1611,329 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) h
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.216 
-       <./imagenes/CarasTraseras.png>] [46]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+       <./imagenes/CarasTraseras.png>]
+<imagenes/NodosGodot.png, id=592, 145.7445pt x 211.38976pt>
+File: imagenes/NodosGodot.png Graphic file (type png)
+<use imagenes/NodosGodot.png>
+Package pdftex.def Info: imagenes/NodosGodot.png  used on input line 222.
+(pdftex.def)             Requested size: 180.0pt x 261.09161pt.
+ [46
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.233                 \item \textbf
+                                   {Primer pase (FBO y caras traseras):} El ... <./imagenes/NodosGodot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
+
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
-
- []
-
-[47] [48]
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 [49]
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 336--337
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 338--339
+
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--342
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
-[50] (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
+
+ []
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 ) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
 
  []
 
-<imagenes/MapaElevaciones.png, id=619, 608.2725pt x 311.36325pt>
+[51]
+<imagenes/MapaElevaciones.png, id=697, 608.2725pt x 311.36325pt>
 File: imagenes/MapaElevaciones.png Graphic file (type png)
 <use imagenes/MapaElevaciones.png>
-Package pdftex.def Info: imagenes/MapaElevaciones.png  used on input line 364.
+Package pdftex.def Info: imagenes/MapaElevaciones.png  used on input line 371.
 (pdftex.def)             Requested size: 288.0011pt x 147.42397pt.
-[51
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.370 
-       <./imagenes/MapaElevaciones.png>]
-Overfull \hbox (36.08917pt too wide) in paragraph at lines 376--377
+
+Overfull \hbox (36.08917pt too wide) in paragraph at lines 383--384
 \OT1/cmr/m/n/10.95 es-pec-tro azul es do-mi-nan-te, se al-ma-ce-na co-mo ve-ge-ta-ci^^Son al-ta (\OT1/cmtt/m/n/10.95 ESTADO[]ARBOL\OT1/cmr/m/n/10.95 ),
  []
 
 
-Overfull \hbox (22.46106pt too wide) in paragraph at lines 376--377
+Overfull \hbox (22.46106pt too wide) in paragraph at lines 383--384
 \OT1/cmr/m/n/10.95 va-lo-res se asu-me co-mo te-rreno que no pue-de in-cen-diar-se (\OT1/cmtt/m/n/10.95 ESTADO[]SUBSUELO\OT1/cmr/m/n/10.95 ) 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 392--393
-
- []
-
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+[52
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.391 
+       <./imagenes/MapaElevaciones.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-<imagenes/InterfazUI.png, id=662, 690.78075pt x 393.26926pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
+
+ []
+
+<imagenes/InterfazUI.png, id=711, 690.78075pt x 393.26926pt>
 File: imagenes/InterfazUI.png Graphic file (type png)
 <use imagenes/InterfazUI.png>
-Package pdftex.def Info: imagenes/InterfazUI.png  used on input line 435.
+Package pdftex.def Info: imagenes/InterfazUI.png  used on input line 442.
 (pdftex.def)             Requested size: 288.0011pt x 163.96579pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--438
+Underfull \hbox (badness 10000) in paragraph at lines 439--445
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 454--456
 
  []
 
-[54
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) has been already used, duplicate ignored
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--460
+
+ []
+
+[55
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.445 
+l.460 
        <./imagenes/InterfazUI.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 447--449
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 450--453
-
- []
-
-[55]
-Underfull \hbox (badness 10000) in paragraph at lines 473--475
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 479--480
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
 
  []
 
 [56]
-Overfull \hbox (28.03943pt too wide) in paragraph at lines 502--503
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
+
+ []
+
+
+Overfull \hbox (28.03943pt too wide) in paragraph at lines 509--510
 []\OT1/cmr/m/n/10.95 Por otro la-do, se us^^So un no-do que pro-por-cio-na Go-dot, el (\OT1/cmtt/m/n/10.95 RemoteTransform3D\OT1/cmr/m/n/10.95 ),
  []
 
-) (Capitulos/04_Resultados.tex [57]
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--519
+
+ []
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--523
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+) (Capitulos/04_Resultados.tex [58]
 Cap\'{\i }tulo 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
-[58
+[59
 
 ]
-<imagenes/CasoEstudioA.png, id=710, 811.833pt x 440.847pt>
+<imagenes/CasoEstudioA.png, id=774, 811.833pt x 440.847pt>
 File: imagenes/CasoEstudioA.png Graphic file (type png)
 <use imagenes/CasoEstudioA.png>
-Package pdftex.def Info: imagenes/CasoEstudioA.png  used on input line 44.
+Package pdftex.def Info: imagenes/CasoEstudioA.png  used on input line 43.
 (pdftex.def)             Requested size: 251.9989pt x 136.83604pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
 
  []
 
-[59
+[60
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.50 
+l.49 
       <./imagenes/CasoEstudioA.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-<imagenes/CasoEstudioB.png, id=719, 740.7675pt x 414.348pt>
+<imagenes/CasoEstudioB.png, id=784, 740.7675pt x 414.348pt>
 File: imagenes/CasoEstudioB.png Graphic file (type png)
 <use imagenes/CasoEstudioB.png>
-Package pdftex.def Info: imagenes/CasoEstudioB.png  used on input line 58.
+Package pdftex.def Info: imagenes/CasoEstudioB.png  used on input line 57.
 (pdftex.def)             Requested size: 251.9989pt x 140.95232pt.
-[60
+[61
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.70         \end{itemize}
+l.69         \end{itemize}
                            <./imagenes/CasoEstudioB.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
-<imagenes/CasoEstudioC.png, id=727, 760.64175pt x 452.892pt>
+<imagenes/CasoEstudioC.png, id=791, 760.64175pt x 452.892pt>
 File: imagenes/CasoEstudioC.png Graphic file (type png)
 <use imagenes/CasoEstudioC.png>
-Package pdftex.def Info: imagenes/CasoEstudioC.png  used on input line 78.
+Package pdftex.def Info: imagenes/CasoEstudioC.png  used on input line 77.
 (pdftex.def)             Requested size: 251.9989pt x 150.0422pt.
-<imagenes/MapaDEM.png, id=728, 778.70924pt x 452.892pt>
+<imagenes/MapaDEM.png, id=792, 778.70924pt x 452.892pt>
 File: imagenes/MapaDEM.png Graphic file (type png)
 <use imagenes/MapaDEM.png>
-Package pdftex.def Info: imagenes/MapaDEM.png  used on input line 90.
+Package pdftex.def Info: imagenes/MapaDEM.png  used on input line 89.
 (pdftex.def)             Requested size: 251.9989pt x 146.55928pt.
-[61
+[62
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.94 
+l.93 
       <./imagenes/CasoEstudioC.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
-
- []
-
-[62
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.123 
-       <./imagenes/MapaDEM.png>]
-<imagenes/Rendimiento.png, id=742, 693.59125pt x 451.6875pt>
-File: imagenes/Rendimiento.png Graphic file (type png)
-<use imagenes/Rendimiento.png>
-Package pdftex.def Info: imagenes/Rendimiento.png  used on input line 126.
-(pdftex.def)             Requested size: 288.0011pt x 187.55708pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
 [63
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.122 
+       <./imagenes/MapaDEM.png>]
+<imagenes/Rendimiento.png, id=806, 693.59125pt x 451.6875pt>
+File: imagenes/Rendimiento.png Graphic file (type png)
+<use imagenes/Rendimiento.png>
+Package pdftex.def Info: imagenes/Rendimiento.png  used on input line 125.
+(pdftex.def)             Requested size: 288.0011pt x 187.55708pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+[64
 pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.134 
+l.133 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.134 
+l.133 
        <./imagenes/Rendimiento.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
 
-Overfull \hbox (25.83788pt too wide) in paragraph at lines 147--158
+Overfull \hbox (25.83788pt too wide) in paragraph at lines 146--157
  [][] 
  []
 
-<imagenes/RendimientoProp.png, id=750, 602.25pt x 372.39125pt>
+<imagenes/RendimientoProp.png, id=814, 602.25pt x 372.39125pt>
 File: imagenes/RendimientoProp.png Graphic file (type png)
 <use imagenes/RendimientoProp.png>
-Package pdftex.def Info: imagenes/RendimientoProp.png  used on input line 164.
+Package pdftex.def Info: imagenes/RendimientoProp.png  used on input line 163.
 (pdftex.def)             Requested size: 288.0011pt x 178.08662pt.
-[64
+[65
 pdfTeX warning (ext4): destination with the same identifier (name{table.4.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.168 
+l.167 
       ]
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
-) (Capitulos/05_Conclusiones.tex [65
+) (Capitulos/05_Conclusiones.tex [66
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -1918,9 +1950,9 @@ Overfull \hbox (11.49292pt too wide) in paragraph at lines 11--12
 []\OT1/cmr/bx/n/10.95 Investigar e in-te-grar \OT1/cmr/bx/it/10.95 Com-pu-te Sha-ders \OT1/cmr/bx/n/10.95 pa-ra c^^Salcu-los de prop^^Sosi-
  []
 
-[66
+[67
 
-] [67]) (Capitulos/Anexos.tex [68]
+] [68]) (Capitulos/Anexos.tex [69]
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
@@ -1930,21 +1962,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-) [69
+) [70
 
-] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 63--69
+] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.bbl [71
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 96--102
 \OT1/cmr/m/n/10.95 / / developer . nvidia . com / gpugems / gpugems / part-[]vi-[]beyond-[]triangles /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--77
+Underfull \hbox (badness 10000) in paragraph at lines 105--110
 \OT1/cmr/m/n/10.95 developer . nvidia . com / gpugems / gpugems3 / part-[]v-[]physics-[]simulation /
  []
 
-[70
-
-]) [71] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.aux
+[72]) [73] (c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1953,20 +1985,20 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 196787230A4300525D757B813036BCAC;7363.
+(rerunfilecheck)             Checksum: 0A3C5681B2478FEC67EF028FCDD00CD9;7656.
  ) 
 Here is how much of TeX's memory you used:
- 38324 strings out of 467510
- 878940 string characters out of 5407823
- 1702318 words of memory out of 5000000
- 66616 multiletter control sequences out of 15000+600000
+ 38364 strings out of 467510
+ 879605 string characters out of 5407823
+ 1673325 words of memory out of 5000000
+ 66639 multiletter control sequences out of 15000+600000
  642353 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  114i,12n,132p,1130b,2098s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (72 pages, 8368581 bytes).
+Output written on c:\Users\USUARIO\Documents\TFG\TFG\Memoria\build\main.pdf (74 pages, 8194650 bytes).
 PDF statistics:
- 969 PDF objects out of 1000 (max. 8388607)
- 303 named destinations out of 1000 (max. 500000)
- 446 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1045 PDF objects out of 1200 (max. 8388607)
+ 320 named destinations out of 1000 (max. 500000)
+ 454 words of extra memory for PDF output out of 10000 (max. 10000000)
 

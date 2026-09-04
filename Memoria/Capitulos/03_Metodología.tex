@@ -77,11 +77,11 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
         
         Para comprender la base computacional de este simulador, es necesario entender primero la diferencia arquitectónica fundamental entre un procesador central (CPU) y una tarjeta gráfica (GPU). La CPU está diseñada bajo un paradigma de baja latencia, por lo que posee un número reducido de núcleos muy complejos y veloces, optimizados para ejecutar instrucciones secuenciales, saltos lógicos condicionales y administrar el sistema operativo.\\
         
-        Por el contrario, la GPU está diseñada para lograr un alto rendimiento, lo que conlleva a su arquitectura a usar un mayor número de núcleos pero siendo la complejidad de cada uno de ellos mucho menor. Una gráfica moderna está compuesta por miles de pequeñas Unidades Aritmético-Lógicas (ALUs) diseñadas para ejecutar la misma instrucción matemática sobre múltiples datos de forma simultánea. Esta estructura le proporciona un paralelismo que es  ideal para procesar gráficos ya que calcular el color de un píxel en la pantalla es independiente del cálculo del píxel adyacente.\\
+        Por el contrario, la GPU está diseñada para lograr un alto rendimiento, lo que conlleva a su arquitectura a usar un mayor número de núcleos pero siendo la complejidad de cada uno de ellos mucho menor. Una gráfica moderna está compuesta por miles de pequeñas Unidades Aritmético-Lógicas (ALUs) diseñadas para ejecutar la misma instrucción matemática sobre múltiples datos de forma simultánea. Esta estructura le proporciona un paralelismo que es  ideal para procesar gráficos ya que calcular el color de un píxel en la pantalla es independiente del cálculo del píxel adyacente\cite{foley2014computer}.\\
 
         Para alimentar de datos a estos miles de núcleos simultáneamente sin generar cuellos de botella, la GPU cuenta con su propia memoria, la \textbf{VRAM} (\textit{Video Random Access Memory}). Esta memoria, a diferencia de la memoria RAM administrada por la CPU, posee un ancho de banda masivo diseñado específicamente para operaciones de lectura y escritura altamente paralelas.\\
         
-        En el contexto del renderizado visual tradicional la VRAM se organiza en buffers que deben estar estrictamente formateados en estructuras muy específicas, destacando:
+        En el contexto del renderizado visual tradicional la VRAM se organiza en buffers que deben estar estrictamente formateados en estructuras muy específicas, destacando\cite{escudero2023}\cite{referencia_mpg}:
         \begin{itemize}
             \item \textbf{\textit{Vertex Buffers} (VBO):} Almacenan los atributos matemáticos de los vértices que componen una malla 3D, No solo guardan las coordenadas espaciales, sino también datos acoplados a cada vértice, como los vectores normales.
             \item \textbf{\textit{Index Buffers} (EBO/IBO):} Este buffer almacena  únicamente una lista de índices enteros que indica a la GPU en qué orden exacto debe conectar los vértices previamente cargados para generar la malla 3D.
@@ -101,25 +101,25 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
       
     \subsection[\textit{Pipeline} de Cómputo]{Fundamentos tecnológicos: El \textit{Pipeline} de Cómputo}
 
-        Antes de abordar la solución computacional, es preciso definir formalmente qué es un \textit{shader}, y no es más que un programa diseñado específicamente para ser compilado y ejecutado directamente en los núcleos de la GPU. En motores como Godot, estos \textit{shaders} tradicionales se construyen usando un lenguaje de alto nivel propio (\textit{Godot Shading Language}), el cual abstrae gran parte de la configuración de bajo nivel y está optimizado para integrarse de manera fluida con el motor de renderizado.\\
+        Antes de abordar la solución computacional, es preciso definir formalmente qué es un \textit{shader}, y no es más que un programa diseñado específicamente para ser compilado y ejecutado directamente en los núcleos de la GPU. En motores como Godot, estos \textit{shaders} tradicionales se construyen usando un lenguaje de alto nivel propio (\textit{Godot Shading Language}), el cual abstrae gran parte de la configuración de bajo nivel y está optimizado para integrarse de manera fluida con el motor de renderizado\cite{godot_engine}.\\
 
         Sin embargo, para el desarrollo de un simulador volumétrico basado en autómatas celulares se necesita actualizar el estado de miles de celdas en cada iteración. Hacer esto de forma secuencial en la CPU generaría un cuello de botella inmenso lo que lo hace inviable para una simulación en tiempo real, y utilizar los \textit{shaders} visuales de Godot obligaría a empaquetar datos matemáticos como si fueran colores. \\
     
-        Este problema se ha resuelto haciendo uso del paradigma GPGPU (\textit{General-Purpose computing on Graphics Processing Units}), que consiste en dejar de usar la tarjeta gráfica de forma exclusiva para la visualización y pasar a usarla como un coprocesador matemático masivamente paralelo aplicable a cualquier ámbito. En la práctica, este paradigma permite emplear la enorme cantidad de unidades aritmético-lógicas (ALUs) de la GPU para resolver operaciones matemáticas de propósito general de forma paralela, desligándose por completo del renderizado de imágenes y de las restricciones del \textit{Pipeline} Gráfico tradicional.\\
+        Este problema se ha resuelto haciendo uso del paradigma GPGPU (\textit{General-Purpose computing on Graphics Processing Units}), que consiste en dejar de usar la tarjeta gráfica de forma exclusiva para la visualización y pasar a usarla como un coprocesador matemático masivamente paralelo aplicable a cualquier ámbito. En la práctica, este paradigma permite emplear la enorme cantidad de unidades aritmético-lógicas (ALUs) de la GPU para resolver operaciones matemáticas de propósito general de forma paralela, desligándose por completo del renderizado de imágenes y de las restricciones del \textit{Pipeline} Gráfico tradicional\cite{gpugems3_ch30}.\\
 
-        Esto se ha hecho posible gracias a dejar de usar los shader tradicionales(Vertex y Fragment) para pasar a usar \textbf{\textit{Compute Shaders}} los cuales, a diferencia de los tradicionales, operan de forma independiente al \textit{pipeline} gráfico.Esta independencia les permite usar y estructurar los distintos \textit{buffers} de memoria que necesiten haciéndolos ideales para inyectar los datos topográficos del terreno, calcular la propagación del fuego sobre la matriz del autómata celular en paralelo, y almacenar los resultados térmicos actualizados directamente en la VRAM sin necesidad de someter los datos a un proceso de dibujo en pantalla.\\
+        Esto se ha hecho posible gracias a dejar de usar los shader tradicionales(Vertex y Fragment) para pasar a usar \textbf{\textit{Compute Shaders}} los cuales, a diferencia de los tradicionales, operan de forma independiente al \textit{pipeline} gráfico.Esta independencia les permite usar y estructurar los distintos \textit{buffers} de memoria que necesiten haciéndolos ideales para inyectar los datos topográficos del terreno, calcular la propagación del fuego sobre la matriz del autómata celular en paralelo, y almacenar los resultados térmicos actualizados directamente en la VRAM sin necesidad de someter los datos a un proceso de dibujo en pantalla\cite{gpugems_ch38}.\\
 
     \subsection{El motor de Simulación}
         \subsubsection*{Elección del modelo}
         La simulación computacional de la propagación de un incendio forestal es un problema matemático complejo que exige traducir procesos físicos y termodinámicos a algoritmos eficientes. En el ámbito de la ingeniería de software aplicada a la predicción de incendios, existen dos grandes enfoques arquitectónicos para modelar el crecimiento del frente de llamas: los modelos vectoriales y los modelos discretos.\\
 
-        Los \textbf{modelos o vectoriales}, como ya se ha comentado con anterioridad, representan el avance del fuego como una serie de curvas geométricas que crecen a lo largo del tiempo siguiendo el Principio de Huygens. Los ejemplos más destacados de este enfoque son simuladores profesionales como \textbf{FARSITE} (desarrollado por el Servicio Forestal de EE.UU.) o el sistema canadiense \textbf{Prometheus}.
+        Los \textbf{modelos vectoriales}, como ya se ha comentado con anterioridad, representan el avance del fuego como una serie de curvas geométricas que crecen a lo largo del tiempo siguiendo el Principio de Huygens\cite{enders2009huygens}. Los ejemplos más destacados de este enfoque son simuladores profesionales como \textbf{FARSITE} (desarrollado por el Servicio Forestal de EE.UU.) o el sistema canadiense \textbf{Prometheus}.
         \begin{itemize}
             \item \textbf{Ventajas:} Ofrecen una alta precisión espacial y al trabajar con vectores, generan frentes de propagación suaves y visualmente muy realistas, evitando formas cuadriculadas.
             \item \textbf{Desventajas:} Su principal debilidad radica en la resolución topológica ya que cuando dos frentes de fuego colisionan, calcular la intersección matemática de sus polígonos para fusionarlos en una nueva curva requiere algoritmos de geometría secuenciales. Esta dependencia estructural los convierte en un enorme cuello de botella para la paralelización masiva en la GPU.
         \end{itemize}
 
-        Por otro lado, los \textbf{modelos discretos} renuncian a la exactitud del espacio vectorial y dividen el entorno de simulación en una matriz finita (una cuadrícula 2D o un volumen 3D). Ejemplos históricos de este enfoque son las aproximaciones probabilísticas avanzadas como la adaptación estocástica de Alexandridis. 
+        Por otro lado, los \textbf{modelos discretos} renuncian a la exactitud del espacio vectorial y dividen el entorno de simulación en una matriz finita (una cuadrícula 2D o un volumen 3D)\cite{mdiscretos}. Ejemplos históricos de este enfoque son las aproximaciones probabilísticas avanzadas como la adaptación estocástica de Alexandridis\cite{alexandridis2008}. 
         \begin{itemize}
             \item \textbf{Ventajas:} Resuelven el problema de la colisión de dos frentes de fuego ya que simplemente múltiples celdas cambian su estado simultáneamente evaluando a sus vecinas, eliminando cualquier necesidad de calcular intersecciones vectoriales globales. Esta independencia espacial los hace altamente paralelizables, encajando a la perfección con la arquitectura de múltiples hilos de las tarjetas gráficas.
             \item \textbf{Desventajas:} Su precisión física está limitada estrictamente por la resolución de la matriz (el tamaño físico de cada voxel). Además, la propagación puede sufrir artefactos direccionales, tendiendo a generar patrones poco naturales debido a la limitación de movimiento impuesta por la vecindad de las celdas.
@@ -131,9 +131,9 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
         Dentro del paradigma de los modelos discretos, la literatura científica presenta diferentes aproximaciones para resolver la propagación del fuego. Para la implementación de este motor lógico, se han evaluado las tres arquitecturas matriciales más representativas:
 
         \begin{itemize}
-            \item \textbf{Modelos teóricos de percolación (ej. Drossel-Schwabl):} Son computacionalmente los más rápidos ya que operan bajo reglas binarias muy básicas en un bosque idealizado, pero carecen de variables termodinámicas reales (viento, pendiente o tipo de combustible), lo que los invalida para una simulación técnica realista. 
+            \item \textbf{Modelos teóricos de percolación (ej. Drossel-Schwabl):} Son computacionalmente los más rápidos ya que operan bajo reglas binarias muy básicas en un bosque idealizado, pero carecen de variables termodinámicas reales (viento, pendiente o tipo de combustible), lo que los invalida para una simulación técnica realista\cite{percolacion}. 
             
-            \item \textbf{Autómatas celulares deterministas (ej. Karafyllidis y Thanailakis):} Esta aproximación sí integra factores topográficos y meteorológicos, estableciendo ecuaciones con tiempos de retardo fijos. Su mayor defecto es que generan artefactos visuales muy severos (frentes de fuego con formas geométricas rígidas, como diamantes u octágonos) al no reflejar el comportamiento estocástico y caótico de un incendio real. 
+            \item \textbf{Autómatas celulares deterministas (ej. Karafyllidis y Thanailakis):} Esta aproximación sí integra factores topográficos y meteorológicos, estableciendo ecuaciones con tiempos de retardo fijos. Su mayor defecto es que generan artefactos visuales muy severos (frentes de fuego con formas geométricas rígidas, como diamantes u octágonos) al no reflejar el comportamiento estocástico y caótico de un incendio real\cite{deterministas}. 
     
             \item \textbf{Modelos estocásticos empíricos (Autómata de Rothermel / Alexandridis):} Fusionan el modelo físico continuo de Richard Rothermel (estándar de la industria) con la adaptación matricial probabilística de Alexandridis. Estos modelos, En lugar de usar tiempos fijos, traducen las complejas ecuaciones físicas en probabilidades de ignición discretas ($P_{ign}$) para cada celda, introduciendo una aleatoriedad controlada que rompe la rigidez de la cuadrícula. 
         \end{itemize}
@@ -156,7 +156,7 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
 
         \subsubsection*{Integración del modelo físico de propagación}
 
-            El paso de un voxel intacto  a una voxel en llamas sigue una adaptación estocástica del modelo físico de incendios de Rothermel (1972) aplicada a Autómatas Celulares, basándose en la formulación de Alexandridis. En este enfoque, la probabilidad de ignición ($P_{ign}$) transmitida por una celda vecina en combustión se define mediante la siguiente ecuación matemática:
+            El paso de un voxel intacto  a una voxel en llamas sigue una adaptación estocástica del modelo físico de incendios de Rothermel (1972) aplicada a Autómatas Celulares, basándose en la formulación de Alexandridis. En este enfoque, la probabilidad de ignición ($P_{ign}$) transmitida por una celda vecina en combustión se define mediante la siguiente ecuación matemática\cite{alexandridis2008}\cite{rothermel1972}:
 
             $$P_{ign} = P_0 \cdot (1 + p_w) \cdot (1 + p_s) \cdot p_h$$
             \\
@@ -192,7 +192,7 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
 
         Una vez que la lógica de simulación está resuelta matemáticamente el siguiente reto arquitectónico es mostrar visualmente dicha matriz tridimensional. Intentar representar con mallas cada celda en llamas colapsaría el rendimiento del sistema por lo que se ha optado por utilizar un contenedor volumétrico el cual actúa como un lienzo tridimensional encargado de interpretar la matriz térmica calculada por el \textit{Compute Shader}.\\
 
-        Para lograr esta representación se ha implementado la técnica de \textit{Raymarching} (trazado de rayos volumétrico) que consiste en emitir un rayo virtual desde la cámara que avanza a través del interior del cubo paso a paso, muestreando en cada punto un campo de datos y asi acumular color y densidad. Para determinar la trayectoria exacta que debe recorrer cada rayo, el sistema necesita conocer exactamente en qué coordenada espacial entra el rayo al cubo (cara frontal) y en qué coordenada sale (cara trasera).\\
+        Para lograr esta representación se ha implementado la técnica de \textit{Raymarching} (trazado de rayos volumétrico) que consiste en emitir un rayo virtual desde la cámara que avanza a través del interior del cubo paso a paso, muestreando en cada punto un campo de datos y asi acumular color y densidad. Para determinar la trayectoria exacta que debe recorrer cada rayo, el sistema necesita conocer exactamente en qué coordenada espacial entra el rayo al cubo (cara frontal) y en qué coordenada sale (cara trasera)\cite{gpugems3_ch30}.\\
        
         Antes de pasar a la explicación de la construcción de la escena es necesario comprender el concepto del \textit{Frame Buffer Object} (FBO).  Normalmente la GPU calcula la geometría y los shader y lo vuelca en un buffer que posteriormente se muestra por pantalla, pero al usar un FBO permite que dichos datos pasen a guardarse en la VRAM sin llegar a mostrarse por pantalla. Esto en Godot se consigue con el nodo \texttt{SubViewport} que actúa como un entorno de renderizado aislado que almacena su resultado en una \texttt{ViewportTexture} que se puede usar posteriormente.\\ 
 
@@ -214,8 +214,15 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
                 
                 \item \textbf{Aislamiento por capas (\textit{Cull Masks}):} Para evitar interferencias visuales entre ambos pases de renderizado, se emplea una estrategia de exclusión mediante las máscaras de capa. El \texttt{CuboFrontal} reside en la capa visual 1, mientras que el \texttt{CuboTrasero} se ubica en la capa 2. En lugar de restringir las cámaras a una única capa, se configuran para procesar todo el entorno excluyendo únicamente la capa del objeto opuesto, haciendo que la cámara secundaria tenga deshabilitada la capa 1 (ocultando así el cubo frontal), y la principal tenga deshabilitada la capa 2 (ocultando la geometría trasera). Esta configuración garantiza que cada cámara calcule exclusivamente el volumen que le corresponde sin dejar de percibir el resto de la escena.
                 
-                \item \textbf{Configuración de \textit{Shaders} y \textit{Render Modes}:} El núcleo de esta técnica recae en cómo la GPU procesa la superficie de estos cubos. El \texttt{CuboTrasero} posee un \textit{shader} configurado con el parámetro de renderizado \texttt{cull\_front} que obliga al motor a descartar las caras delanteras de la geometría y renderizar únicamente las caras internas (traseras). Este resultado, que contiene las coordenadas espaciales de las caras traseras, es capturado por el \texttt{SubViewport} en una textura dinámica que posteriormente es aceptada como parámetro por el shader que posee el \texttt{CuboFrontal}. Este último shader está configurado a la inversa del primero, es decir, posee el parámetro (\texttt{cull\_back}) que renderiza solo el exterior del volumen y pueda así ser usado para ejecutar el \textit{Raymarching}.
+                \item \textbf{Configuración de \textit{Shaders} y \textit{Render Modes}:} El núcleo de esta técnica recae en cómo la GPU procesa la superficie de estos cubos. El \texttt{CuboTrasero} posee un \textit{shader} configurado con el parámetro de renderizado \texttt{cull\_front} que obliga al motor a descartar las caras delanteras de la geometría y renderizar únicamente las caras internas (traseras). Este resultado, que contiene las coordenadas espaciales de las caras traseras, es capturado por el \texttt{SubViewport} en una textura dinámica que posteriormente es aceptada como parámetro por el shader que posee el \texttt{CuboFrontal}. Este último shader está configurado a la inversa del primero, es decir, posee el parámetro (\texttt{cull\_back}) que renderiza solo el exterior del volumen y pueda así ser usado para ejecutar el \textit{Raymarching}\cite{compute_shaders_pointclouds}.
             \end{itemize}
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.5\textwidth]{imagenes/NodosGodot.png}
+                \caption[Esquema de nodos de la escena]{Esquema de nodos de la escena del proyecto en Godot 4}
+            \end{figure}
+
 
 
         \subsubsection*{Flujo técnico del renderizado de doble pase}
@@ -323,12 +330,12 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
 
 \section[Topografía]{Geometría y Datos Topográficos}
 
-    Un punto clave para un simulador de incendios es tener una buena representación del entorno para así poder conseguir resultados rigurosos.  En este proyecto, la geometría y la distribución del combustible se generan de forma procedimental a partir de Modelos Digitales de Elevaciones (DEM) y mapas satelitales de vegetación.
+    Un punto clave para un simulador de incendios es tener una buena representación del entorno para así poder conseguir resultados rigurosos.  En este proyecto, la geometría y la distribución del combustible se generan de forma procedimental a partir de Modelos Digitales de Elevaciones (DEM) y mapas satelitales de vegetación\cite{cnig_datos}.
     \subsection[Procesamiento de datos]{Procesamiento SIG, normalización y adecuación de formatos}
 
         Los Modelos Digitales de Elevaciones obtenidos a través de organismos oficiales se encuentran normalmente en formato GeoTIFF (\texttt{.tif}). Aunque este formato es idóneo para Sistemas de Información Geográfica (SIG), su importación directa a motores de renderizado 3D suele presentar numerosos problemas tanto en la lectura como en la precisión debido a limitaciones en la profundidad de bits por canal.\\
 
-        Para solucionar estos problemas y garantizar un relieve topográfico y de buena fidelidad, se necesitó usar el software QGIS, mediante el cual los mapas originales fueron reproyectados espacialmente y delimitados al área de interés del simulador.\\ 
+        Para solucionar estos problemas y garantizar un relieve topográfico y de buena fidelidad, se necesitó usar el software QGIS \cite{qgis_software}, mediante el cual los mapas originales fueron reproyectados espacialmente y delimitados al área de interés del simulador.\\ 
 
         Un paso crítico en esta fase fue la normalización matemática de los valores. Las cotas geográficas reales se normalizaron en un rango de 0.0 a 1.0  para que el \textit{shader} encargado de generar la elevación del terreno procese los valores como una variable de color escalar. \\
 
@@ -336,9 +343,9 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
 
     \subsection[Renderizado del terreno]{Renderizado del terreno: Desplazamiento y normales}
 
-        Una vez procesados, los mapas se integran en el simulador. La representación visual no emplea una malla estática, sino que parte de un plano base que es deformado mediante un \textit{shader} espacial (\texttt{spatial}). 
+        Una vez procesados, los mapas se integran en el simulador. La representación visual no emplea una malla estática, sino que parte de un plano base que es deformado mediante un \textit{shader} espacial (\texttt{spatial})\cite{escudero2023}.\\
 
-        Este \textit{shader} se encarga de alterar la coordenada vertical de cada vértice muestreando el mapa de elevaciones introducido.Posteriormente, el valor normalizado leído se multiplica por el diferencial real de altura del terreno, obteniendo así la elevación exacta del relieve original.\\
+        Este \textit{shader} se encarga de alterar la coordenada vertical de cada vértice muestreando el mapa de elevaciones introducido.Posteriormente, el valor normalizado leído se multiplica por el diferencial real de altura del terreno, obteniendo así la elevación exacta del relieve original.\cite{heightmap}\\
 
        \begin{lstlisting}[language=C, basicstyle=\ttfamily\footnotesize, frame=single]
         // Lectura y desplazamiento geometrico de la orografia (Shader)
@@ -357,7 +364,7 @@ Llevando a cabo un análisis de todas estas características de los diferentes e
         \end{lstlisting}
 
 
-        Un problema generado por alterar los vértices de forma dinámica es que los vectores normales originales del plano dejan de ser válidos, lo que provoca que no se calcule correctamente las sombras y la iluminación. Para solucionarlo, el \textit{shader} recalcula la inclinación real del terreno leyendo la altitud de los cuatro píxeles vecinos y construyendo dos vectores direccionales (el vector tangente y el vector binormal) cuya diferencia angular conforma la pendiente. \\
+        Un problema generado por alterar los vértices de forma dinámica es que los vectores normales originales del plano dejan de ser válidos, lo que provoca que no se calcule correctamente las sombras y la iluminación. Para solucionarlo, el \textit{shader} recalcula la inclinación real del terreno leyendo la altitud de los cuatro píxeles vecinos y construyendo dos vectores direccionales (el vector tangente y el vector binormal) cuya diferencia angular conforma la pendiente\cite{foley2014computer}.\\
         
         \begin{figure}[H]
             \centering
@@ -502,6 +509,19 @@ Para que el simulador sea accesible y permita al usuario visualizar la escena de
     Por otro lado, se usó un nodo que proporciona Godot, el  (\texttt{RemoteTransform3D}), sobre la cámara principal vinculandolo con la cámara del \texttt{SubViewport}. Este nodo se encarga de que la cámara secundaria replique continuamente la posición, rotación y escala de la principal.
 
     Al sincronizar perfectamente ambas cámaras, las coordenadas de textura proyectadas en el \texttt{SubViewport} coinciden sin errores, haciendo que se visualice correctamente desde cualquier ángulo y distancia.
+
+
+
+
+\section{Integración y uso de Inteligencia Artificial}
+
+    Durante el desarrollo de este proyecto, se ha hecho uso de modelos de Inteligencia Artificial (IA) generativa, concretamente \textbf{Gemini} apoyado por \textbf{Claude} para las labores específicas de programación, como asistentes para diversas tareas. El uso de esta tecnología se ha planteado desde un punto de vista instrumental, como una herramienta más, con el objetivo de optimizar los tiempos de aprendizaje, resolución de problemas y redacción, manteniendo en todo momento la autoría, el diseño arquitectónico y el criterio técnico sobre el resultado final.\\
+
+    Al enfrentarse a una curva de aprendizaje pronunciada con herramientas complejas nunca antes vistas, como el motor de desarrollo Godot 4 o el software de información geográfica QGIS, Gemini ha actuado como un tutor interactivo acelerando la comprensión de los flujos de trabajo de los entornos y las herramientas que estos ofrecían. Por otro lado, uno de los mayores retos del proyecto fue orquestar una comunicación eficiente entre la memoria del sistema (RAM) y la memoria de vídeo (VRAM). En este ámbito analítico, Claude sirvió como soporte de consulta para entender a bajo nivel el funcionamiento de la clase \texttt{RenderingDevice}, asimilar los conceptos de despacho concurrente en los \textit{Compute Shaders} y agilizar la escritura de código y depuración de dicha sincronización.\\
+
+    A su vez, la representación visual de la matriz térmica mediante el contenedor volumétrico supuso un gran desafío técnico durante sus etapas iniciales debido a los errores que iban apareciendo. En este contexto de desarrollo, la IA demostró ser un recurso muy eficaz para el escrutinio de código y el diagnóstico rápido de fallos, permitiendo aislar y corregir de forma ágil los distintos \textit{bugs} y anomalías visuales que corrompían la imagen, acelerando así la corrección de los \textit{shaders} hasta alcanzar la fidelidad visual buscada en el simulador.\\
+
+    Finalmente, para la elaboración de esta memoria, Gemini ha desempeñado un papel fundamental como asistente para la estructuración y revisión de estilo de la misma. Se empleó principalmente para perfilar la estructura lógica de los capítulos, afianzar el rigor formal exigido en el ámbito universitario y facilitar el formateo del texto y las fórmulas matemáticas mediante \LaTeX. En definitiva, la inteligencia artificial ha actuado como un recurso complementario que ha agilizado significativamente todas las fases del trabajo. No obstante, la validación de los modelos físicos, las decisiones de ingeniería de software y la implementación final del sistema han dependido exclusiva y estrictamente del criterio del autor.\\
 
 
 

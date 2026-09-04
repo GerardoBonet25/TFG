@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="3_4gf3d"]
 [ext_resource type="Script" uid="uid://boowel001yj7e" path="res://Scripts/SyncCameras.gd" id="4_i70e7"]
 [ext_resource type="Shader" uid="uid://cc44xxxri5f08" path="res://Shaders/GeneraciónMapaAutomatica.gdshader" id="6_446q6"]
-[ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scenes/Metricas.gd" id="6_pwsq8"]
+[ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scripts/Metricas.gd" id="6_pwsq8"]
 [ext_resource type="Script" uid="uid://cadt206stngf3" path="res://Scripts/MapaNoise/mapa_generado.gd" id="7_arnhw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sokg"]
@@ -39,8 +39,8 @@ noise = SubResource("FastNoiseLite_ywcy4")
 
 [sub_resource type="Gradient" id="Gradient_1o5ci"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.59395975)
-colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.429078, 0.6879433)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_srwpp"]
 

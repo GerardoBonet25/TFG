@@ -29,6 +29,39 @@ J.~Hughes, \emph{Computer Graphics: Principles and Practice}, ser. The systems
   \url{https://books.google.es/books?id=OVpsAQAAQBAJ}
 \BIBentrySTDinterwordspacing
 
+\bibitem{qgis_software}
+\BIBentryALTinterwordspacing
+{QGIS Development Team}, \emph{QGIS Geographic Information System}, Open Source
+  Geospatial Foundation, 2024, procesamiento SIG, normalización y adecuación
+  de MDE. [Online]. Available: \url{https://qgis.org}
+\BIBentrySTDinterwordspacing
+
+\bibitem{cnig_datos}
+\BIBentryALTinterwordspacing
+{Centro Nacional de Información Geográfica (CNIG)}, ``Centro de descargas del
+  cnig: Mapas de elevaciones y nubes de puntos lidar,'' 2025. [Online].
+  Available: \url{https://centrodedescargas.cnig.es}
+\BIBentrySTDinterwordspacing
+
+\bibitem{rothermel1972}
+R.~C. Rothermel, ``A mathematical model for predicting fire spread in wildland
+  fuels,'' USDA Forest Service, Intermountain Forest and Range Experiment
+  Station, Ogden, UT, Tech. Rep. INT-115, 1972.
+
+\bibitem{enders2009huygens}
+P.~Enders, ``Huygens' principle as universal model of propagation,''
+  \emph{Latin-American Journal of Physics Education}, vol.~3, no.~1, p.~4,
+  2009.
+
+\bibitem{hirsch_1996_fbp}
+K.~G. Hirsch, ``Canadian forest fire behavior prediction system,'' Canadian
+  Forest Service Publications, Ottawa, Canada, Tech. Rep., 1996.
+
+\bibitem{fbp}
+M.~Wotton, ``Interpreting and using outputs from the canadian forest fire
+  danger rating system in research applications,'' \emph{Environmental and
+  Ecological Statistics}, vol.~16, pp. 107--131, 06 2009.
+
 \bibitem{referencia_mpg}
 \BIBentryALTinterwordspacing
 L.~P. Kobbelt, S.~Bischoff, M.~Botsch, K.~Kähler, C.~Rössl, R.~Schneider, and
@@ -75,38 +108,50 @@ K.~Crane, I.~Llamas, and S.~Tariq, ``Chapter 30. real-time simulation and
   \url{https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-30-real-time-simulation-and-rendering-3d-fluids}
 \BIBentrySTDinterwordspacing
 
-\bibitem{qgis_software}
+\bibitem{rasterizationAndraytracing}
 \BIBentryALTinterwordspacing
-{QGIS Development Team}, \emph{QGIS Geographic Information System}, Open Source
-  Geospatial Foundation, 2024, procesamiento SIG, normalización y adecuación
-  de MDE. [Online]. Available: \url{https://qgis.org}
+T.~Davidovi{\v{c}}, T.~Engelhardt, I.~Georgiev, P.~Slusallek, and
+  C.~Dachsbacher, ``3d rasterization: a bridge between rasterization and ray
+  casting,'' in \emph{Proceedings of Graphics Interface 2012}, 2012, pp.
+  201--208. [Online]. Available:
+  \url{http://iliyan.com/publications/3DRasterization/3DRasterization_GI2012.pdf}
 \BIBentrySTDinterwordspacing
 
-\bibitem{cnig_datos}
+\bibitem{max2002optical}
+N.~Max, ``Optical models for direct volume rendering,'' \emph{IEEE Transactions
+  on visualization and computer graphics}, vol.~1, no.~2, pp. 99--108, 2002.
+
+\bibitem{MarchingCubes}
+W.~E. Lorensen and H.~E. Cline, ``Marching cubes: A high resolution 3d surface
+  construction algorithm,'' in \emph{Proceedings of the 14th Annual Conference
+  on Computer Graphics and Interactive Techniques}, ser. SIGGRAPH '87.\hskip
+  1em plus 0.5em minus 0.4em\relax Association for Computing Machinery, 1987,
+  p. 163–169.
+
+\bibitem{automatasCelulares}
+M.~J. M.-F. Guisado-Lizar and P.~Real, ``Versatilidad y eficiencia de los
+  aut{\'o}matas celulares para la simulaci{\'o}n y an{\'a}lisis de sistemas
+  complejos en ingenier{\'i}a.''
+
+\bibitem{uco40_rodriguez}
+F.~Rodríguez~y Silva, ``Sistema uco40: Catálogo de modelos de combustible
+  forestal,'' Laboratorio de Defensa contra Incendios Forestales (LABIF-UCO),
+  Universidad de Córdoba.
+
+\bibitem{cfd}
+J.~M.~F. Oro, \emph{T{\'e}cnicas num{\'e}ricas en ingenier{\'\i}a de fluidos:
+  introducci{\'o}n a la din{\'a}mica de fluidos computacional (CFD) por el
+  m{\'e}todo de vol{\'u}menes finitos}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Revert{\'e}, 2012.
+
+\bibitem{alexandridis2008}
 \BIBentryALTinterwordspacing
-{Centro Nacional de Información Geográfica (CNIG)}, ``Centro de descargas del
-  cnig: Mapas de elevaciones y nubes de puntos lidar,'' 2025. [Online].
-  Available: \url{https://centrodedescargas.cnig.es}
+A.~Alexandridis, D.~Vakalis, C.~I. Zelilidou, and B.~Boutsinas, ``A cellular
+  automata model for forest fire spread prediction: The case of the wildfire
+  that swept through spetses island in 1990,'' \emph{Applied Mathematics and
+  Computation}, vol. 204, no.~1, pp. 191--201, 2008. [Online]. Available:
+  \url{https://www.sciencedirect.com/science/article/pii/S0096300308004943}
 \BIBentrySTDinterwordspacing
-
-\bibitem{rothermel1972}
-R.~C. Rothermel, ``A mathematical model for predicting fire spread in wildland
-  fuels,'' USDA Forest Service, Intermountain Forest and Range Experiment
-  Station, Ogden, UT, Tech. Rep. INT-115, 1972.
-
-\bibitem{enders2009huygens}
-P.~Enders, ``Huygens' principle as universal model of propagation,''
-  \emph{Latin-American Journal of Physics Education}, vol.~3, no.~1, p.~4,
-  2009.
-
-\bibitem{hirsch_1996_fbp}
-K.~G. Hirsch, ``Canadian forest fire behavior prediction system,'' Canadian
-  Forest Service Publications, Ottawa, Canada, Tech. Rep., 1996.
-
-\bibitem{fbp}
-M.~Wotton, ``Interpreting and using outputs from the canadian forest fire
-  danger rating system in research applications,'' \emph{Environmental and
-  Ecological Statistics}, vol.~16, pp. 107--131, 06 2009.
 
 \bibitem{CARMEL2009370}
 \BIBentryALTinterwordspacing
@@ -122,5 +167,48 @@ Y.~Carmel, S.~Paz, F.~Jahashan, and M.~Shoshany, ``Assessing fire risk using
   simulations,'' \emph{Fire}, vol.~3, no.~4, p.~71, 2020. [Online]. Available:
   \url{https://www.mdpi.com/2571-6255/3/4/71}
 \BIBentrySTDinterwordspacing
+
+\bibitem{escudero2023}
+\BIBentryALTinterwordspacing
+D.~Escudero-Mancebo, \emph{Apuntes de Informática Gráfica}.\hskip 1em plus
+  0.5em minus 0.4em\relax Universidad de Valladolid, 2023, pp. 1--3, edición
+  2023. [Online]. Available:
+  \url{https://uvadoc.uva.es/bitstream/handle/10324/59563/IG.pdf?sequence=1}
+\BIBentrySTDinterwordspacing
+
+\bibitem{godot_engine}
+\BIBentryALTinterwordspacing
+J.~Linietsky, A.~Manzur, and {Godot Engine Contributors}, ``Godot engine,''
+  2024, motor gráfico de código abierto utilizado para la arquitectura
+  híbrida. [Online]. Available: \url{https://godotengine.org}
+\BIBentrySTDinterwordspacing
+
+\bibitem{mdiscretos}
+A.~Bagdasaryan, ``Discrete dynamic simulation models and technique for complex
+  control systems,'' \emph{Simulation Modelling Practice and Theory}, vol.~19,
+  no.~4, pp. 1061--1087, 2011.
+
+\bibitem{percolacion}
+R.~D. Zinck, K.~Johst, and V.~Grimm, ``Wildfire, landscape diversity and the
+  drossel--schwabl model,'' \emph{Ecological Modelling}, vol. 221, no.~1, pp.
+  98--105, 2010.
+
+\bibitem{deterministas}
+I.~Karafyllidis and A.~Thanailakis, ``A model for predicting forest fire
+  spreading using cellular automata,'' \emph{Ecological Modelling}, vol.~99,
+  no.~1, pp. 87--97, 1997.
+
+\bibitem{compute_shaders_pointclouds}
+\BIBentryALTinterwordspacing
+M.~Schütz, M.~Bernhard, and M.~Wimmer, ``Rendering point clouds with compute
+  shaders and vertex order optimization,'' \emph{Computer Graphics Forum},
+  vol.~40, no.~2, pp. 115--126, 2021. [Online]. Available:
+  \url{https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14345}
+\BIBentrySTDinterwordspacing
+
+\bibitem{heightmap}
+D.~Gallup, M.~Pollefeys, and J.-M. Frahm, ``3d reconstruction using an n-layer
+  heightmap,'' in \emph{Joint Pattern Recognition Symposium}.\hskip 1em plus
+  0.5em minus 0.4em\relax Springer, 2010, pp. 1--10.
 
 \end{thebibliography}

@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://vg6yovp36sr" path="res://Shaders/TwoPassRendering.gdshader" id="3_ml4tx"]
 [ext_resource type="Script" uid="uid://boowel001yj7e" path="res://Scripts/SyncCameras.gd" id="4_2xap3"]
 [ext_resource type="Shader" uid="uid://cfngyxcqwu3pd" path="res://Shaders/creacionMapa.gdshader" id="6_8824l"]
-[ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scenes/Metricas.gd" id="6_j7csj"]
+[ext_resource type="Script" uid="uid://cwomiouhcrcty" path="res://Scripts/Metricas.gd" id="6_j7csj"]
 [ext_resource type="Texture2D" uid="uid://dxpway6oy77jr" path="res://Modelos/ElevacionesRecortado.exr" id="7_btdxh"]
 [ext_resource type="Texture2D" uid="uid://bn6itgpfbyrk2" path="res://Modelos/TexturaVegetación.png" id="9_j7csj"]
 [ext_resource type="Script" uid="uid://bohdb21r0entv" path="res://Scripts/MapaElevaciones/mapa_elevaciones.gd" id="9_up8ov"]
