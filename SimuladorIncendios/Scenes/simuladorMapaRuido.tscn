@@ -39,8 +39,8 @@ noise = SubResource("FastNoiseLite_ywcy4")
 
 [sub_resource type="Gradient" id="Gradient_1o5ci"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.429078, 0.6879433)
-colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_srwpp"]
 
@@ -187,7 +187,6 @@ cubo_frontal = NodePath("../CuboFrontal")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.012618369, 0.99992037, 0, -0.99992037, -0.012618369, 0, 15.792813, 0)
-visible = false
 light_energy = 6.11
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

@@ -4,7 +4,7 @@ extends Camera3D
 @export var subViewPort: SubViewport
 
 # Parámetros de control ajustables desde el Inspector
-@export var velocidad_movimiento: float = 5.0
+@export var velocidad_movimiento: float = 120.0
 @export var sensibilidad_raton: float = 0.002
 
 func _ready() -> void:

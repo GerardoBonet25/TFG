@@ -88,7 +88,6 @@ cull_mask = 1048573
 script = ExtResource("4_2xap3")
 camaraTrasera = NodePath("../SubViewport/CamaraTrasera")
 subViewPort = NodePath("../SubViewport")
-velocidad_movimiento = 70.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPrincipal"]
 remote_path = NodePath("../../SubViewport/CamaraTrasera")
