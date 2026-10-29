@@ -44,4 +44,4 @@ Si deseas inspeccionar el código, editar los *shaders* o ver el proyecto desde 
 
 **Gerardo Bonet Pérez**
 * [LinkedIn](www.linkedin.com/in/gerardobonet25)
-* Email: [gerardobonet25@gmail.com](mailto:gerardobonet25@gmail.com
+* Email: gerardobonet25@gmail.com
